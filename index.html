@@ -30,7 +30,7 @@
       </div>
 
       <div class="flex items-center gap-2">
-        <a id="headerMapBtn" href="https://maps.google.com/?q=36.1673056,43.989" target="_blank" class="hidden sm:flex bg-slate-900 hover:bg-slate-800 text-sky-400 px-3 py-2 rounded-xl text-xs font-bold border border-slate-700 transition items-center gap-1">
+        <a id="headerMapBtn" href="https://maps.google.com/?q=36.167306,43.989000" target="_blank" class="hidden sm:flex bg-slate-900 hover:bg-slate-800 text-sky-400 px-3 py-2 rounded-xl text-xs font-bold border border-slate-700 transition items-center gap-1">
           <span>📍</span> <span id="headerMapText">شوێنی نووسینگە</span>
         </a>
         <a id="headerCallBtn" href="tel:07512193920" class="hidden sm:flex bg-slate-900 hover:bg-slate-800 text-amber-400 px-3 py-2 rounded-xl text-xs font-bold border border-slate-700 transition items-center gap-1.5">
@@ -47,8 +47,7 @@
               <span>👑 تابی خاوەن موڵک</span>
               <span class="text-[10px] bg-amber-500/20 px-2 py-0.5 rounded text-amber-300">Admin</span>
             </button>
-            <div id="customTabsContainer" class="space-y-1 border-t border-slate-800 pt-1">
-              </div>
+            <div id="customTabsContainer" class="space-y-1 border-t border-slate-800 pt-1"></div>
           </div>
         </div>
       </div>
@@ -66,13 +65,10 @@
           کڕین، فرۆشتن، و بەکرێدانی هەموو جۆرە موڵکێک بە گرەنتی و باشترین نرخ
         </p>
 
-        <div class="flex flex-wrap justify-center items-center gap-3 mb-8">
-          <a id="heroMapBtn" href="https://maps.google.com/?q=36.1673056,43.989" target="_blank" class="bg-sky-600/20 hover:bg-sky-600 text-sky-300 hover:text-white border border-sky-500/40 px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5">
+        <div class="flex justify-center items-center mb-8">
+          <a id="heroMapBtn" href="https://maps.google.com/?q=36.167306,43.989000" target="_blank" class="bg-sky-600/20 hover:bg-sky-600 text-sky-300 hover:text-white border border-sky-500/40 px-5 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-2 shadow-sm">
             <span>📍</span> شوێنی سەرەکیی نووسینگە لەسەر نەخشە
           </a>
-          <a id="linkInsta" href="#" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-gradient-to-tr hover:from-amber-500 hover:to-purple-600 flex items-center justify-center text-white border border-slate-700 transition">📸</a>
-          <a id="linkTiktok" href="#" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-white border border-slate-700 transition">🎵</a>
-          <a id="linkFb" href="#" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-blue-600 flex items-center justify-center text-white border border-slate-700 transition">📘</a>
         </div>
 
         <div class="bg-white p-3.5 rounded-2xl shadow-2xl text-slate-900 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl mx-auto border border-slate-200">
@@ -167,7 +163,7 @@
       <h3 class="text-base font-black text-slate-900 mb-4 flex items-center gap-2">
         <span>⚙️</span> کۆنترۆڵی زانیارییەکانی ماڵپەڕ و لۆگۆ
       </h3>
-      <form onsubmit="saveSiteSettings(event)" class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+      <form onsubmit="saveSiteSettings(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
         <div>
           <label class="block font-bold text-slate-700 mb-1">ناوی کۆمپانیا</label>
           <input type="text" id="setCompanyName" class="w-full p-3 border rounded-xl bg-slate-50 font-bold" required>
@@ -189,7 +185,7 @@
           <input type="url" id="setMainOfficeMap" class="w-full p-3 border border-sky-200 rounded-xl bg-sky-50 font-bold">
         </div>
 
-        <div class="md:col-span-3 border-2 border-dashed border-amber-200 rounded-2xl p-4 bg-amber-50/50">
+        <div class="md:col-span-2 border-2 border-dashed border-amber-200 rounded-2xl p-4 bg-amber-50/50">
           <label class="block font-bold text-amber-900 mb-1.5">🖼️ دانانی لۆگۆی کۆمپانیا:</label>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 items-center">
             <input type="file" id="logoFileInput" accept="image/*" onchange="convertLogoToBase64()" class="text-xs text-slate-600">
@@ -198,31 +194,19 @@
           <input type="hidden" id="logoDataHolder">
         </div>
 
-        <div class="md:col-span-3">
+        <div class="md:col-span-2">
           <label class="block font-bold text-slate-700 mb-1">تایتڵی سەرەکی</label>
           <input type="text" id="setHeroTitle" class="w-full p-3 border rounded-xl bg-slate-50 font-bold" required>
         </div>
-        <div class="md:col-span-3">
+        <div class="md:col-span-2">
           <label class="block font-bold text-slate-700 mb-1">وەسفی سەرەکی</label>
           <textarea id="setHeroDesc" class="w-full p-3 border rounded-xl bg-slate-50 font-bold h-16" required></textarea>
-        </div>
-        <div>
-          <label class="block font-bold text-slate-700 mb-1">لینکی ئینستاگرام</label>
-          <input type="url" id="setInsta" class="w-full p-3 border rounded-xl bg-slate-50 font-bold">
-        </div>
-        <div>
-          <label class="block font-bold text-slate-700 mb-1">لینکی تیکتۆک</label>
-          <input type="url" id="setTiktok" class="w-full p-3 border rounded-xl bg-slate-50 font-bold">
-        </div>
-        <div>
-          <label class="block font-bold text-slate-700 mb-1">لینکی فەیسبووک</label>
-          <input type="url" id="setFb" class="w-full p-3 border rounded-xl bg-slate-50 font-bold">
         </div>
         <div class="md:col-span-2">
           <label class="block font-bold text-slate-700 mb-1">گۆڕینی وشەی نهێنی</label>
           <input type="text" id="setOwnerPass" class="w-full p-3 border rounded-xl bg-slate-50 font-bold" placeholder="وشەی نهێنی نوێ...">
         </div>
-        <div class="flex items-end">
+        <div class="md:col-span-2 flex items-end">
           <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-amber-400 font-black py-3.5 rounded-xl transition shadow">
             💾 پاشەکەوتکردنی هەموو گۆڕانکارییەکان
           </button>
@@ -290,13 +274,10 @@
       subtitle: "Dashti Dustapa Real Estate",
       phone: "07512193920",
       waPhone: "9647512193920",
-      mainOfficeMap: "https://maps.google.com/?q=36.1673056,43.989",
+      mainOfficeMap: "https://maps.google.com/?q=36.167306,43.989000",
       logoUrl: "",
       heroTitle: "خانوو، زەوی و ڤێلای خەونەکانت بدۆزەرەوە",
       heroDesc: "کڕین، فرۆشتن، و بەکرێدانی هەموو جۆرە موڵکێک بە گرەنتی و باشترین نرخ",
-      insta: "",
-      tiktok: "",
-      fb: "",
       ownerPass: "rahand2011",
       customTabs: []
     };
@@ -309,7 +290,6 @@
       dd.classList.toggle('hidden');
     }
 
-    // داخستنی مینیۆ لە کاتی کلیک کردن لە شوێنێکی تر
     window.addEventListener('click', function(e) {
       const dd = document.getElementById('settingsDropdown');
       const btn = e.target.closest('button');
@@ -340,10 +320,6 @@
         logoText.classList.remove('hidden');
       }
 
-      document.getElementById('linkInsta').href = siteConfig.insta || '#';
-      document.getElementById('linkTiktok').href = siteConfig.tiktok || '#';
-      document.getElementById('linkFb').href = siteConfig.fb || '#';
-
       document.getElementById('setCompanyName').value = siteConfig.companyName;
       document.getElementById('setSubtitle').value = siteConfig.subtitle;
       document.getElementById('setPhone').value = siteConfig.phone;
@@ -352,9 +328,6 @@
       document.getElementById('setLogoUrl').value = siteConfig.logoUrl || '';
       document.getElementById('setHeroTitle').value = siteConfig.heroTitle;
       document.getElementById('setHeroDesc').value = siteConfig.heroDesc;
-      document.getElementById('setInsta').value = siteConfig.insta || '';
-      document.getElementById('setTiktok').value = siteConfig.tiktok || '';
-      document.getElementById('setFb').value = siteConfig.fb || '';
 
       renderCustomTabs();
     }
@@ -399,7 +372,7 @@
       document.getElementById('tabIcon').value = '';
       document.getElementById('tabUrl').value = '';
       renderCustomTabs();
-      alert('تابی نوێ زیادکرا بۆ ناو ئایکۆنی ڕێکخستنەکان!');
+      alert('تابی نوێ زیادکرا!');
     }
 
     function deleteCustomTab(idx) {
@@ -426,7 +399,7 @@
       siteConfig.subtitle = document.getElementById('setSubtitle').value;
       siteConfig.phone = document.getElementById('setPhone').value;
       siteConfig.waPhone = document.getElementById('setWaPhone').value;
-      siteConfig.mainOfficeMap = document.getElementById('setMainOfficeMap').value || "https://maps.google.com/?q=36.1673056,43.989";
+      siteConfig.mainOfficeMap = document.getElementById('setMainOfficeMap').value || "https://maps.google.com/?q=36.167306,43.989000";
       
       const uploadedLogo = document.getElementById('logoDataHolder').value;
       const logoUrlInput = document.getElementById('setLogoUrl').value;
@@ -438,9 +411,6 @@
 
       siteConfig.heroTitle = document.getElementById('setHeroTitle').value;
       siteConfig.heroDesc = document.getElementById('setHeroDesc').value;
-      siteConfig.insta = document.getElementById('setInsta').value;
-      siteConfig.tiktok = document.getElementById('setTiktok').value;
-      siteConfig.fb = document.getElementById('setFb').value;
 
       const newPass = document.getElementById('setOwnerPass').value;
       if (newPass.trim() !== '') siteConfig.ownerPass = newPass;
