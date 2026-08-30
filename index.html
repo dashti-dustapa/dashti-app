@@ -29,7 +29,6 @@
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col justify-between transition-colors duration-300">
 
-  <!-- Header -->
   <header class="bg-white dark:bg-slate-950 text-slate-900 dark:text-white sticky top-0 z-50 shadow-md border-b border-slate-200 dark:border-slate-800 transition-colors">
     <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center relative">
       <div class="flex items-center gap-3">
@@ -51,13 +50,11 @@
           <span>📞</span> <span id="headerPhoneText">0751 219 3920</span>
         </a>
 
-        <!-- ئایکۆنی ڕێکخستنەکان -->
         <div class="relative">
           <button onclick="toggleSettingsMenu()" class="bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 theme-text border border-slate-200 dark:border-slate-700 p-2.5 rounded-xl transition flex items-center justify-center shadow">
             <span class="text-base">⚙️</span>
           </button>
 
-          <!-- مینیۆی ناو ڕێکخستن -->
           <div id="settingsDropdown" class="hidden absolute left-0 mt-2 w-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl p-2.5 z-50 text-xs font-bold space-y-1.5">
             <div class="p-2 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-between">
               <span class="text-slate-600 dark:text-slate-300">🌐 زمان / Language</span>
@@ -76,7 +73,6 @@
               <span class="text-[10px] bg-slate-200 dark:bg-slate-700 px-2 py-0.5 rounded text-slate-600 dark:text-slate-300">گۆڕین</span>
             </button>
 
-            <!-- تابی خاوەن موڵک -->
             <button id="navOwnerBtn" onclick="toggleOwnerView(); toggleSettingsMenu();" class="w-full text-right p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 theme-text flex items-center justify-between transition">
               <span>👑 تابی خاوەن موڵک</span>
               <span class="text-[10px] bg-amber-500/20 px-2 py-0.5 rounded theme-text">Admin</span>
@@ -96,7 +92,6 @@
     </div>
   </header>
 
-  <!-- لاپەڕەی سەرەکی بۆ کڕیاران -->
   <main id="publicView" class="flex-1">
     <section class="bg-gradient-to-b from-slate-900 to-slate-950 text-white py-14 px-4 border-b border-slate-800 text-center relative overflow-hidden">
       <div class="max-w-4xl mx-auto relative z-10">
@@ -150,13 +145,11 @@
       </div>
     </section>
 
-    <!-- پێشانگای موڵکەکان -->
     <section class="max-w-7xl mx-auto px-4 py-12">
       <div id="propertyGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </section>
   </main>
 
-  <!-- شاشەی وشەی نهێنی تابی خاوەن -->
   <main id="loginView" class="hidden max-w-md mx-auto px-4 py-20">
     <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl text-center">
       <div class="w-16 h-16 bg-amber-500/10 theme-text rounded-2xl flex items-center justify-center mx-auto text-3xl mb-4 font-black">
@@ -174,13 +167,12 @@
     </div>
   </main>
 
-  <!-- داشبۆردی سەرۆک ڕەهەند بە کۆنترۆڵی تەواوەتی -->
   <main id="adminView" class="hidden max-w-6xl mx-auto px-4 py-8 space-y-8 w-full">
     <div class="bg-slate-900 dark:bg-slate-950 text-white p-6 sm:p-8 rounded-3xl shadow-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border border-slate-800">
       <div>
         <span class="theme-bg text-slate-950 text-[10px] font-black px-2.5 py-1 rounded-md uppercase">Supreme Controller</span>
         <h2 class="text-2xl sm:text-3xl font-black theme-text mt-2">بەخێربێیت سەرۆک ڕەهەند</h2>
-        <p class="text-xs text-slate-400 mt-1">کۆنترۆڵی ڕەنگ، پەیوەندییەکان، لۆگۆ، وە زیادکردن و دەستکاریکردنی موڵکەکان</p>
+        <p class="text-xs text-slate-400 mt-1">کۆنترۆڵی تەواوی ڕەنگ، پەیوەندییەکان، لۆگۆ، وە زیادکردن و دەستکاریکردنی موڵکەکان</p>
       </div>
       <div class="flex gap-2">
         <button onclick="showPublicView()" class="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition">
@@ -192,7 +184,6 @@
       </div>
     </div>
 
-    <!-- ستۆدیۆی ڕەنگەکان -->
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
       <div>
         <h3 class="text-base font-black text-slate-900 dark:text-white mb-1 flex items-center gap-2">
@@ -223,7 +214,6 @@
       </div>
     </div>
 
-    <!-- بەشی گۆڕینی ئایکۆنەکان و بەستەرەکان -->
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       <h3 class="text-base font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
         <span>🌐</span> بەڕێوەبردنی سۆشیال میدیا و زانیارییەکانی ماڵپەڕ
@@ -266,7 +256,7 @@
           <input type="text" id="setSubtitle" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white" required>
         </div>
         <div>
-          <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">ژمارەی تەلەفۆن</label>
+          <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">ژمارەی سەرەکی تەلەفۆن</label>
           <input type="text" id="setPhone" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white" required>
         </div>
         <div>
@@ -307,7 +297,6 @@
       </form>
     </div>
 
-    <!-- بەشی دروستکردنی تاب -->
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       <h3 class="text-base font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
         <span>📑</span> دروستکردن و بەڕێوەبردنی تابە تایبەتەکان
@@ -323,7 +312,6 @@
       <div id="adminCustomTabsList" class="space-y-2"></div>
     </div>
 
-    <!-- زیادکردن و دەستکاریکردنی موڵکی نوێ -->
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       <h3 id="formTitle" class="text-base font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
         <span>➕</span> زیادکردنی موڵکی نوێ
@@ -351,7 +339,7 @@
             <input type="url" id="pImageUrlDirect" placeholder="یان لینکی وێنە لێرە دابنێ" class="p-2 border border-slate-200 dark:border-slate-700 rounded-xl text-xs w-full sm:w-1/2 bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
           </div>
           <input type="hidden" id="pImage">
-          <p id="uploadStatus" class="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold mt-1.5 hidden">وێنەکە ئامادەیە ✅</p>
+          <p id="uploadStatus" class="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold mt-1.5 hidden">وێنەکە بە سەرکەوتوویی بچووککرایەوە و ئامادەیە ✅</p>
         </div>
 
         <textarea id="pDesc" placeholder="تەواوی وردەکارییەکان..." class="p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white md:col-span-2 h-20 font-bold" required></textarea>
@@ -367,14 +355,12 @@
       </form>
     </div>
 
-    <!-- بەڕێوەبردنی موڵکەکان بە دوگمەی دەستکاری -->
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       <h3 class="font-black text-sm text-slate-900 dark:text-white mb-4 flex items-center gap-2"><span>📂</span> بەڕێوەبردن و دەستکاریکردنی موڵکەکان</h3>
       <div id="adminPropertyList" class="space-y-3"></div>
     </div>
   </main>
 
-  <!-- Footer -->
   <footer class="bg-white dark:bg-slate-950 text-slate-600 dark:text-slate-400 py-8 px-4 mt-16 border-t border-slate-200 dark:border-slate-800 text-center text-xs transition-colors">
     <p id="footerCompanyName" class="font-bold text-slate-900 dark:text-white mb-1">کۆمپانیای خانووبەرەی دەشتی دوستەپە</p>
     <p id="footerPhoneDisplay" class="theme-text font-bold mb-2">📞 0751 219 3920</p>
@@ -391,7 +377,6 @@
   </footer>
 
   <script>
-    // Supabase config
     const SUPABASE_URL = 'https://vvvldvbgywfynlroudio.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ2dmxkdmJneXdmeW5scm91ZGlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgwNDExNDMsImV4cCI6MjEwMzYxNzE0M30.QuThGUEutLdCoPyq-O8AsocMqkQS8C0W31RN2nnfEPY';
 
@@ -720,16 +705,40 @@
       alert('سەرۆک ڕەهەند، هەموو گۆڕانکارییەکان پاشەکەوت کران!');
     }
 
+    // پەستاندن و کەمکردنەوەی قەبارەی وێنە بۆ خێرایی سەرسوڕهێنەر
     function convertImageToBase64() {
       const file = document.getElementById('fileInput').files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onloadend = function() {
-          document.getElementById('pImage').value = reader.result;
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          let width = img.width;
+          let height = img.height;
+          const maxDim = 900;
+
+          if (width > height && width > maxDim) {
+            height = Math.round((height * maxDim) / width);
+            width = maxDim;
+          } else if (height > maxDim) {
+            width = Math.round((width * maxDim) / height);
+            height = maxDim;
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+
+          const compressedBase64 = canvas.toDataURL('image/jpeg', 0.75);
+          document.getElementById('pImage').value = compressedBase64;
           document.getElementById('uploadStatus').classList.remove('hidden');
         };
-        reader.readAsDataURL(file);
-      }
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
     }
 
     async function syncSupabase() {
@@ -739,18 +748,23 @@
         });
         const cloudData = await res.json();
         if (cloudData && Array.isArray(cloudData) && cloudData.length > 0) {
-          properties = cloudData;
+          // تەنانەت ئەگەر هەوریش نوێ ببێتەوە، موڵکە لۆکاڵییەکان پارێزراو دەبن
+          const merged = [...cloudData];
+          properties.forEach(p => {
+            if (!merged.some(c => c.id === p.id)) merged.push(p);
+          });
+          properties = merged;
           localStorage.setItem('site_properties_list', JSON.stringify(properties));
           renderProperties();
           renderAdminList();
         }
       } catch (e) {
-        console.log('Using local cached properties');
+        console.log('Running seamlessly on local database');
       }
     }
 
     function renderProperties() {
-      const search = document.getElementById('searchInput').value.toLowerCase();
+      const search = (document.getElementById('searchInput').value || '').toLowerCase();
       const type = document.getElementById('typeFilter').value;
       const maxP = document.getElementById('priceFilter').value;
       const grid = document.getElementById('propertyGrid');
@@ -810,7 +824,6 @@
             </div>
           </div>
           <div class="flex items-center gap-2">
-            <!-- دوگمەی دەستکاریکردن -->
             <button onclick="editProp('${p.id}')" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold rounded-xl transition">
               دەستکاری ✏️
             </button>
@@ -874,7 +887,6 @@
       if (dd) dd.classList.add('hidden');
     }
 
-    // هێنانی داتای موڵک بۆ ناو فۆڕم بۆ دەستکاریکردن
     function editProp(id) {
       const p = properties.find(x => x.id === id);
       if (!p) return;
@@ -895,7 +907,6 @@
       document.getElementById('submitPropBtn').innerText = '💾 پاشەکەوتکردنی گۆڕانکارییەکان';
       document.getElementById('cancelEditBtn').classList.remove('hidden');
 
-      // ڕۆیشتن بۆ سەرەوەی فۆڕمەکە
       document.getElementById('formTitle').scrollIntoView({ behavior: 'smooth' });
     }
 
@@ -938,44 +949,42 @@
         map_url: document.getElementById('pMapLink').value || ''
       };
 
-      if (editId) {
-        // ئەگەر دەستکاری بوو (Edit)
-        const idx = properties.findIndex(p => p.id === editId);
-        if (idx > -1) {
-          properties[idx] = { ...properties[idx], ...propData };
-          localStorage.setItem('site_properties_list', JSON.stringify(properties));
-          renderProperties();
-          renderAdminList();
-          alert('موڵکەکە بە سەرکەوتوویی نوێکرایەوە!');
-          resetForm();
+      try {
+        if (editId) {
+          const idx = properties.findIndex(p => p.id === editId);
+          if (idx > -1) {
+            properties[idx] = { ...properties[idx], ...propData };
+            localStorage.setItem('site_properties_list', JSON.stringify(properties));
+            renderProperties();
+            renderAdminList();
+            alert('موڵکەکە بە سەرکەوتوویی نوێکرایەوە!');
+            resetForm();
 
-          try {
-            await fetch(`${SUPABASE_URL}/rest/v1/properties?id=eq.${editId}`, {
+            fetch(`${SUPABASE_URL}/rest/v1/properties?id=eq.${editId}`, {
               method: 'PATCH',
               headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
               body: JSON.stringify(propData)
-            });
-          } catch (err) {}
-        }
-      } else {
-        // ئەگەر موڵکی نوێ بوو (New)
-        propData.id = 'prop_' + Date.now();
-        propData.status = 'available';
-        
-        properties.unshift(propData);
-        localStorage.setItem('site_properties_list', JSON.stringify(properties));
-        renderProperties();
-        renderAdminList();
-        alert('موڵکی نوێ بڵاوکرایەوە!');
-        resetForm();
+            }).catch(() => {});
+          }
+        } else {
+          propData.id = 'prop_' + Date.now();
+          propData.status = 'available';
+          
+          properties.unshift(propData);
+          localStorage.setItem('site_properties_list', JSON.stringify(properties));
+          renderProperties();
+          renderAdminList();
+          alert('سەرۆک ڕەهەند، موڵکی نوێ بە سەرکەوتوویی لە ماڵپەڕ دانرا!');
+          resetForm();
 
-        try {
-          await fetch(`${SUPABASE_URL}/rest/v1/properties`, {
+          fetch(`${SUPABASE_URL}/rest/v1/properties`, {
             method: 'POST',
             headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
             body: JSON.stringify(propData)
-          });
-        } catch (err) {}
+          }).catch(() => {});
+        }
+      } catch (err) {
+        alert('کێشەیەک ڕوویدا: ' + err.message);
       }
     }
 
@@ -988,13 +997,11 @@
         renderProperties();
         renderAdminList();
       }
-      try {
-        await fetch(`${SUPABASE_URL}/rest/v1/properties?id=eq.${id}`, {
-          method: 'PATCH',
-          headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify({ status: nextStatus })
-        });
-      } catch (e) {}
+      fetch(`${SUPABASE_URL}/rest/v1/properties?id=eq.${id}`, {
+        method: 'PATCH',
+        headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: nextStatus })
+      }).catch(() => {});
     }
 
     async function deleteProp(id) {
@@ -1003,12 +1010,10 @@
         localStorage.setItem('site_properties_list', JSON.stringify(properties));
         renderProperties();
         renderAdminList();
-        try {
-          await fetch(`${SUPABASE_URL}/rest/v1/properties?id=eq.${id}`, {
-            method: 'DELETE',
-            headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
-          });
-        } catch (e) {}
+        fetch(`${SUPABASE_URL}/rest/v1/properties?id=eq.${id}`, {
+          method: 'DELETE',
+          headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
+        }).catch(() => {});
       }
     }
 
