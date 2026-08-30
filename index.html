@@ -31,7 +31,7 @@
     </div>
   </header>
 
-  <!-- لاپەڕەی سەرەکی بۆ کڕیاران -->
+  <!-- پەڕەی گشتی بۆ کڕیاران -->
   <main id="publicView">
     <section class="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white py-14 px-4 border-b border-slate-800 text-center">
       <div class="max-w-4xl mx-auto">
@@ -43,7 +43,7 @@
           کڕین، فرۆشتن، و بەکرێدانی هەموو جۆرە موڵکێک بە گرەنتی و باشترین نرخی ڕۆژ
         </p>
 
-        <!-- بۆکسی فلتەر و گەڕان -->
+        <!-- فلتەر و گەڕان -->
         <div class="bg-white p-3.5 rounded-2xl shadow-2xl text-slate-900 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl mx-auto border border-slate-200">
           <input type="text" id="searchInput" oninput="renderProperties()" placeholder="گەڕان بەپێی شوێن یان ناونیشان..." class="p-3 bg-slate-50 rounded-xl text-xs border focus:outline-none focus:ring-2 focus:ring-amber-500">
           <select id="typeFilter" onchange="renderProperties()" class="p-3 bg-slate-50 rounded-xl text-xs border focus:outline-none focus:ring-2 focus:ring-amber-500">
@@ -64,40 +64,39 @@
       <div id="propertyGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </section>
   </main>
-<h2 class="text-2xl sm:text-3xl font-black text-amber-400 mt-2">بەخێربێیت سەرۆک ڕەهەند</h2>
-  <!-- چوونەژوورەوەی پارێزراوی خاوەن -->
+
+  <!-- چوونەژوورەوەی خاوەن -->
   <main id="loginView" class="hidden max-w-md mx-auto px-4 py-20">
     <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-2xl text-center">
       <div class="w-16 h-16 bg-amber-500/10 text-amber-500 rounded-2xl flex items-center justify-center mx-auto text-3xl mb-4 font-black">
         🔐
       </div>
-      <h3 class="text-xl font-black text-slate-900 mb-1">تابی کۆنترۆڵی گشتی خاوەن</h3>
+      <h3 class="text-xl font-black text-slate-900 mb-1">تابی کۆنترۆڵی خاوەن موڵک</h3>
       <p class="text-xs text-slate-500 mb-6">تکایە وشەی نهێنی دەسەڵاتی خاوەن داخڵ بکە</p>
       
       <form onsubmit="handleAuth(event)" class="space-y-4">
         <input type="password" id="ownerPassInput" placeholder="وشەی نهێنی بنووسە..." class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-center font-bold text-sm tracking-widest focus:outline-none focus:ring-2 focus:ring-amber-500" required>
         <button type="submit" class="w-full bg-slate-950 hover:bg-slate-900 text-amber-400 font-black py-3.5 rounded-2xl text-xs transition shadow">
-          چوونەژوورەوەی سەرۆک
+          چوونەژوورەوەی سەرۆک ڕەهەند
         </button>
       </form>
     </div>
   </main>
 
-  <!-- سوپەر داشبۆردی خاوەن موڵک (Master Customizer & Controller) -->
+  <!-- سوپەر داشبۆردی سەرۆک ڕەهەند -->
   <main id="adminView" class="hidden max-w-6xl mx-auto px-4 py-8 space-y-8">
-    <!-- پەیامی بەخێرهاتن -->
     <div class="bg-slate-950 text-white p-6 sm:p-8 rounded-3xl shadow-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border border-slate-800">
       <div>
-        <span class="bg-amber-500 text-slate-950 text-[10px] font-black px-2.5 py-1 rounded-md uppercase">Supreme Controller</span>
-        <h2 class="text-2xl sm:text-3xl font-black text-amber-400 mt-2">بەخێربێیت سەرۆک ڕەوەند</h2>
-        <p class="text-xs text-slate-400 mt-1">هەموو وردەکارییەکی ئەم ماڵپەڕە بە تەواوی لەژێر کۆنتڕۆڵی تۆدایە</p>
+        <span class="bg-amber-500 text-slate-950 text-[10px] font-black px-2.5 py-1 rounded-md uppercase">Owner Super Panel</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-amber-400 mt-2">بەخێربێیت سەرۆک ڕەهەند</h2>
+        <p class="text-xs text-slate-400 mt-1">کۆنترۆڵی تەواوی ڕێکخستنەکان و موڵکەکانی دەشتی دوستەپە</p>
       </div>
       <button onclick="logoutOwner()" class="bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white border border-rose-500/30 px-5 py-2.5 rounded-xl text-xs font-bold transition">
         دەرچوون 🚪
       </button>
     </div>
 
-    <!-- ئاماری زیندوو -->
+    <!-- ئامارەکان -->
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
       <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm text-center">
         <p class="text-xs text-slate-500 font-bold">کۆی موڵکەکان</p>
@@ -117,43 +116,43 @@
       </div>
     </div>
 
-    <!-- بەشی دەستکاریکردنی هەموو ڕووکار و براندینگ (Full Site Customizer) -->
+    <!-- دەستکاریکردنی ڕووکار و براندینگ -->
     <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm">
       <h3 class="text-base font-black text-slate-900 mb-4 flex items-center gap-2">
-        <span>🎨</span> ڕێکخستنی تەواوی ناوی کۆمپانیا، پەیوەندی و نووسینەکان (Customize Everything)
+        <span>🎨</span> دەستکاریکردنی ناوی کۆمپانیا، پەیوەندی و نووسینەکان
       </h3>
       <form onsubmit="saveSiteSettings(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
         <div>
-          <label class="block font-bold text-slate-700 mb-1">ناوی فەرمیی کۆمپانیا</label>
+          <label class="block font-bold text-slate-700 mb-1">ناوی کۆمپانیا</label>
           <input type="text" id="setCompanyName" class="w-full p-3 border rounded-xl bg-slate-50 font-bold" required>
         </div>
         <div>
-          <label class="block font-bold text-slate-700 mb-1">ناوی لاوەکی / ژێرناو</label>
+          <label class="block font-bold text-slate-700 mb-1">ژێرناو / ناوی لاوەکی</label>
           <input type="text" id="setSubtitle" class="w-full p-3 border rounded-xl bg-slate-50 font-bold" required>
         </div>
         <div>
-          <label class="block font-bold text-slate-700 mb-1">ژمارەی تەلەفۆن بۆ پەیوەندی راستەوخۆ</label>
+          <label class="block font-bold text-slate-700 mb-1">ژمارەی تەلەفۆن</label>
           <input type="text" id="setPhone" class="w-full p-3 border rounded-xl bg-slate-50 font-bold" required>
         </div>
         <div>
-          <label class="block font-bold text-slate-700 mb-1">ژمارەی واتسئەپ (بە کۆدی نێودەوڵەتی، نموونە: 9647512193920)</label>
+          <label class="block font-bold text-slate-700 mb-1">ژمارەی واتسئەپ (نموونە: 9647512193920)</label>
           <input type="text" id="setWaPhone" class="w-full p-3 border rounded-xl bg-slate-50 font-bold" required>
         </div>
         <div class="md:col-span-2">
-          <label class="block font-bold text-slate-700 mb-1">تایتڵی سەرەکی ناو باکگراوند (Hero Title)</label>
+          <label class="block font-bold text-slate-700 mb-1">تایتڵی سەرەکی</label>
           <input type="text" id="setHeroTitle" class="w-full p-3 border rounded-xl bg-slate-50 font-bold" required>
         </div>
         <div class="md:col-span-2">
-          <label class="block font-bold text-slate-700 mb-1">وەسفی سەرەکی ناو باکگراوند (Hero Description)</label>
+          <label class="block font-bold text-slate-700 mb-1">وەسفی سەرەکی</label>
           <textarea id="setHeroDesc" class="w-full p-3 border rounded-xl bg-slate-50 font-bold h-16" required></textarea>
         </div>
         <div>
-          <label class="block font-bold text-slate-700 mb-1">گۆڕینی وشەی نهێنی خاوەن (Password)</label>
+          <label class="block font-bold text-slate-700 mb-1">گۆڕینی وشەی نهێنی</label>
           <input type="text" id="setOwnerPass" class="w-full p-3 border rounded-xl bg-slate-50 font-bold" placeholder="وشەی نهێنی نوێ...">
         </div>
         <div class="flex items-end">
           <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-amber-400 font-black py-3 rounded-xl transition shadow">
-            💾 پاشەکەوتکردنی هەموو گۆڕانکارییەکانی ماڵپەڕ
+            💾 پاشەکەوتکردنی گۆڕانکارییەکان
           </button>
         </div>
       </form>
@@ -177,9 +176,9 @@
           <option value="باخ">باخ و کێڵگە</option>
         </select>
         <input type="number" id="pArea" placeholder="ڕووبەر (مەتر چوارگۆشە)" class="p-3 border rounded-xl bg-slate-50 font-bold" required>
-        <input type="number" id="pBedrooms" placeholder="ژمارەی ژوور (ئارەزوومەندانە)" class="p-3 border rounded-xl bg-slate-50 font-bold">
+        <input type="number" id="pBedrooms" placeholder="ژمارەی ژوور" class="p-3 border rounded-xl bg-slate-50 font-bold">
         <input type="url" id="pImage" placeholder="لینکی وێنەی سەرەکی (Image URL)" class="p-3 border rounded-xl bg-slate-50 md:col-span-2 font-bold" required>
-        <textarea id="pDesc" placeholder="تەواوی وردەکارییەکان، تاپۆ، پێشینە، خزمەتگوزارییەکان..." class="p-3 border rounded-xl bg-slate-50 md:col-span-2 h-24 font-bold" required></textarea>
+        <textarea id="pDesc" placeholder="وردەکاری، تاپۆ، پێشینە، خزمەتگوزارییەکان..." class="p-3 border rounded-xl bg-slate-50 md:col-span-2 h-24 font-bold" required></textarea>
         
         <div class="md:col-span-2 flex gap-2">
           <button type="submit" id="submitPropBtn" class="flex-1 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-3.5 rounded-xl transition shadow text-xs">
@@ -192,7 +191,7 @@
       </form>
     </div>
 
-    <!-- بەڕێوەبردنی گشتگیر و دەستکاریکردنی موڵکەکان -->
+    <!-- بەڕێوەبردنی موڵکەکان -->
     <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm">
       <h3 class="font-black text-sm mb-4">بەڕێوەبردن و دەستکاریکردنی موڵکەکان</h3>
       <div id="adminPropertyList" class="space-y-3"></div>
@@ -202,14 +201,13 @@
   <!-- Footer -->
   <footer class="bg-slate-950 text-slate-400 py-8 px-4 mt-16 border-t border-slate-800 text-center text-xs">
     <p id="footerCompanyName" class="font-bold text-white mb-1">کۆمپانیای خانووبەرەی دەشتی دوستەپە</p>
-    <p id="footerCopy">هەموو مافەکانی پارێزراوە بۆ خاوەنی کۆمپانیا © 2026</p>
+    <p id="footerCopy">هەموو مافەکانی پارێزراوە بۆ سەرۆک ڕەهەند © 2026</p>
   </footer>
 
   <script>
     const SUPABASE_URL = 'https://vvvldvbgywfynlroudio.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ2dmxkdmJneXdmeW5scm91ZGlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgwNDExNDMsImV4cCI6MjEwMzYxNzE0M30.QuThGUEutLdCoPyq-O8AsocMqkQS8C0W31RN2nnfEPY';
 
-    // ڕێکخستنە سەرەکییەکان بە توانای دەستکاریکردنی ١٠٠٪
     let siteConfig = JSON.parse(localStorage.getItem('siteConfig')) || {
       companyName: "خانووبەرەی دەشتی دوستەپە",
       subtitle: "Dashti Dustapa Real Estate",
@@ -233,7 +231,6 @@
       document.getElementById('heroDesc').innerText = siteConfig.heroDesc;
       document.getElementById('footerCompanyName').innerText = siteConfig.companyName;
 
-      // فۆرمی ڕێکخستنەکان لەناو داشبۆرد
       document.getElementById('setCompanyName').value = siteConfig.companyName;
       document.getElementById('setSubtitle').value = siteConfig.subtitle;
       document.getElementById('setPhone').value = siteConfig.phone;
@@ -259,7 +256,7 @@
       localStorage.setItem('siteConfig', JSON.stringify(siteConfig));
       applySiteSettings();
       renderProperties();
-      alert('سەرۆک، هەموو گۆڕانکارییەکانی براندینگ و پەیوەندی پاشەکەوت کران!');
+      alert('سەرۆک ڕەهەند، هەموو گۆڕانکارییەکان پاشەکەوت کران!');
     }
 
     async function loadProperties() {
@@ -423,7 +420,7 @@
           headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
           body: JSON.stringify(propData)
         });
-        alert('موڵکەکە دەستکاری کرا!');
+        alert('سەرۆک ڕەهەند، موڵکەکە بە سەرکەوتوویی دەستکاری کرا!');
       } else {
         propData.status = 'available';
         await fetch(`${SUPABASE_URL}/rest/v1/properties`, {
@@ -431,7 +428,7 @@
           headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
           body: JSON.stringify(propData)
         });
-        alert('موڵکەکە بڵاوکرایەوە!');
+        alert('سەرۆک ڕەهەند، موڵکەکە بە سەرکەوتوویی بڵاوکرایەوە!');
       }
       resetForm();
       loadProperties();
@@ -481,7 +478,7 @@
     }
 
     async function deleteProp(id) {
-      if (confirm('سەرۆک، دڵنیایت لە سڕینەوەی ئەم موڵکە؟')) {
+      if (confirm('سەرۆک ڕەهەند، دڵنیایت لە سڕینەوەی ئەم موڵکە؟')) {
         await fetch(`${SUPABASE_URL}/rest/v1/properties?id=eq.${id}`, {
           method: 'DELETE',
           headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
