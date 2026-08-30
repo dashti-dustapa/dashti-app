@@ -69,7 +69,6 @@
           </button>
 
           <div id="settingsDropdown" class="hidden absolute left-0 mt-2 w-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl p-2.5 z-50 text-xs font-bold space-y-1.5">
-            
             <div class="p-2 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-between">
               <span class="text-slate-600 dark:text-slate-300">🌐 زمان / Language</span>
               <select id="langSelector" onchange="changeLanguage(this.value)" class="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg px-2 py-1 text-xs outline-none cursor-pointer">
@@ -100,7 +99,6 @@
                 <span class="text-[10px] bg-rose-500/10 px-2 py-0.5 rounded">Log Out</span>
               </button>
             </div>
-
           </div>
         </div>
       </div>
@@ -127,14 +125,22 @@
           </a>
 
           <div class="flex items-center gap-2 bg-slate-900/80 p-1.5 rounded-2xl border border-slate-800">
-            <a id="heroInstaBtn" href="#" target="_blank" title="Instagram" class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white hover:opacity-90 hover:scale-105 transition shadow">
-              <span class="text-sm font-black">📷</span>
+            <a id="heroInstaBtn" href="#" target="_blank" title="Instagram" class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white hover:scale-105 transition shadow">
+              <span id="instaIconHolder">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </span>
             </a>
+
             <a id="heroTiktokBtn" href="#" target="_blank" title="TikTok" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center text-white hover:scale-105 transition shadow">
-              <span class="text-sm font-black">🎵</span>
+              <span id="tiktokIconHolder">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+              </span>
             </a>
+
             <a id="heroFbBtn" href="#" target="_blank" title="Facebook" class="w-9 h-9 rounded-xl bg-blue-600 hover:bg-blue-500 flex items-center justify-center text-white hover:scale-105 transition shadow">
-              <span class="text-sm font-black">📘</span>
+              <span id="fbIconHolder">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </span>
             </a>
           </div>
         </div>
@@ -226,7 +232,7 @@
       
       <form onsubmit="handleAuth(event)" class="space-y-4">
         <input type="password" id="ownerPassInput" placeholder="وشەی نهێنی..." class="w-full p-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-2xl text-center font-bold text-sm tracking-widest focus:outline-none focus:ring-2 focus:ring-amber-500" required>
-        <button type="submit" class="w-full theme-bg theme-hover text-slate-950 font-black py-3.5 rounded-2xl text-xs transition shadow">
+        <button type="submit" class="w-full theme-bg theme-hover text-slate-950 font-black py-3.5 rounded-xl text-xs transition shadow">
           چوونەژوورەوەی سەرۆک ڕەهەند
         </button>
       </form>
@@ -238,7 +244,7 @@
       <div>
         <span class="theme-bg text-slate-950 text-[10px] font-black px-2.5 py-1 rounded-md uppercase">Supreme Controller</span>
         <h2 class="text-2xl sm:text-3xl font-black theme-text mt-2">بەخێربێیت سەرۆک ڕەهەند</h2>
-        <p class="text-xs text-slate-400 mt-1">کۆنترۆڵی ڕەنگ، لینکەکانی سۆشیال میدیا، لۆگۆ، تەلەفۆن و موڵکەکان</p>
+        <p class="text-xs text-slate-400 mt-1">کۆنترۆڵی تەواوی ڕەنگەکان، ئایکۆنەکانی سۆشیال میدیا، لۆگۆ و موڵکەکان</p>
       </div>
       <div class="flex gap-2">
         <button onclick="showPublicView()" class="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition">
@@ -265,13 +271,6 @@
         <button type="button" onclick="setThemeColor('#8b5cf6', '#7c3aed')" class="p-2.5 rounded-xl bg-violet-600 text-white font-bold text-xs flex items-center justify-center gap-1 shadow hover:scale-105 transition">🔮 مۆر</button>
         <button type="button" onclick="setThemeColor('#e11d48', '#be123c')" class="p-2.5 rounded-xl bg-rose-600 text-white font-bold text-xs flex items-center justify-center gap-1 shadow hover:scale-105 transition">🌹 سوور</button>
         <button type="button" onclick="setThemeColor('#ec4899', '#db2777')" class="p-2.5 rounded-xl bg-pink-500 text-white font-bold text-xs flex items-center justify-center gap-1 shadow hover:scale-105 transition">🌸 پەمەیی</button>
-        
-        <button type="button" onclick="setThemeColor('#14b8a6', '#0d9488')" class="p-2.5 rounded-xl bg-teal-500 text-white font-bold text-xs flex items-center justify-center gap-1 shadow hover:scale-105 transition">🐬 تیڵ</button>
-        <button type="button" onclick="setThemeColor('#06b6d4', '#0891b2')" class="p-2.5 rounded-xl bg-cyan-500 text-slate-950 font-bold text-xs flex items-center justify-center gap-1 shadow hover:scale-105 transition">💎 فیرۆزەیی</button>
-        <button type="button" onclick="setThemeColor('#f97316', '#ea580c')" class="p-2.5 rounded-xl bg-orange-500 text-slate-950 font-bold text-xs flex items-center justify-center gap-1 shadow hover:scale-105 transition">🔥 پرتەقاڵی</button>
-        <button type="button" onclick="setThemeColor('#6366f1', '#4f46e5')" class="p-2.5 rounded-xl bg-indigo-500 text-white font-bold text-xs flex items-center justify-center gap-1 shadow hover:scale-105 transition">🌌 ئیندیگۆ</button>
-        <button type="button" onclick="setThemeColor('#64748b', '#475569')" class="p-2.5 rounded-xl bg-slate-500 text-white font-bold text-xs flex items-center justify-center gap-1 shadow hover:scale-105 transition">🪙 زیوی</button>
-        <button type="button" onclick="setThemeColor('#0f172a', '#020617')" class="p-2.5 rounded-xl bg-slate-900 text-white font-bold text-xs border border-slate-700 flex items-center justify-center gap-1 shadow hover:scale-105 transition">🖤 ڕەش</button>
       </div>
 
       <div class="p-4 bg-slate-50 dark:bg-slate-800/70 rounded-2xl border border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -293,7 +292,7 @@
 
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       <h3 class="text-base font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-        <span>🌐</span> بەستەری هەژمارەکانی سۆشیال میدیا و پەیوەندییەکان
+        <span>🌐</span> بەڕێوەبردنی بەستەر و گۆڕینی ئایکۆنەکانی سۆشیال میدیا
       </h3>
       <form onsubmit="saveSiteSettings(event)" class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
         <div>
@@ -307,6 +306,24 @@
         <div>
           <label class="block font-bold text-blue-600 dark:text-blue-400 mb-1">📘 لینکی فەیسبووک (Facebook URL)</label>
           <input type="url" id="setFb" placeholder="https://facebook.com/..." class="w-full p-3 border border-blue-200 dark:border-blue-900 rounded-xl bg-blue-50/40 dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
+        </div>
+
+        <div class="md:col-span-3 border-t border-slate-200 dark:border-slate-800 pt-4">
+          <p class="font-bold text-slate-700 dark:text-slate-300 mb-2">✨ گۆڕینی ئایکۆنی سۆشیال میدیا (Custom Icon Text / Emoji):</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">ئایکۆنی ئینستاگرام (بەتاڵی بهێڵەرەوە بۆ لۆگۆی فەرمی)</label>
+              <input type="text" id="setIconInsta" placeholder="بۆ نموونە: 📸 یان IG" class="w-full p-2.5 border rounded-xl bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">ئایکۆنی تیکتۆک (بەتاڵی بهێڵەرەوە بۆ لۆگۆی فەرمی)</label>
+              <input type="text" id="setIconTiktok" placeholder="بۆ نموونە: 🎵 یان TT" class="w-full p-2.5 border rounded-xl bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500 mb-1">ئایکۆنی فەیسبووک (بەتاڵی بهێڵەرەوە بۆ لۆگۆی فەرمی)</label>
+              <input type="text" id="setIconFb" placeholder="بۆ نموونە: 📘 یان FB" class="w-full p-2.5 border rounded-xl bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
+            </div>
+          </div>
         </div>
 
         <div>
@@ -440,6 +457,10 @@
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ2dmxkdmJneXdmeW5scm91ZGlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgwNDExNDMsImV4cCI6MjEwMzYxNzE0M30.QuThGUEutLdCoPyq-O8AsocMqkQS8C0W31RN2nnfEPY';
     const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+    const defaultInstaSvg = `<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`;
+    const defaultTiktokSvg = `<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>`;
+    const defaultFbSvg = `<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>`;
+
     const translations = {
       ckb: {
         company: "خانووبەرەی دەشتی دوستەپە",
@@ -491,6 +512,9 @@
       insta: "",
       tiktok: "",
       fb: "",
+      iconInsta: "",
+      iconTiktok: "",
+      iconFb: "",
       heroTitle: "خانوو، زەوی و ڤێلای خەونەکانت بدۆزەرەوە",
       heroDesc: "کڕین، فرۆشتن، و بەکرێدانی هەموو جۆرە موڵکێک بە گرەنتی و باشترین نرخ",
       themeColor: "#f59e0b",
@@ -613,7 +637,7 @@
       document.getElementById('footerCompanyName').innerText = siteConfig.companyName;
       document.getElementById('footerPhoneDisplay').innerText = `📞 ${siteConfig.phone}`;
 
-      // بەستنی لینکەکانی سۆشیال میدیا
+      // بەستنی لینک و ئایکۆنەکانی سۆشیال میدیا
       document.getElementById('heroInstaBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.insta, 'Instagram'); };
       document.getElementById('heroTiktokBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.tiktok, 'TikTok'); };
       document.getElementById('heroFbBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.fb, 'Facebook'); };
@@ -621,6 +645,11 @@
       document.getElementById('footerInstaBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.insta, 'Instagram'); };
       document.getElementById('footerTiktokBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.tiktok, 'TikTok'); };
       document.getElementById('footerFbBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.fb, 'Facebook'); };
+
+      // پیشاندانی لۆگۆی SVG فەرمی یان دەستکاری خاوەن
+      document.getElementById('instaIconHolder').innerHTML = siteConfig.iconInsta ? `<span class="font-black text-xs">${siteConfig.iconInsta}</span>` : defaultInstaSvg;
+      document.getElementById('tiktokIconHolder').innerHTML = siteConfig.iconTiktok ? `<span class="font-black text-xs">${siteConfig.iconTiktok}</span>` : defaultTiktokSvg;
+      document.getElementById('fbIconHolder').innerHTML = siteConfig.iconFb ? `<span class="font-black text-xs">${siteConfig.iconFb}</span>` : defaultFbSvg;
 
       const logoImg = document.getElementById('headerLogoImg');
       const logoText = document.getElementById('headerLogoText');
@@ -642,6 +671,9 @@
       document.getElementById('setInsta').value = siteConfig.insta || '';
       document.getElementById('setTiktok').value = siteConfig.tiktok || '';
       document.getElementById('setFb').value = siteConfig.fb || '';
+      document.getElementById('setIconInsta').value = siteConfig.iconInsta || '';
+      document.getElementById('setIconTiktok').value = siteConfig.iconTiktok || '';
+      document.getElementById('setIconFb').value = siteConfig.iconFb || '';
       document.getElementById('setHeroTitle').value = siteConfig.heroTitle;
       document.getElementById('setHeroDesc').value = siteConfig.heroDesc;
 
@@ -875,6 +907,9 @@
       siteConfig.insta = document.getElementById('setInsta').value;
       siteConfig.tiktok = document.getElementById('setTiktok').value;
       siteConfig.fb = document.getElementById('setFb').value;
+      siteConfig.iconInsta = document.getElementById('setIconInsta').value;
+      siteConfig.iconTiktok = document.getElementById('setIconTiktok').value;
+      siteConfig.iconFb = document.getElementById('setIconFb').value;
       
       const uploadedLogo = document.getElementById('logoDataHolder').value;
       const logoUrlInput = document.getElementById('setLogoUrl').value;
@@ -893,7 +928,7 @@
       localStorage.setItem('siteConfig', JSON.stringify(siteConfig));
       applySiteSettings();
       renderProperties();
-      alert('سەرۆک ڕەهەند، هەموو گۆڕانکارییەکان پاشەکەوت کران!');
+      alert('سەرۆک ڕەهەند، هەموو گۆڕانکارییەکان و ئایکۆنەکان پاشەکەوت کران!');
     }
 
     function convertImageToBase64() {
