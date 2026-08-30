@@ -6,7 +6,7 @@
   <title id="docTitle">Dashti Dustapa Real Estate | خانووبەرەی دەشتی دوستەپە</title>
   
   <meta name="google-site-verification" content="-BpRnRdkRtidptojyP2rmAAhybvawBetY0BeHRoXXMg" />
-  <meta name="description" content="خانووبەرەی دەشتی دوستەپە - باشترین موڵک، خانوو، زەوی و ڤێلا لە دەشتی دوستەپە و دەوروبەری بە بەڕێوەبەرایەتی سەرۆک ڕەهەند">
+  <meta name="description" content="خانووبەرەی دەشتی دوستەپە - باشترین موڵک، خانوو، زەوی و ڤێلا لە دەشتی دوستەپە و دەوروبەری">
   <meta name="keywords" content="Dashti Dustapa, dashti dustapa, dashti-dustapa, دەشتی دوستەپە, خانووبەرەی دەشتی دوستەپە, خانوو, زەوی, هەولێر">
   <link rel="canonical" href="https://dashti-app.vercel.app">
 
@@ -76,9 +76,9 @@
               <span class="text-[10px] bg-slate-200 dark:bg-slate-700 px-2 py-0.5 rounded text-slate-600 dark:text-slate-300">گۆڕین</span>
             </button>
 
-            <!-- تابی خاوەن موڵک -->
+            <!-- تابی بەڕێوەبردن -->
             <button id="navOwnerBtn" onclick="toggleOwnerView(); toggleSettingsMenu();" class="w-full text-right p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 theme-text flex items-center justify-between transition">
-              <span>👑 تابی خاوەن موڵک</span>
+              <span>👑 تابی بەڕێوەبەرایەتی</span>
               <span class="text-[10px] bg-amber-500/20 px-2 py-0.5 rounded theme-text">Admin</span>
             </button>
 
@@ -86,7 +86,7 @@
             
             <div id="settingsLogoutSection" class="hidden border-t border-slate-200 dark:border-slate-800 pt-1">
               <button onclick="logoutOwner()" class="w-full text-right p-2 rounded-xl hover:bg-rose-50 dark:hover:bg-rose-950/30 text-rose-600 dark:text-rose-400 flex items-center justify-between transition">
-                <span>🚪 دەرچوون لە تابی خاوەن</span>
+                <span>🚪 دەرچوون لە بەڕێوەبردن</span>
                 <span class="text-[10px] bg-rose-500/10 px-2 py-0.5 rounded">Log Out</span>
               </button>
             </div>
@@ -108,25 +108,25 @@
           کڕین، فرۆشتن، و بەکرێدانی هەموو جۆرە موڵکێک بە گرەنتی و باشترین نرخ
         </p>
 
-        <!-- پەیوەندی و سۆشیال میدیای هەردوو کەسەکە -->
+        <!-- کارتی ۲ بەڕێوەبەرەکە (یەکسان و پرۆفێشناڵ) -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto mb-8 text-xs text-right">
           
-          <!-- کارتی کەسی یەکەم -->
+          <!-- بەڕێوەبەری یەکەم -->
           <div class="bg-slate-900/90 border border-amber-500/30 p-4 rounded-2xl shadow-lg space-y-3">
             <div class="flex items-center justify-between border-b border-slate-800 pb-2">
               <span class="font-black text-amber-400 text-sm flex items-center gap-1.5">
                 <svg class="w-4 h-4 fill-amber-400" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                <span id="p1NameDisplay">سەرۆک ڕەهەند</span>
+                <span id="p1NameDisplay">بەڕێوەبەر ١</span>
               </span>
-              <span class="text-[10px] bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded font-bold">بەڕێوەبەری سەرەکی</span>
+              <span class="text-[10px] bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded font-bold">بەڕێوەبەری نووسینگە</span>
             </div>
             
             <div class="flex gap-2">
-              <a id="p1CallBtn" href="tel:07512193920" class="flex-1 py-2 theme-bg theme-hover text-slate-950 font-black rounded-xl text-center flex items-center justify-center gap-1.5 shadow">
+              <a id="p1CallBtn" href="tel:" class="flex-1 py-2 theme-bg theme-hover text-slate-950 font-black rounded-xl text-center flex items-center justify-center gap-1.5 shadow">
                 <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                <span id="p1PhoneNum">0751 219 3920</span>
+                <span id="p1PhoneNum">پەیوەندی</span>
               </a>
-              <a id="p1WaBtn" href="https://wa.me/9647512193920" target="_blank" class="py-2 px-3 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-xl text-center flex items-center justify-center gap-1.5 shadow">
+              <a id="p1WaBtn" href="https://wa.me/" target="_blank" class="py-2 px-3 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-xl text-center flex items-center justify-center gap-1.5 shadow">
                 <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                 واتسئەپ
               </a>
@@ -148,14 +148,14 @@
             </div>
           </div>
 
-          <!-- کارتی کەسی دووەم -->
+          <!-- بەڕێوەبەری دووەم -->
           <div class="bg-slate-900/90 border border-sky-500/30 p-4 rounded-2xl shadow-lg space-y-3">
             <div class="flex items-center justify-between border-b border-slate-800 pb-2">
               <span class="font-black text-sky-400 text-sm flex items-center gap-1.5">
                 <svg class="w-4 h-4 fill-sky-400" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
                 <span id="p2NameDisplay">بەڕێوەبەر ٢</span>
               </span>
-              <span class="text-[10px] bg-sky-500/20 text-sky-400 px-2 py-0.5 rounded font-bold">هاوبەش</span>
+              <span class="text-[10px] bg-sky-500/20 text-sky-400 px-2 py-0.5 rounded font-bold">بەڕێوەبەری نووسینگە</span>
             </div>
             
             <div class="flex gap-2">
@@ -208,7 +208,7 @@
     </section>
   </main>
 
-  <!-- مۆداڵی پەیوەندی بۆ موڵک (بۆ هەڵبژاردنی کەسی ١ یان ٢) -->
+  <!-- مۆداڵی پەیوەندی بۆ موڵک -->
   <div id="contactModal" class="hidden fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 max-w-sm w-full shadow-2xl text-center">
       <div class="w-12 h-12 rounded-2xl bg-amber-500/10 theme-text flex items-center justify-center mx-auto mb-3">
@@ -218,16 +218,16 @@
       <p id="modalPropTitle" class="text-xs text-slate-500 dark:text-slate-400 mb-4 truncate font-bold">موڵک</p>
 
       <div class="space-y-3 text-xs font-bold">
-        <!-- کەسی ١ -->
+        <!-- پەیوەندی ١ -->
         <div class="p-3 bg-slate-50 dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 text-right">
-          <p id="mP1Name" class="text-amber-600 dark:text-amber-400 text-xs font-black">سەرۆک ڕەهەند</p>
+          <p id="mP1Name" class="text-amber-600 dark:text-amber-400 text-xs font-black">بەڕێوەبەر ١</p>
           <div class="flex gap-2 mt-2">
             <a id="mP1Call" href="tel:" class="flex-1 py-2 theme-bg theme-hover text-slate-950 rounded-xl text-center flex items-center justify-center gap-1">📞 تەلەفۆن</a>
             <a id="mP1Wa" href="https://wa.me/" target="_blank" class="flex-1 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-center flex items-center justify-center gap-1">واتسئەپ 💬</a>
           </div>
         </div>
 
-        <!-- کەسی ٢ -->
+        <!-- پەیوەندی ٢ -->
         <div class="p-3 bg-slate-50 dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 text-right">
           <p id="mP2Name" class="text-sky-600 dark:text-sky-400 text-xs font-black">بەڕێوەبەر ٢</p>
           <div class="flex gap-2 mt-2">
@@ -243,31 +243,31 @@
     </div>
   </div>
 
-  <!-- شاشەی وشەی نهێنی تابی خاوەن -->
+  <!-- شاشەی وشەی نهێنی تابی بەڕێوەبردن -->
   <main id="loginView" class="hidden max-w-md mx-auto px-4 py-20">
     <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl text-center">
       <div class="w-16 h-16 bg-amber-500/10 theme-text rounded-2xl flex items-center justify-center mx-auto text-3xl mb-4 font-black">
         🔐
       </div>
-      <h3 class="text-xl font-black text-slate-900 dark:text-white mb-1">تابی خاوەن موڵک</h3>
-      <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">تکایە وشەی نهێنی خاوەن بنووسە</p>
+      <h3 class="text-xl font-black text-slate-900 dark:text-white mb-1">تابی بەڕێوەبەرایەتی</h3>
+      <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">تکایە وشەی نهێنی بنووسە</p>
       
       <form onsubmit="handleAuth(event)" class="space-y-4">
         <input type="password" id="ownerPassInput" placeholder="وشەی نهێنی..." class="w-full p-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-2xl text-center font-bold text-sm tracking-widest focus:outline-none focus:ring-2 focus:ring-amber-500" required>
         <button type="submit" class="w-full theme-bg theme-hover text-slate-950 font-black py-3.5 rounded-2xl text-xs transition shadow">
-          چوونەژوورەوەی سەرۆک ڕەهەند
+          چوونەژوورەوە
         </button>
       </form>
     </div>
   </main>
 
-  <!-- داشبۆردی سەرۆک ڕەهەند -->
+  <!-- داشبۆردی بەڕێوەبەرایەتی -->
   <main id="adminView" class="hidden max-w-6xl mx-auto px-4 py-8 space-y-8 w-full">
     <div class="bg-slate-900 dark:bg-slate-950 text-white p-6 sm:p-8 rounded-3xl shadow-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border border-slate-800">
       <div>
-        <span class="theme-bg text-slate-950 text-[10px] font-black px-2.5 py-1 rounded-md uppercase">Supreme Controller</span>
-        <h2 class="text-2xl sm:text-3xl font-black theme-text mt-2">بەخێربێیت سەرۆک ڕەهەند</h2>
-        <p class="text-xs text-slate-400 mt-1">کۆنترۆڵی تەواوی زانیارییەکانی هەر ۲ کەسەکە (پەیوەندی، واتسئەپ، ئینستاگرام، تیکتۆک، فەیسبووک)</p>
+        <span class="theme-bg text-slate-950 text-[10px] font-black px-2.5 py-1 rounded-md uppercase">Management Controller</span>
+        <h2 class="text-2xl sm:text-3xl font-black theme-text mt-2">بەخێربێن بۆ تابی بەڕێوەبەرایەتی</h2>
+        <p class="text-xs text-slate-400 mt-1">کۆنترۆڵی تەواوی زانیارییەکانی هەر ۲ هاوبەشەکە و موڵکەکان</p>
       </div>
       <div class="flex gap-2">
         <button onclick="showPublicView()" class="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition">
@@ -279,21 +279,21 @@
       </div>
     </div>
 
-    <!-- بەشی گۆڕینی کەسەکان و سۆشیال میدیای ۲ کەس -->
+    <!-- بەشی ڕێکخستنی زانیارییەکانی هەر ۲ بەڕێوەبەرەکە -->
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       <h3 class="text-base font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-        <span>👥</span> ڕێکخستنی زانیارییەکانی ۲ کەسەکە
+        <span>👥</span> ڕێکخستنی زانیارییەکانی هاوبەشانی بەڕێوەبردن (۲ کەس)
       </h3>
       <form onsubmit="saveSiteSettings(event)" class="space-y-6 text-xs">
         
-        <!-- کەسی یەکەم -->
+        <!-- بەڕێوەبەری یەکەم -->
         <div class="p-4 bg-amber-500/5 border border-amber-500/20 rounded-2xl space-y-3">
           <h4 class="font-black text-amber-700 dark:text-amber-400 flex items-center gap-1.5 text-xs">
-            <span>👤</span> زانیارییەکانی کەسی یەکەم (سەرۆک ڕەهەند):
+            <span>👤</span> زانیارییەکانی بەڕێوەبەری یەکەم:
           </h4>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
             <div>
-              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">ناوی کەسی ١</label>
+              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">ناو</label>
               <input type="text" id="setP1Name" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 font-bold text-slate-900 dark:text-white" required>
             </div>
             <div>
@@ -305,40 +305,40 @@
               <input type="text" id="setP1Wa" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 font-bold text-slate-900 dark:text-white" required>
             </div>
             <div>
-              <label class="block font-bold text-pink-600 mb-1">ناوی ئینستاگرامی کەسی ١</label>
-              <input type="text" id="setP1InstaName" placeholder="ناو لە ئینستاگرام" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
+              <label class="block font-bold text-pink-600 mb-1">ناوی ئینستاگرام</label>
+              <input type="text" id="setP1InstaName" placeholder="ناوی پەڕەی ئینستاگرام" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
             </div>
             <div class="md:col-span-2">
-              <label class="block font-bold text-pink-600 mb-1">لینکی ئینستاگرامی کەسی ١</label>
+              <label class="block font-bold text-pink-600 mb-1">لینکی ئینستاگرام</label>
               <input type="url" id="setP1InstaUrl" placeholder="https://instagram.com/..." class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
             </div>
             <div>
-              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">ناوی تیکتۆکی کەسی ١</label>
-              <input type="text" id="setP1TiktokName" placeholder="ناو لە تیکتۆک" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
+              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">ناوی تیکتۆک</label>
+              <input type="text" id="setP1TiktokName" placeholder="ناوی هەژماری تیکتۆک" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
             </div>
             <div class="md:col-span-2">
-              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">لینکی تیکتۆکی کەسی ١</label>
+              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">لینکی تیکتۆک</label>
               <input type="url" id="setP1TiktokUrl" placeholder="https://tiktok.com/@..." class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
             </div>
             <div>
-              <label class="block font-bold text-blue-600 mb-1">ناوی فەیسبووکی کەسی ١</label>
-              <input type="text" id="setP1FbName" placeholder="ناو لە فەیسبووک" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
+              <label class="block font-bold text-blue-600 mb-1">ناوی فەیسبووک</label>
+              <input type="text" id="setP1FbName" placeholder="ناوی پەڕەی فەیسبووک" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
             </div>
             <div class="md:col-span-2">
-              <label class="block font-bold text-blue-600 mb-1">لینکی فەیسبووکی کەسی ١</label>
+              <label class="block font-bold text-blue-600 mb-1">لینکی فەیسبووک</label>
               <input type="url" id="setP1FbUrl" placeholder="https://facebook.com/..." class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
             </div>
           </div>
         </div>
 
-        <!-- کەسی دووەم -->
+        <!-- بەڕێوەبەری دووەم -->
         <div class="p-4 bg-sky-500/5 border border-sky-500/20 rounded-2xl space-y-3">
           <h4 class="font-black text-sky-700 dark:text-sky-400 flex items-center gap-1.5 text-xs">
-            <span>👤</span> زانیارییەکانی کەسی دووەم (هاوکار / بەڕێوەبەر ٢):
+            <span>👤</span> زانیارییەکانی بەڕێوەبەری دووەم:
           </h4>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
             <div>
-              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">ناوی کەسی ٢</label>
+              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">ناو</label>
               <input type="text" id="setP2Name" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
             </div>
             <div>
@@ -350,27 +350,27 @@
               <input type="text" id="setP2Wa" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
             </div>
             <div>
-              <label class="block font-bold text-pink-600 mb-1">ناوی ئینستاگرامی کەسی ٢</label>
-              <input type="text" id="setP2InstaName" placeholder="ناو لە ئینستاگرام" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
+              <label class="block font-bold text-pink-600 mb-1">ناوی ئینستاگرام</label>
+              <input type="text" id="setP2InstaName" placeholder="ناوی پەڕەی ئینستاگرام" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
             </div>
             <div class="md:col-span-2">
-              <label class="block font-bold text-pink-600 mb-1">لینکی ئینستاگرامی کەسی ٢</label>
+              <label class="block font-bold text-pink-600 mb-1">لینکی ئینستاگرام</label>
               <input type="url" id="setP2InstaUrl" placeholder="https://instagram.com/..." class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
             </div>
             <div>
-              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">ناوی تیکتۆکی کەسی ٢</label>
-              <input type="text" id="setP2TiktokName" placeholder="ناو لە تیکتۆک" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
+              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">ناوی تیکتۆک</label>
+              <input type="text" id="setP2TiktokName" placeholder="ناوی هەژماری تیکتۆک" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
             </div>
             <div class="md:col-span-2">
-              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">لینکی تیکتۆکی کەسی ٢</label>
+              <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">لینکی تیکتۆک</label>
               <input type="url" id="setP2TiktokUrl" placeholder="https://tiktok.com/@..." class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
             </div>
             <div>
-              <label class="block font-bold text-blue-600 mb-1">ناوی فەیسبووکی کەسی ٢</label>
-              <input type="text" id="setP2FbName" placeholder="ناو لە فەیسبووک" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
+              <label class="block font-bold text-blue-600 mb-1">ناوی فەیسبووک</label>
+              <input type="text" id="setP2FbName" placeholder="ناوی پەڕەی فەیسبووک" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
             </div>
             <div class="md:col-span-2">
-              <label class="block font-bold text-blue-600 mb-1">لینکی فەیسبووکی کەسی ٢</label>
+              <label class="block font-bold text-blue-600 mb-1">لینکی فەیسبووک</label>
               <input type="url" id="setP2FbUrl" placeholder="https://facebook.com/..." class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
             </div>
           </div>
@@ -399,7 +399,7 @@
             <textarea id="setHeroDesc" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white h-16" required></textarea>
           </div>
           <div>
-            <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">گۆڕینی وشەی نهێنی خاوەن</label>
+            <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">گۆڕینی وشەی نهێنی</label>
             <input type="text" id="setOwnerPass" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white" placeholder="وشەی نهێنی نوێ...">
           </div>
           <div class="flex items-end">
@@ -465,7 +465,7 @@
   <!-- Footer -->
   <footer class="bg-white dark:bg-slate-950 text-slate-600 dark:text-slate-400 py-8 px-4 mt-16 border-t border-slate-200 dark:border-slate-800 text-center text-xs transition-colors">
     <p id="footerCompanyName" class="font-bold text-slate-900 dark:text-white mb-1">کۆمپانیای خانووبەرەی دەشتی دوستەپە</p>
-    <p>هەموو مافەکانی پارێزراوە بۆ سەرۆک ڕەهەند © 2026</p>
+    <p>هەموو مافەکانی پارێزراوە © 2026</p>
   </footer>
 
   <script>
@@ -515,26 +515,26 @@
       subtitle: "Dashti Dustapa Real Estate",
       mainOfficeMap: "https://maps.google.com/?q=36.167306,43.989000",
       
-      // زانیاری کەسی ١
-      p1Name: "سەرۆک ڕەهەند",
+      // زانیاری بەڕێوەبەری یەکەم
+      p1Name: "بەڕێوەبەر ١",
       p1Phone: "07512193920",
       p1Wa: "9647512193920",
-      p1InstaName: "Instagram 1",
+      p1InstaName: "Instagram",
       p1InstaUrl: "",
-      p1TiktokName: "TikTok 1",
+      p1TiktokName: "TikTok",
       p1TiktokUrl: "",
-      p1FbName: "Facebook 1",
+      p1FbName: "Facebook",
       p1FbUrl: "",
 
-      // زانیاری کەسی ٢
+      // زانیاری بەڕێوەبەری دووەم
       p2Name: "بەڕێوەبەر ٢",
-      p2Phone: "0750xxxxxxx",
-      p2Wa: "964750xxxxxxx",
-      p2InstaName: "Instagram 2",
+      p2Phone: "07500000000",
+      p2Wa: "9647500000000",
+      p2InstaName: "Instagram",
       p2InstaUrl: "",
-      p2TiktokName: "TikTok 2",
+      p2TiktokName: "TikTok",
       p2TiktokUrl: "",
-      p2FbName: "Facebook 2",
+      p2FbName: "Facebook",
       p2FbUrl: "",
 
       heroTitle: "خانوو، زەوی و ڤێلای خەونەکانت بدۆزەرەوە",
@@ -612,7 +612,7 @@
       if (url && url.startsWith('http')) {
         window.open(url, '_blank');
       } else {
-        alert(`تکایە سەرەتا لینکی هەژماری ${name} لە تابی خاوەن موڵک دابنێ!`);
+        alert(`تکایە سەرەتا لینکی هەژماری ${name} لە تابی بەڕێوەبەرایەتی دابنێ!`);
       }
     }
 
@@ -627,33 +627,33 @@
       document.getElementById('headerMapBtn').href = siteConfig.mainOfficeMap;
       document.getElementById('footerCompanyName').innerText = siteConfig.companyName;
 
-      // پیشاندانی کەسی یەکەم
-      document.getElementById('p1NameDisplay').innerText = siteConfig.p1Name || "سەرۆک ڕەهەند";
-      document.getElementById('p1PhoneNum').innerText = siteConfig.p1Phone || "0751 219 3920";
+      // بەڕێوەبەری یەکەم
+      document.getElementById('p1NameDisplay').innerText = siteConfig.p1Name || "بەڕێوەبەر ١";
+      document.getElementById('p1PhoneNum').innerText = siteConfig.p1Phone || "پەیوەندی";
       document.getElementById('p1CallBtn').href = `tel:${siteConfig.p1Phone}`;
-      document.getElementById('p1WaBtn').href = `https://wa.me/${siteConfig.p1Wa}?text=${encodeURIComponent('سڵاو، پرسیارم هەیە دەربارەی خانووبەرەی دەشتی دوستەپە')}`;
+      document.getElementById('p1WaBtn').href = `https://wa.me/${siteConfig.p1Wa}?text=${encodeURIComponent('سڵاو، پرسیارم هەیە دەربارەی موڵک لە دەشتی دوستەپە')}`;
       
       document.getElementById('p1InstaText').innerText = siteConfig.p1InstaName || 'Instagram';
       document.getElementById('p1TiktokText').innerText = siteConfig.p1TiktokName || 'TikTok';
       document.getElementById('p1FbText').innerText = siteConfig.p1FbName || 'Facebook';
-      document.getElementById('p1InstaBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.p1InstaUrl, siteConfig.p1InstaName || 'Instagram 1'); };
-      document.getElementById('p1TiktokBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.p1TiktokUrl, siteConfig.p1TiktokName || 'TikTok 1'); };
-      document.getElementById('p1FbBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.p1FbUrl, siteConfig.p1FbName || 'Facebook 1'); };
+      document.getElementById('p1InstaBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.p1InstaUrl, siteConfig.p1InstaName || 'Instagram'); };
+      document.getElementById('p1TiktokBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.p1TiktokUrl, siteConfig.p1TiktokName || 'TikTok'); };
+      document.getElementById('p1FbBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.p1FbUrl, siteConfig.p1FbName || 'Facebook'); };
 
-      // پیشاندانی کەسی دووەم
+      // بەڕێوەبەری دووەم
       document.getElementById('p2NameDisplay').innerText = siteConfig.p2Name || "بەڕێوەبەر ٢";
       document.getElementById('p2PhoneNum').innerText = siteConfig.p2Phone || "پەیوەندی";
       document.getElementById('p2CallBtn').href = `tel:${siteConfig.p2Phone}`;
-      document.getElementById('p2WaBtn').href = `https://wa.me/${siteConfig.p2Wa || siteConfig.p2Phone}?text=${encodeURIComponent('سڵاو، پرسیارم هەیە دەربارەی خانووبەرەی دەشتی دوستەپە')}`;
+      document.getElementById('p2WaBtn').href = `https://wa.me/${siteConfig.p2Wa || siteConfig.p2Phone}?text=${encodeURIComponent('سڵاو، پرسیارم هەیە دەربارەی موڵک لە دەشتی دوستەپە')}`;
 
       document.getElementById('p2InstaText').innerText = siteConfig.p2InstaName || 'Instagram';
       document.getElementById('p2TiktokText').innerText = siteConfig.p2TiktokName || 'TikTok';
       document.getElementById('p2FbText').innerText = siteConfig.p2FbName || 'Facebook';
-      document.getElementById('p2InstaBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.p2InstaUrl, siteConfig.p2InstaName || 'Instagram 2'); };
-      document.getElementById('p2TiktokBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.p2TiktokUrl, siteConfig.p2TiktokName || 'TikTok 2'); };
-      document.getElementById('p2FbBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.p2FbUrl, siteConfig.p2FbName || 'Facebook 2'); };
+      document.getElementById('p2InstaBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.p2InstaUrl, siteConfig.p2InstaName || 'Instagram'); };
+      document.getElementById('p2TiktokBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.p2TiktokUrl, siteConfig.p2TiktokName || 'TikTok'); };
+      document.getElementById('p2FbBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.p2FbUrl, siteConfig.p2FbName || 'Facebook'); };
 
-      // پڕکردنەوەی فۆرمەکانی ناو تابی خاوەن
+      // فۆرمەکانی داشبۆرد
       document.getElementById('setP1Name').value = siteConfig.p1Name || '';
       document.getElementById('setP1Phone').value = siteConfig.p1Phone || '';
       document.getElementById('setP1Wa').value = siteConfig.p1Wa || '';
@@ -707,7 +707,7 @@
       btn.innerText = 'پاشەکەوت دەکرێت... ⏳';
       btn.disabled = true;
 
-      // کەسی ١
+      // بەڕێوەبەری یەکەم
       siteConfig.p1Name = document.getElementById('setP1Name').value;
       siteConfig.p1Phone = document.getElementById('setP1Phone').value;
       siteConfig.p1Wa = document.getElementById('setP1Wa').value;
@@ -718,7 +718,7 @@
       siteConfig.p1FbName = document.getElementById('setP1FbName').value;
       siteConfig.p1FbUrl = document.getElementById('setP1FbUrl').value;
 
-      // کەسی ٢
+      // بەڕێوەبەری دووەم
       siteConfig.p2Name = document.getElementById('setP2Name').value;
       siteConfig.p2Phone = document.getElementById('setP2Phone').value;
       siteConfig.p2Wa = document.getElementById('setP2Wa').value;
@@ -743,7 +743,7 @@
       await saveSettingsToCloud();
       btn.innerText = '💾 پاشەکەوتکردنی هەموو گۆڕانکارییەکان';
       btn.disabled = false;
-      alert('سەرۆک ڕەهەند، هەموو زانیارییەکانی هەردوو کەسەکە پاشەکەوت کران!');
+      alert('هەموو زانیارییەکانی هەردوو بەڕێوەبەر بە سەرکەوتوویی پاشەکەوت کران!');
     }
 
     function convertImageToBase64() {
@@ -803,12 +803,12 @@
     function openContactModal(propTitle) {
       document.getElementById('modalPropTitle').innerText = propTitle;
       
-      // کەسی ١
-      document.getElementById('mP1Name').innerText = siteConfig.p1Name || "سەرۆک ڕەهەند";
+      // بەڕێوەبەری یەکەم
+      document.getElementById('mP1Name').innerText = siteConfig.p1Name || "بەڕێوەبەر ١";
       document.getElementById('mP1Call').href = `tel:${siteConfig.p1Phone}`;
       document.getElementById('mP1Wa').href = `https://wa.me/${siteConfig.p1Wa}?text=${encodeURIComponent('سڵاو، پرسیارم هەیە دەربارەی: ' + propTitle)}`;
 
-      // کەسی ٢
+      // بەڕێوەبەری دووەم
       document.getElementById('mP2Name').innerText = siteConfig.p2Name || "بەڕێوەبەر ٢";
       document.getElementById('mP2Call').href = `tel:${siteConfig.p2Phone}`;
       document.getElementById('mP2Wa').href = `https://wa.me/${siteConfig.p2Wa || siteConfig.p2Phone}?text=${encodeURIComponent('سڵاو، پرسیارم هەیە دەربارەی: ' + propTitle)}`;
@@ -1022,7 +1022,7 @@
         } else {
           const { error } = await supabaseClient.from('properties').insert([{ ...propData, status: 'available' }]);
           if (error) throw error;
-          alert('سەرۆک ڕەهەند، موڵکی نوێ بە سەرکەوتوویی زیادکرا!');
+          alert('موڵکی نوێ بە سەرکەوتوویی زیادکرا!');
         }
         resetForm();
         await syncCloudData();
@@ -1041,7 +1041,7 @@
     }
 
     async function deleteProp(id) {
-      if (confirm('سەرۆک ڕەهەند، دڵنیایت لە سڕینەوە لە هەموو ئامێرەکان؟')) {
+      if (confirm('دڵنیایت لە سڕینەوە لە هەموو ئامێرەکان؟')) {
         await supabaseClient.from('properties').delete().eq('id', id);
         await syncCloudData();
       }
