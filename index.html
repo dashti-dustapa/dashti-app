@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title id="docTitle">Dashti Dustapa Real Estate | خانووبەرەی دەشتی دوستەپە</title>
   
-  <!-- Google Verification & SEO -->
   <meta name="google-site-verification" content="-BpRnRdkRtidptojyP2rmAAhybvawBetY0BeHRoXXMg" />
   <meta name="description" content="خانووبەرەی دەشتی دوستەپە - باشترین موڵک، خانوو، زەوی و ڤێلا لە دەشتی دوستەپە و دەوروبەری بە بەڕێوەبەرایەتی سەرۆک ڕەهەند">
   <meta name="keywords" content="Dashti Dustapa, dashti dustapa, dashti-dustapa, دەشتی دوستەپە, خانووبەرەی دەشتی دوستەپە, خانوو, زەوی, هەولێر">
@@ -33,7 +32,6 @@
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col justify-between transition-colors duration-300">
 
-  <!-- Header -->
   <header class="bg-white dark:bg-slate-950 text-slate-900 dark:text-white sticky top-0 z-50 shadow-md border-b border-slate-200 dark:border-slate-800 transition-colors">
     <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center relative">
       <div class="flex items-center gap-3">
@@ -55,10 +53,9 @@
           <span>📞</span> <span id="headerPhoneText">0751 219 3920</span>
         </a>
 
-        <!-- بەشی چوونەژوورەوەی سادە -->
         <div id="userAuthSection" class="flex items-center">
           <button id="userLoginBtn" onclick="showAuthModal('login')" class="theme-bg theme-hover text-slate-950 px-3.5 py-2 rounded-xl text-xs font-black transition shadow">
-            Login / Sign Up
+            چوونە ژوورەوە 👤
           </button>
           <div id="userProfileBadge" class="hidden items-center gap-1.5 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-3 py-1.5 rounded-xl">
             <span class="text-xs">👤</span>
@@ -66,16 +63,13 @@
           </div>
         </div>
 
-        <!-- ئایکۆنی ڕێکخستنەکان -->
         <div class="relative">
           <button onclick="toggleSettingsMenu()" class="bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 theme-text border border-slate-200 dark:border-slate-700 p-2.5 rounded-xl transition flex items-center justify-center shadow">
             <span class="text-base">⚙️</span>
           </button>
 
-          <!-- مینیۆی ناو ڕێکخستن -->
           <div id="settingsDropdown" class="hidden absolute left-0 mt-2 w-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl p-2.5 z-50 text-xs font-bold space-y-1.5">
             
-            <!-- هەڵبژاردنی زمان لە ناو ڕێکخستن -->
             <div class="p-2 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-between">
               <span class="text-slate-600 dark:text-slate-300">🌐 زمان / Language</span>
               <select id="langSelector" onchange="changeLanguage(this.value)" class="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg px-2 py-1 text-xs outline-none cursor-pointer">
@@ -85,7 +79,6 @@
               </select>
             </div>
 
-            <!-- گۆڕینی دۆخی تاریک / ڕووناک -->
             <button onclick="toggleDarkMode()" class="w-full text-right p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center justify-between transition">
               <span class="flex items-center gap-2">
                 <span id="themeIcon">🌙</span>
@@ -94,7 +87,6 @@
               <span class="text-[10px] bg-slate-200 dark:bg-slate-700 px-2 py-0.5 rounded text-slate-600 dark:text-slate-300">گۆڕین</span>
             </button>
 
-            <!-- تابی خاوەن موڵک -->
             <button onclick="toggleOwnerView(); toggleSettingsMenu();" class="w-full text-right p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 theme-text flex items-center justify-between transition">
               <span>👑 تابی خاوەن موڵک</span>
               <span class="text-[10px] bg-amber-500/20 px-2 py-0.5 rounded theme-text">Admin</span>
@@ -102,7 +94,6 @@
 
             <div id="customTabsContainer" class="space-y-1 border-t border-slate-200 dark:border-slate-800 pt-1"></div>
 
-            <!-- دوگمەی Logout ی ئۆتۆماتیکی لە کاتی چوونەژوورەوە -->
             <div id="settingsLogoutSection" class="hidden border-t border-slate-200 dark:border-slate-800 pt-1">
               <button onclick="logoutCustomer()" class="w-full text-right p-2 rounded-xl hover:bg-rose-50 dark:hover:bg-rose-950/30 text-rose-600 dark:text-rose-400 flex items-center justify-between transition">
                 <span>🚪 دەرچوون لە هەژمار (Logout)</span>
@@ -116,7 +107,6 @@
     </div>
   </header>
 
-  <!-- لاپەڕەی سەرەکی بۆ کڕیاران -->
   <main id="publicView" class="flex-1">
     <section class="bg-gradient-to-b from-slate-900 to-slate-950 text-white py-14 px-4 border-b border-slate-800 text-center relative overflow-hidden">
       <div class="max-w-4xl mx-auto relative z-10">
@@ -137,7 +127,6 @@
           </a>
         </div>
 
-        <!-- فلتەر و گەڕان -->
         <div class="bg-white dark:bg-slate-900 p-3.5 rounded-2xl shadow-2xl text-slate-900 dark:text-slate-100 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl mx-auto border border-slate-200 dark:border-slate-700">
           <input type="text" id="searchInput" oninput="renderProperties()" placeholder="گەڕان بەپێی شوێن یان ناو..." class="p-3 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 rounded-xl text-xs border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-amber-500">
           <select id="typeFilter" onchange="renderProperties()" class="p-3 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 rounded-xl text-xs border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-amber-500">
@@ -153,13 +142,11 @@
       </div>
     </section>
 
-    <!-- پێشانگای موڵکەکان -->
     <section class="max-w-7xl mx-auto px-4 py-12">
       <div id="propertyGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </section>
   </main>
 
-  <!-- مۆداڵی چوونەژوورەوە بە OTP -->
   <div id="authModal" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
     <div class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white max-w-md w-full rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200 dark:border-slate-800 relative">
       <button onclick="closeAuthModal()" class="absolute top-4 left-4 text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 font-black text-lg">✕</button>
@@ -171,7 +158,7 @@
 
       <form id="customerLoginForm" onsubmit="handleSendOtp(event, 'login')" class="space-y-4">
         <div>
-          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">ئیمەیڵ</label>
+          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">ئیمەیڵ (Email)</label>
           <input type="email" id="loginEmail" placeholder="ئیمەیڵەکەت بنووسە..." class="w-full p-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none" required>
         </div>
         <button type="submit" id="sendLoginOtpBtn" class="w-full theme-bg theme-hover text-slate-950 font-black py-3.5 rounded-xl text-xs transition shadow">
@@ -181,11 +168,11 @@
 
       <form id="customerSignupForm" onsubmit="handleSendOtp(event, 'signup')" class="space-y-3 hidden">
         <div>
-          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">ناوی تەواو</label>
+          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">ناوی تەواو (Full Name)</label>
           <input type="text" id="signupName" placeholder="ناوی بەڕێزت..." class="w-full p-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none" required>
         </div>
         <div>
-          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">ئیمەیڵ</label>
+          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">ئیمەیڵ (Email)</label>
           <input type="email" id="signupEmail" placeholder="user@example.com" class="w-full p-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none" required>
         </div>
         <div>
@@ -217,7 +204,6 @@
     </div>
   </div>
 
-  <!-- شاشەی وشەی نهێنی تابی خاوەن -->
   <main id="loginView" class="hidden max-w-md mx-auto px-4 py-20">
     <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl text-center">
       <div class="w-16 h-16 bg-amber-500/10 theme-text rounded-2xl flex items-center justify-center mx-auto text-3xl mb-4 font-black">
@@ -235,7 +221,6 @@
     </div>
   </main>
 
-  <!-- داشبۆردی سەرۆک ڕەهەند -->
   <main id="adminView" class="hidden max-w-6xl mx-auto px-4 py-8 space-y-8 w-full">
     <div class="bg-slate-900 dark:bg-slate-950 text-white p-6 sm:p-8 rounded-3xl shadow-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border border-slate-800">
       <div>
@@ -253,7 +238,6 @@
       </div>
     </div>
 
-    <!-- هەڵبژاردنی ڕەنگی ماڵپەڕ (Site Theme Color Customizer) -->
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       <h3 class="text-base font-black text-slate-900 dark:text-white mb-2 flex items-center gap-2">
         <span>🎨</span> گۆڕینی ڕەنگی سەرەکیی ماڵپەڕ (Theme Color Picker)
@@ -270,7 +254,6 @@
       </div>
     </div>
 
-    <!-- بەشی دروستکردنی تاب -->
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       <h3 class="text-base font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
         <span>📑</span> دروستکردن و بەڕێوەبردنی تابە تایبەتەکان لە ناو ئایکۆنی ڕێکخستن
@@ -286,7 +269,6 @@
       <div id="adminCustomTabsList" class="space-y-2"></div>
     </div>
 
-    <!-- کۆنترۆڵی زانیارییەکان -->
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       <h3 class="text-base font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
         <span>⚙️</span> کۆنترۆڵی زانیارییەکانی ماڵپەڕ، ژمارەی تەلەفۆن و لۆگۆ
@@ -342,7 +324,6 @@
       </form>
     </div>
 
-    <!-- زیادکردنی موڵک -->
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       <h3 id="formTitle" class="text-base font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
         <span>➕</span> زیادکردنی موڵکی نوێ
@@ -383,14 +364,12 @@
       </form>
     </div>
 
-    <!-- بەڕێوەبردنی موڵکەکان -->
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       <h3 class="font-black text-sm text-slate-900 dark:text-white mb-4">بەڕێوەبردن و دەستکاریکردنی موڵکەکان</h3>
       <div id="adminPropertyList" class="space-y-3"></div>
     </div>
   </main>
 
-  <!-- Footer -->
   <footer class="bg-white dark:bg-slate-950 text-slate-600 dark:text-slate-400 py-8 px-4 mt-16 border-t border-slate-200 dark:border-slate-800 text-center text-xs transition-colors">
     <p id="footerCompanyName" class="font-bold text-slate-900 dark:text-white mb-1">کۆمپانیای خانووبەرەی دەشتی دوستەپە</p>
     <p id="footerPhoneDisplay" class="theme-text font-bold mb-1">📞 0751 219 3920</p>
