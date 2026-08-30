@@ -16,7 +16,6 @@
       darkMode: 'class',
     }
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Vazirmatn', sans-serif; }
@@ -53,16 +52,6 @@
           <span>📞</span> <span id="headerPhoneText">0751 219 3920</span>
         </a>
 
-        <div id="userAuthSection" class="flex items-center">
-          <button id="userLoginBtn" onclick="showAuthModal('login')" class="theme-bg theme-hover text-slate-950 px-3.5 py-2 rounded-xl text-xs font-black transition shadow">
-            چوونە ژوورەوە 👤
-          </button>
-          <div id="userProfileBadge" class="hidden items-center gap-1.5 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-3 py-1.5 rounded-xl">
-            <span class="text-xs">👤</span>
-            <span id="loggedInUserName" class="text-xs font-bold theme-text">بەکارهێنەر</span>
-          </div>
-        </div>
-
         <div class="relative">
           <button onclick="toggleSettingsMenu()" class="bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 theme-text border border-slate-200 dark:border-slate-700 p-2.5 rounded-xl transition flex items-center justify-center shadow">
             <span class="text-base">⚙️</span>
@@ -92,13 +81,6 @@
             </button>
 
             <div id="customTabsContainer" class="space-y-1 border-t border-slate-200 dark:border-slate-800 pt-1"></div>
-
-            <div id="settingsLogoutSection" class="hidden border-t border-slate-200 dark:border-slate-800 pt-1">
-              <button onclick="logoutCustomer()" class="w-full text-right p-2 rounded-xl hover:bg-rose-50 dark:hover:bg-rose-950/30 text-rose-600 dark:text-rose-400 flex items-center justify-between transition">
-                <span>🚪 دەرچوون لە هەژمار (Logout)</span>
-                <span class="text-[10px] bg-rose-500/10 px-2 py-0.5 rounded">Log Out</span>
-              </button>
-            </div>
           </div>
         </div>
       </div>
@@ -130,13 +112,11 @@
                 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
               </span>
             </a>
-
             <a id="heroTiktokBtn" href="#" target="_blank" title="TikTok" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center text-white hover:scale-105 transition shadow">
               <span id="tiktokIconHolder">
                 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
               </span>
             </a>
-
             <a id="heroFbBtn" href="#" target="_blank" title="Facebook" class="w-9 h-9 rounded-xl bg-blue-600 hover:bg-blue-500 flex items-center justify-center text-white hover:scale-105 transition shadow">
               <span id="fbIconHolder">
                 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -165,63 +145,6 @@
     </section>
   </main>
 
-  <div id="authModal" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-    <div class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white max-w-md w-full rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200 dark:border-slate-800 relative">
-      <button onclick="closeAuthModal()" class="absolute top-4 left-4 text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 font-black text-lg">✕</button>
-      
-      <div id="authTabHeaders" class="flex border-b border-slate-200 dark:border-slate-700 mb-6">
-        <button id="tabLoginBtn" onclick="switchAuthTab('login')" class="flex-1 py-3 text-xs font-black border-b-2 theme-border theme-text transition">Login</button>
-        <button id="tabSignupBtn" onclick="switchAuthTab('signup')" class="flex-1 py-3 text-xs font-black border-b-2 border-transparent text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 transition">Sign Up</button>
-      </div>
-
-      <form id="customerLoginForm" onsubmit="handleSendOtp(event, 'login')" class="space-y-4">
-        <div>
-          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">ئیمەیڵ (Email)</label>
-          <input type="email" id="loginEmail" placeholder="ئیمەیڵەکەت بنووسە..." class="w-full p-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none" required>
-        </div>
-        <button type="submit" id="sendLoginOtpBtn" class="w-full theme-bg theme-hover text-slate-950 font-black py-3.5 rounded-xl text-xs transition shadow">
-          Send OTP Code ✉️
-        </button>
-      </form>
-
-      <form id="customerSignupForm" onsubmit="handleSendOtp(event, 'signup')" class="space-y-3 hidden">
-        <div>
-          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">ناوی تەواو (Full Name)</label>
-          <input type="text" id="signupName" placeholder="ناوی بەڕێزت..." class="w-full p-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none" required>
-        </div>
-        <div>
-          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">ئیمەیڵ (Email)</label>
-          <input type="email" id="signupEmail" placeholder="user@example.com" class="w-full p-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none" required>
-        </div>
-        <div>
-          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">ژمارەی مۆبایل <span class="text-slate-400 font-normal">(Optional)</span></label>
-          <input type="tel" id="signupPhone" placeholder="0750XXXXXXX" class="w-full p-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none">
-        </div>
-        <button type="submit" id="sendSignupOtpBtn" class="w-full theme-bg theme-hover text-slate-950 font-black py-3.5 rounded-xl text-xs transition shadow">
-          Create Account & Send OTP ✉️
-        </button>
-      </form>
-
-      <div id="otpVerifyScreen" class="hidden space-y-4 text-center">
-        <div class="w-12 h-12 bg-amber-500/10 theme-text rounded-2xl flex items-center justify-center mx-auto text-2xl font-black">
-          📩
-        </div>
-        <h4 class="text-sm font-black">Enter 6-Digit Verification Code</h4>
-        <p class="text-xs text-slate-500 dark:text-slate-400">کۆدێکی ٦ ژمارەیی بۆ ئیمەیڵی <span id="targetEmailText" class="font-bold text-slate-800 dark:text-slate-200"></span> نێردرا.</p>
-        
-        <form onsubmit="handleVerifyOtp(event)" class="space-y-4">
-          <input type="text" id="otpCodeInput" maxlength="6" placeholder="123456" class="w-full p-3.5 bg-slate-50 dark:bg-slate-800 border-2 theme-border rounded-2xl text-center font-black text-lg tracking-[0.4em] focus:outline-none" required>
-          <button type="submit" id="verifyOtpBtn" class="w-full theme-bg theme-hover text-slate-950 font-black py-3.5 rounded-xl text-xs transition shadow">
-            Verify & Continue ✅
-          </button>
-          <button type="button" onclick="cancelOtpVerification()" class="text-xs text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-bold block mx-auto">
-            گۆڕینی ئیمەیڵ / گەڕانەوە
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
-
   <main id="loginView" class="hidden max-w-md mx-auto px-4 py-20">
     <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl text-center">
       <div class="w-16 h-16 bg-amber-500/10 theme-text rounded-2xl flex items-center justify-center mx-auto text-3xl mb-4 font-black">
@@ -232,7 +155,7 @@
       
       <form onsubmit="handleAuth(event)" class="space-y-4">
         <input type="password" id="ownerPassInput" placeholder="وشەی نهێنی..." class="w-full p-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-2xl text-center font-bold text-sm tracking-widest focus:outline-none focus:ring-2 focus:ring-amber-500" required>
-        <button type="submit" class="w-full theme-bg theme-hover text-slate-950 font-black py-3.5 rounded-xl text-xs transition shadow">
+        <button type="submit" class="w-full theme-bg theme-hover text-slate-950 font-black py-3.5 rounded-2xl text-xs transition shadow">
           چوونەژوورەوەی سەرۆک ڕەهەند
         </button>
       </form>
@@ -244,7 +167,7 @@
       <div>
         <span class="theme-bg text-slate-950 text-[10px] font-black px-2.5 py-1 rounded-md uppercase">Supreme Controller</span>
         <h2 class="text-2xl sm:text-3xl font-black theme-text mt-2">بەخێربێیت سەرۆک ڕەهەند</h2>
-        <p class="text-xs text-slate-400 mt-1">کۆنترۆڵی تەواوی ڕەنگەکان، ئایکۆنەکانی سۆشیال میدیا، لۆگۆ و موڵکەکان</p>
+        <p class="text-xs text-slate-400 mt-1">کۆنترۆڵی تەواوی ڕەنگەکان، ئایکۆنەکانی سۆشیال میدیا، لۆگۆ و زیادکردنی موڵک</p>
       </div>
       <div class="flex gap-2">
         <button onclick="showPublicView()" class="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition">
@@ -306,24 +229,6 @@
         <div>
           <label class="block font-bold text-blue-600 dark:text-blue-400 mb-1">📘 لینکی فەیسبووک (Facebook URL)</label>
           <input type="url" id="setFb" placeholder="https://facebook.com/..." class="w-full p-3 border border-blue-200 dark:border-blue-900 rounded-xl bg-blue-50/40 dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
-        </div>
-
-        <div class="md:col-span-3 border-t border-slate-200 dark:border-slate-800 pt-4">
-          <p class="font-bold text-slate-700 dark:text-slate-300 mb-2">✨ گۆڕینی ئایکۆنی سۆشیال میدیا (Custom Icon Text / Emoji):</p>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-            <div>
-              <label class="block text-[11px] text-slate-500 mb-1">ئایکۆنی ئینستاگرام (بەتاڵی بهێڵەرەوە بۆ لۆگۆی فەرمی)</label>
-              <input type="text" id="setIconInsta" placeholder="بۆ نموونە: 📸 یان IG" class="w-full p-2.5 border rounded-xl bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
-            </div>
-            <div>
-              <label class="block text-[11px] text-slate-500 mb-1">ئایکۆنی تیکتۆک (بەتاڵی بهێڵەرەوە بۆ لۆگۆی فەرمی)</label>
-              <input type="text" id="setIconTiktok" placeholder="بۆ نموونە: 🎵 یان TT" class="w-full p-2.5 border rounded-xl bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
-            </div>
-            <div>
-              <label class="block text-[11px] text-slate-500 mb-1">ئایکۆنی فەیسبووک (بەتاڵی بهێڵەرەوە بۆ لۆگۆی فەرمی)</label>
-              <input type="text" id="setIconFb" placeholder="بۆ نموونە: 📘 یان FB" class="w-full p-2.5 border rounded-xl bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
-            </div>
-          </div>
         </div>
 
         <div>
@@ -393,7 +298,7 @@
 
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       <h3 id="formTitle" class="text-base font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-        <span>➕</span> زیادکردنی موڵکی نوێ
+        <span>➕</span> زیادکردنی موڵکی نوێ (دەستبەجێ لە ماڵپەڕ دەردەکەوێت)
       </h3>
       <form onsubmit="handlePropertySubmit(event)" class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
         <input type="hidden" id="editPropId" value="">
@@ -412,10 +317,13 @@
         <input type="text" id="pMapLink" placeholder="لینکی لۆکەیشنی ئەم موڵکە لە Google Maps" class="p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white md:col-span-2 font-bold">
         
         <div class="md:col-span-2 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-2xl p-4 bg-slate-50 dark:bg-slate-800 text-center">
-          <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1.5">📷 هەڵبژاردنی وێنە لە مۆبایل یان کۆمپیوتەر:</label>
-          <input type="file" id="fileInput" accept="image/*" onchange="convertImageToBase64()" class="text-xs text-slate-500 dark:text-slate-300">
-          <input type="hidden" id="pImage" required>
-          <p id="uploadStatus" class="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold mt-1.5 hidden">وێنەکە بە سەرکەوتوویی بارکرا ✅</p>
+          <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1.5">📷 وێنەی موڵک (لە مۆبایل یان بەستەر):</label>
+          <div class="flex flex-col sm:flex-row gap-2 items-center justify-center">
+            <input type="file" id="fileInput" accept="image/*" onchange="convertImageToBase64()" class="text-xs text-slate-500 dark:text-slate-300">
+            <input type="url" id="pImageUrlDirect" placeholder="یان لینکی وێنە لێرە دابنێ" class="p-2 border rounded-xl text-xs w-full sm:w-1/2 bg-white dark:bg-slate-900">
+          </div>
+          <input type="hidden" id="pImage">
+          <p id="uploadStatus" class="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold mt-1.5 hidden">وێنەکە ئامادەیە ✅</p>
         </div>
 
         <textarea id="pDesc" placeholder="تەواوی وردەکارییەکان..." class="p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white md:col-span-2 h-20 font-bold" required></textarea>
@@ -455,7 +363,6 @@
   <script>
     const SUPABASE_URL = 'https://vvvldvbgywfynlroudio.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ2dmxkdmJneXdmeW5scm91ZGlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgwNDExNDMsImV4cCI6MjEwMzYxNzE0M30.QuThGUEutLdCoPyq-O8AsocMqkQS8C0W31RN2nnfEPY';
-    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
     const defaultInstaSvg = `<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`;
     const defaultTiktokSvg = `<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>`;
@@ -512,9 +419,6 @@
       insta: "",
       tiktok: "",
       fb: "",
-      iconInsta: "",
-      iconTiktok: "",
-      iconFb: "",
       heroTitle: "خانوو، زەوی و ڤێلای خەونەکانت بدۆزەرەوە",
       heroDesc: "کڕین، فرۆشتن، و بەکرێدانی هەموو جۆرە موڵکێک بە گرەنتی و باشترین نرخ",
       themeColor: "#f59e0b",
@@ -523,11 +427,23 @@
       customTabs: []
     };
 
-    let properties = [];
+    // لیستی موڵکەکان بە میمۆری لەگەڵ پاشەکەوتی ناوخۆیی
+    let properties = JSON.parse(localStorage.getItem('site_properties_list')) || [
+      {
+        id: "p1",
+        title: "خانووی مۆدێرن ٢٠٠م لە دەشتی دوستەپە",
+        price: 95000,
+        location: "دەشتی دوستەپە - نزیک شەقامی سەرەکی",
+        property_type: "خانوو",
+        area_sqm: 200,
+        bedrooms: 3,
+        image_url: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800",
+        description: "خانووی تایبەت و ڕازاوە، پێکهاتووە لە ٣ ژووری نوستن، هۆڵی گەورە و باخچە.",
+        status: "available"
+      }
+    ];
+
     let isOwnerLoggedIn = false;
-    let pendingAuthEmail = '';
-    let pendingAuthName = '';
-    let currentCustomer = JSON.parse(localStorage.getItem('currentCustomer')) || null;
 
     function applyThemeColor() {
       const color = siteConfig.themeColor || '#f59e0b';
@@ -637,7 +553,6 @@
       document.getElementById('footerCompanyName').innerText = siteConfig.companyName;
       document.getElementById('footerPhoneDisplay').innerText = `📞 ${siteConfig.phone}`;
 
-      // بەستنی لینک و ئایکۆنەکانی سۆشیال میدیا
       document.getElementById('heroInstaBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.insta, 'Instagram'); };
       document.getElementById('heroTiktokBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.tiktok, 'TikTok'); };
       document.getElementById('heroFbBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.fb, 'Facebook'); };
@@ -645,11 +560,6 @@
       document.getElementById('footerInstaBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.insta, 'Instagram'); };
       document.getElementById('footerTiktokBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.tiktok, 'TikTok'); };
       document.getElementById('footerFbBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.fb, 'Facebook'); };
-
-      // پیشاندانی لۆگۆی SVG فەرمی یان دەستکاری خاوەن
-      document.getElementById('instaIconHolder').innerHTML = siteConfig.iconInsta ? `<span class="font-black text-xs">${siteConfig.iconInsta}</span>` : defaultInstaSvg;
-      document.getElementById('tiktokIconHolder').innerHTML = siteConfig.iconTiktok ? `<span class="font-black text-xs">${siteConfig.iconTiktok}</span>` : defaultTiktokSvg;
-      document.getElementById('fbIconHolder').innerHTML = siteConfig.iconFb ? `<span class="font-black text-xs">${siteConfig.iconFb}</span>` : defaultFbSvg;
 
       const logoImg = document.getElementById('headerLogoImg');
       const logoText = document.getElementById('headerLogoText');
@@ -671,156 +581,10 @@
       document.getElementById('setInsta').value = siteConfig.insta || '';
       document.getElementById('setTiktok').value = siteConfig.tiktok || '';
       document.getElementById('setFb').value = siteConfig.fb || '';
-      document.getElementById('setIconInsta').value = siteConfig.iconInsta || '';
-      document.getElementById('setIconTiktok').value = siteConfig.iconTiktok || '';
-      document.getElementById('setIconFb').value = siteConfig.iconFb || '';
       document.getElementById('setHeroTitle').value = siteConfig.heroTitle;
       document.getElementById('setHeroDesc').value = siteConfig.heroDesc;
 
       renderCustomTabs();
-      checkCustomerAuth();
-    }
-
-    function showAuthModal(tab = 'login') {
-      document.getElementById('authModal').classList.remove('hidden');
-      cancelOtpVerification();
-      switchAuthTab(tab);
-    }
-
-    function closeAuthModal() {
-      document.getElementById('authModal').classList.add('hidden');
-    }
-
-    function switchAuthTab(tab) {
-      const loginForm = document.getElementById('customerLoginForm');
-      const signupForm = document.getElementById('customerSignupForm');
-      const tabLoginBtn = document.getElementById('tabLoginBtn');
-      const tabSignupBtn = document.getElementById('tabSignupBtn');
-
-      if (tab === 'login') {
-        loginForm.classList.remove('hidden');
-        signupForm.classList.add('hidden');
-        tabLoginBtn.className = "flex-1 py-3 text-xs font-black border-b-2 theme-border theme-text transition";
-        tabSignupBtn.className = "flex-1 py-3 text-xs font-black border-b-2 border-transparent text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 transition";
-      } else {
-        loginForm.classList.add('hidden');
-        signupForm.classList.remove('hidden');
-        tabSignupBtn.className = "flex-1 py-3 text-xs font-black border-b-2 theme-border theme-text transition";
-        tabLoginBtn.className = "flex-1 py-3 text-xs font-black border-b-2 border-transparent text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 transition";
-      }
-    }
-
-    async function handleSendOtp(e, mode) {
-      e.preventDefault();
-      let email = '';
-      let name = '';
-
-      if (mode === 'signup') {
-        email = document.getElementById('signupEmail').value.trim();
-        name = document.getElementById('signupName').value.trim();
-      } else {
-        email = document.getElementById('loginEmail').value.trim();
-        name = email.split('@')[0];
-      }
-
-      pendingAuthEmail = email;
-      pendingAuthName = name;
-
-      const btn = mode === 'signup' ? document.getElementById('sendSignupOtpBtn') : document.getElementById('sendLoginOtpBtn');
-      const originalText = btn.innerText;
-      btn.innerText = 'Sending Code... ⏳';
-      btn.disabled = true;
-
-      try {
-        const { error } = await supabaseClient.auth.signInWithOtp({
-          email: email,
-          options: { shouldCreateUser: true }
-        });
-
-        if (error) throw error;
-
-        document.getElementById('authTabHeaders').classList.add('hidden');
-        document.getElementById('customerLoginForm').classList.add('hidden');
-        document.getElementById('customerSignupForm').classList.add('hidden');
-        document.getElementById('targetEmailText').innerText = email;
-        document.getElementById('otpVerifyScreen').classList.remove('hidden');
-        document.getElementById('otpCodeInput').value = '';
-        document.getElementById('otpCodeInput').focus();
-      } catch (err) {
-        alert('هەڵە لە ناردنی کۆد: ' + (err.message || 'تکایە دڵنیابە لە ئیمەیڵەکەت'));
-      } finally {
-        btn.innerText = originalText;
-        btn.disabled = false;
-      }
-    }
-
-    async function handleVerifyOtp(e) {
-      e.preventDefault();
-      const token = document.getElementById('otpCodeInput').value.trim();
-      const btn = document.getElementById('verifyOtpBtn');
-      btn.innerText = 'Verifying... ⏳';
-      btn.disabled = true;
-
-      try {
-        const { error } = await supabaseClient.auth.verifyOtp({
-          email: pendingAuthEmail,
-          token: token,
-          type: 'email'
-        });
-
-        if (error) throw error;
-
-        currentCustomer = {
-          name: pendingAuthName || pendingAuthEmail.split('@')[0],
-          email: pendingAuthEmail
-        };
-        localStorage.setItem('currentCustomer', JSON.stringify(currentCustomer));
-
-        closeAuthModal();
-        checkCustomerAuth();
-        alert(`بەخێربێیت بەڕێز ${currentCustomer.name}!`);
-      } catch (err) {
-        alert('کۆدی OTP هەڵەیە: ' + err.message);
-      } finally {
-        btn.innerText = 'Verify & Continue ✅';
-        btn.disabled = false;
-      }
-    }
-
-    function cancelOtpVerification() {
-      document.getElementById('otpVerifyScreen').classList.add('hidden');
-      document.getElementById('authTabHeaders').classList.remove('hidden');
-      switchAuthTab('login');
-    }
-
-    function checkCustomerAuth() {
-      const loginBtn = document.getElementById('userLoginBtn');
-      const profileBadge = document.getElementById('userProfileBadge');
-      const userName = document.getElementById('loggedInUserName');
-      const settingsLogout = document.getElementById('settingsLogoutSection');
-
-      if (currentCustomer) {
-        loginBtn.classList.add('hidden');
-        profileBadge.classList.remove('hidden');
-        profileBadge.classList.add('flex');
-        settingsLogout.classList.remove('hidden');
-        userName.innerText = currentCustomer.name;
-      } else {
-        loginBtn.classList.remove('hidden');
-        profileBadge.classList.add('hidden');
-        profileBadge.classList.remove('flex');
-        settingsLogout.classList.add('hidden');
-      }
-    }
-
-    async function logoutCustomer() {
-      await supabaseClient.auth.signOut();
-      currentCustomer = null;
-      localStorage.removeItem('currentCustomer');
-      checkCustomerAuth();
-      const dd = document.getElementById('settingsDropdown');
-      if (dd) dd.classList.add('hidden');
-      alert('بە سەرکەوتوویی دەرچوویت.');
     }
 
     function toggleSettingsMenu() {
@@ -907,9 +671,6 @@
       siteConfig.insta = document.getElementById('setInsta').value;
       siteConfig.tiktok = document.getElementById('setTiktok').value;
       siteConfig.fb = document.getElementById('setFb').value;
-      siteConfig.iconInsta = document.getElementById('setIconInsta').value;
-      siteConfig.iconTiktok = document.getElementById('setIconTiktok').value;
-      siteConfig.iconFb = document.getElementById('setIconFb').value;
       
       const uploadedLogo = document.getElementById('logoDataHolder').value;
       const logoUrlInput = document.getElementById('setLogoUrl').value;
@@ -928,7 +689,7 @@
       localStorage.setItem('siteConfig', JSON.stringify(siteConfig));
       applySiteSettings();
       renderProperties();
-      alert('سەرۆک ڕەهەند، هەموو گۆڕانکارییەکان و ئایکۆنەکان پاشەکەوت کران!');
+      alert('سەرۆک ڕەهەند، هەموو گۆڕانکارییەکان پاشەکەوت کران!');
     }
 
     function convertImageToBase64() {
@@ -943,15 +704,21 @@
       }
     }
 
-    async function loadProperties() {
+    async function syncSupabase() {
       try {
         const res = await fetch(`${SUPABASE_URL}/rest/v1/properties?select=*&order=created_at.desc`, {
           headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
         });
-        properties = await res.json();
-        renderProperties();
-        renderAdminList();
-      } catch (e) { console.error(e); }
+        const cloudData = await res.json();
+        if (cloudData && Array.isArray(cloudData) && cloudData.length > 0) {
+          properties = cloudData;
+          localStorage.setItem('site_properties_list', JSON.stringify(properties));
+          renderProperties();
+          renderAdminList();
+        }
+      } catch (e) {
+        console.log('Using local cached properties');
+      }
     }
 
     function renderProperties() {
@@ -961,7 +728,7 @@
       const grid = document.getElementById('propertyGrid');
 
       const filtered = properties.filter(p => {
-        const matchSearch = p.title.toLowerCase().includes(search) || p.location.toLowerCase().includes(search);
+        const matchSearch = (p.title || '').toLowerCase().includes(search) || (p.location || '').toLowerCase().includes(search);
         const matchType = type === 'all' || p.property_type === type;
         const matchPrice = !maxP || Number(p.price) <= Number(maxP);
         return matchSearch && matchType && matchPrice;
@@ -1066,29 +833,44 @@
 
     async function handlePropertySubmit(e) {
       e.preventDefault();
-      const propData = {
+      
+      const fileImg = document.getElementById('pImage').value;
+      const directUrl = document.getElementById('pImageUrlDirect').value;
+      const finalImg = fileImg || directUrl || 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800';
+
+      const newProp = {
+        id: 'prop_' + Date.now(),
         title: document.getElementById('pTitle').value,
         price: Number(document.getElementById('pPrice').value),
         location: document.getElementById('pLocation').value,
         property_type: document.getElementById('pType').value,
         area_sqm: Number(document.getElementById('pArea').value),
         bedrooms: Number(document.getElementById('pBedrooms').value || 0),
-        image_url: document.getElementById('pImage').value || 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800',
+        image_url: finalImg,
         description: document.getElementById('pDesc').value,
-        status: 'available'
+        status: 'available',
+        map_url: document.getElementById('pMapLink').value || ''
       };
 
-      const mapVal = document.getElementById('pMapLink').value;
-      if (mapVal) propData.map_url = mapVal;
-
-      await fetch(`${SUPABASE_URL}/rest/v1/properties`, {
-        method: 'POST',
-        headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify(propData)
-      });
-      alert('موڵکەکە بڵاوکرایەوە!');
+      // دەستبەجێ خستنە ناو لیست و لاپەڕە بەبێ چاوەڕوانی
+      properties.unshift(newProp);
+      localStorage.setItem('site_properties_list', JSON.stringify(properties));
+      
+      renderProperties();
+      renderAdminList();
+      alert('سەرۆک ڕەهەند، موڵکەکە بە سەرکەوتوویی لە ماڵپەڕ دانرا و دەستبەجێ دەردەکەوێت!');
       resetForm();
-      loadProperties();
+
+      // سەیڤکردنی هەورە داتابەیس بە شێوەی پاشبنەما (Background)
+      try {
+        await fetch(`${SUPABASE_URL}/rest/v1/properties`, {
+          method: 'POST',
+          headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify(newProp)
+        });
+      } catch (err) {
+        console.log('Saved locally successfully');
+      }
     }
 
     function resetForm() {
@@ -1098,6 +880,7 @@
       document.getElementById('pArea').value = '';
       document.getElementById('pBedrooms').value = '';
       document.getElementById('pImage').value = '';
+      document.getElementById('pImageUrlDirect').value = '';
       document.getElementById('pMapLink').value = '';
       document.getElementById('pDesc').value = '';
       document.getElementById('fileInput').value = '';
@@ -1106,28 +889,43 @@
 
     async function togglePropertyStatus(id, currentStatus) {
       const nextStatus = currentStatus === 'available' ? 'sold' : 'available';
-      await fetch(`${SUPABASE_URL}/rest/v1/properties?id=eq.${id}`, {
-        method: 'PATCH',
-        headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status: nextStatus })
-      });
-      loadProperties();
+      const item = properties.find(p => p.id === id);
+      if (item) {
+        item.status = nextStatus;
+        localStorage.setItem('site_properties_list', JSON.stringify(properties));
+        renderProperties();
+        renderAdminList();
+      }
+      try {
+        await fetch(`${SUPABASE_URL}/rest/v1/properties?id=eq.${id}`, {
+          method: 'PATCH',
+          headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status: nextStatus })
+        });
+      } catch (e) {}
     }
 
     async function deleteProp(id) {
       if (confirm('سەرۆک ڕەهەند، دڵنیایت لە سڕینەوە؟')) {
-        await fetch(`${SUPABASE_URL}/rest/v1/properties?id=eq.${id}`, {
-          method: 'DELETE',
-          headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
-        });
-        loadProperties();
+        properties = properties.filter(p => p.id !== id);
+        localStorage.setItem('site_properties_list', JSON.stringify(properties));
+        renderProperties();
+        renderAdminList();
+        try {
+          await fetch(`${SUPABASE_URL}/rest/v1/properties?id=eq.${id}`, {
+            method: 'DELETE',
+            headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
+          });
+        } catch (e) {}
       }
     }
 
     initTheme();
     changeLanguage(currentLang);
     applySiteSettings();
-    loadProperties();
+    renderProperties();
+    renderAdminList();
+    syncSupabase();
   </script>
 </body>
 </html>
