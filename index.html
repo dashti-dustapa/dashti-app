@@ -17,7 +17,7 @@
 <body class="bg-slate-50 text-slate-800 min-h-screen">
 
   <header class="bg-slate-950 text-white sticky top-0 z-50 shadow-md border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center relative">
       <div class="flex items-center gap-3">
         <div id="brandBadgeContainer" class="w-11 h-11 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center overflow-hidden shadow">
           <img id="headerLogoImg" src="" alt="Logo" class="w-full h-full object-cover hidden">
@@ -28,16 +28,29 @@
           <p id="headerSubtitle" class="text-[11px] text-slate-400 mt-0.5">Dashti Dustapa Real Estate</p>
         </div>
       </div>
+
       <div class="flex items-center gap-2">
-        <a id="headerMapBtn" href="https://maps.google.com/?q=36.167306,43.989000" target="_blank" class="hidden sm:flex bg-slate-900 hover:bg-slate-800 text-sky-400 px-3 py-2 rounded-xl text-xs font-bold border border-slate-700 transition items-center gap-1">
+        <a id="headerMapBtn" href="https://maps.google.com/?q=36.1673056,43.989" target="_blank" class="hidden sm:flex bg-slate-900 hover:bg-slate-800 text-sky-400 px-3 py-2 rounded-xl text-xs font-bold border border-slate-700 transition items-center gap-1">
           <span>📍</span> <span id="headerMapText">شوێنی نووسینگە</span>
         </a>
         <a id="headerCallBtn" href="tel:07512193920" class="hidden sm:flex bg-slate-900 hover:bg-slate-800 text-amber-400 px-3 py-2 rounded-xl text-xs font-bold border border-slate-700 transition items-center gap-1.5">
           <span>📞</span> <span id="headerPhoneText">0751 219 3920</span>
         </a>
-        <button id="navBtn" onclick="toggleView()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 px-4 py-2 rounded-xl text-xs font-black transition shadow">
-          👑 تابی خاوەن موڵک
-        </button>
+
+        <div class="relative">
+          <button onclick="toggleSettingsMenu()" class="bg-slate-900 hover:bg-slate-800 text-amber-400 border border-slate-700 p-2.5 rounded-xl transition flex items-center justify-center shadow">
+            <span class="text-base">⚙️</span>
+          </button>
+
+          <div id="settingsDropdown" class="hidden absolute left-0 mt-2 w-56 bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-2 z-50 text-xs font-bold space-y-1">
+            <button onclick="toggleView(); toggleSettingsMenu();" class="w-full text-right p-2.5 rounded-xl hover:bg-slate-800 text-amber-400 flex items-center justify-between transition">
+              <span>👑 تابی خاوەن موڵک</span>
+              <span class="text-[10px] bg-amber-500/20 px-2 py-0.5 rounded text-amber-300">Admin</span>
+            </button>
+            <div id="customTabsContainer" class="space-y-1 border-t border-slate-800 pt-1">
+              </div>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -54,7 +67,7 @@
         </p>
 
         <div class="flex flex-wrap justify-center items-center gap-3 mb-8">
-          <a id="heroMapBtn" href="https://maps.google.com/?q=36.167306,43.989000" target="_blank" class="bg-sky-600/20 hover:bg-sky-600 text-sky-300 hover:text-white border border-sky-500/40 px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5">
+          <a id="heroMapBtn" href="https://maps.google.com/?q=36.1673056,43.989" target="_blank" class="bg-sky-600/20 hover:bg-sky-600 text-sky-300 hover:text-white border border-sky-500/40 px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5">
             <span>📍</span> شوێنی سەرەکیی نووسینگە لەسەر نەخشە
           </a>
           <a id="linkInsta" href="#" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-gradient-to-tr hover:from-amber-500 hover:to-purple-600 flex items-center justify-center text-white border border-slate-700 transition">📸</a>
@@ -88,10 +101,10 @@
         🔐
       </div>
       <h3 class="text-xl font-black text-slate-900 mb-1">تابی خاوەن موڵک</h3>
-      <p class="text-xs text-slate-500 mb-6">تکایە وشەی نهێنی دەسەڵاتی خاوەن بنووسە</p>
+      <p class="text-xs text-slate-500 mb-6">تکایە وشەی نهێنی بنووسە</p>
       
       <form onsubmit="handleAuth(event)" class="space-y-4">
-        <input type="password" id="ownerPassInput" placeholder="وشەی نهێنی بنووسە..." class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-center font-bold text-sm tracking-widest focus:outline-none focus:ring-2 focus:ring-amber-500" required>
+        <input type="password" id="ownerPassInput" placeholder="وشەی نهێنی..." class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-center font-bold text-sm tracking-widest focus:outline-none focus:ring-2 focus:ring-amber-500" required>
         <button type="submit" class="w-full bg-slate-950 hover:bg-slate-900 text-amber-400 font-black py-3.5 rounded-2xl text-xs transition shadow">
           چوونەژوورەوەی سەرۆک ڕەهەند
         </button>
@@ -104,11 +117,16 @@
       <div>
         <span class="bg-amber-500 text-slate-950 text-[10px] font-black px-2.5 py-1 rounded-md uppercase">Supreme Controller</span>
         <h2 class="text-2xl sm:text-3xl font-black text-amber-400 mt-2">بەخێربێیت سەرۆک ڕەهەند</h2>
-        <p class="text-xs text-slate-400 mt-1">کۆنترۆڵی تەواوی ڕێکخستنەکان، لۆگۆ، شوێن و موڵکەکانی دەشتی دوستەپە</p>
+        <p class="text-xs text-slate-400 mt-1">کۆنترۆڵی تەواوی ڕێکخستنەکان، تابەکان، لۆگۆ و موڵکەکان</p>
       </div>
-      <button onclick="logoutOwner()" class="bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white border border-rose-500/30 px-5 py-2.5 rounded-xl text-xs font-bold transition">
-        دەرچوون و قفڵکردن 🔒
-      </button>
+      <div class="flex gap-2">
+        <button onclick="toggleView()" class="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition">
+          گەڕانەوە بۆ ماڵپەڕ 🏠
+        </button>
+        <button onclick="logoutOwner()" class="bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white border border-rose-500/30 px-4 py-2.5 rounded-xl text-xs font-bold transition">
+          دەرچوون 🔒
+        </button>
+      </div>
     </div>
 
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -125,14 +143,29 @@
         <h4 id="statSold" class="text-2xl font-black text-rose-600 mt-1">0</h4>
       </div>
       <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm text-center">
-        <p class="text-xs text-amber-600 font-bold">کۆی بەهای موڵکەکان</p>
+        <p class="text-xs text-amber-600 font-bold">کۆی بەها</p>
         <h4 id="statValue" class="text-lg font-black text-amber-600 mt-1">$0</h4>
       </div>
     </div>
 
     <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm">
       <h3 class="text-base font-black text-slate-900 mb-4 flex items-center gap-2">
-        <span>⚙️</span> کۆنترۆڵی هەموو بەشەکانی ماڵپەڕ و دانانی لۆگۆ
+        <span>📑</span> دروستکردن و بەڕێوەبردنی تابە تایبەتەکان لە ناو ئایکۆنی ڕێکخستن
+      </h3>
+      <form onsubmit="handleAddCustomTab(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs mb-6">
+        <input type="text" id="tabName" placeholder="ناوی تاب (بۆ نموونە: دەربارەی ئێمە)" class="p-3 border rounded-xl bg-slate-50 font-bold" required>
+        <input type="text" id="tabIcon" placeholder="ئایکۆن (بۆ نموونە: 📌 یان 🌟)" class="p-3 border rounded-xl bg-slate-50 font-bold" required>
+        <input type="url" id="tabUrl" placeholder="لینکی تاب (یان # بنووسە)" class="p-3 border rounded-xl bg-slate-50 font-bold" required>
+        <button type="submit" class="sm:col-span-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-3 rounded-xl transition shadow">
+          ➕ زیادکردنی تاب بۆ مینۆی ڕێکخستنەکان
+        </button>
+      </form>
+      <div id="adminCustomTabsList" class="space-y-2"></div>
+    </div>
+
+    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm">
+      <h3 class="text-base font-black text-slate-900 mb-4 flex items-center gap-2">
+        <span>⚙️</span> کۆنترۆڵی زانیارییەکانی ماڵپەڕ و لۆگۆ
       </h3>
       <form onsubmit="saveSiteSettings(event)" class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
         <div>
@@ -153,14 +186,14 @@
         </div>
         <div class="md:col-span-2">
           <label class="block font-bold text-sky-700 mb-1">📍 لینکی لۆکەیشنی سەرەکی نووسینگە (Google Maps URL)</label>
-          <input type="url" id="setMainOfficeMap" placeholder="https://maps.google.com/..." class="w-full p-3 border border-sky-200 rounded-xl bg-sky-50 font-bold">
+          <input type="url" id="setMainOfficeMap" class="w-full p-3 border border-sky-200 rounded-xl bg-sky-50 font-bold">
         </div>
 
         <div class="md:col-span-3 border-2 border-dashed border-amber-200 rounded-2xl p-4 bg-amber-50/50">
-          <label class="block font-bold text-amber-900 mb-1.5">🖼️ دانانی لۆگۆی کۆمپانیا (لە مۆبایل یان وەک بەستەر):</label>
+          <label class="block font-bold text-amber-900 mb-1.5">🖼️ دانانی لۆگۆی کۆمپانیا:</label>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 items-center">
             <input type="file" id="logoFileInput" accept="image/*" onchange="convertLogoToBase64()" class="text-xs text-slate-600">
-            <input type="url" id="setLogoUrl" placeholder="یان بەستەری وێنەی لۆگۆ پەیست بکە (Image URL)" class="p-2.5 border rounded-xl bg-white text-xs font-bold">
+            <input type="url" id="setLogoUrl" placeholder="یان بەستەری وێنەی لۆگۆ بنووسە" class="p-2.5 border rounded-xl bg-white text-xs font-bold">
           </div>
           <input type="hidden" id="logoDataHolder">
         </div>
@@ -175,15 +208,15 @@
         </div>
         <div>
           <label class="block font-bold text-slate-700 mb-1">لینکی ئینستاگرام</label>
-          <input type="url" id="setInsta" placeholder="https://instagram.com/..." class="w-full p-3 border rounded-xl bg-slate-50 font-bold">
+          <input type="url" id="setInsta" class="w-full p-3 border rounded-xl bg-slate-50 font-bold">
         </div>
         <div>
           <label class="block font-bold text-slate-700 mb-1">لینکی تیکتۆک</label>
-          <input type="url" id="setTiktok" placeholder="https://tiktok.com/@..." class="w-full p-3 border rounded-xl bg-slate-50 font-bold">
+          <input type="url" id="setTiktok" class="w-full p-3 border rounded-xl bg-slate-50 font-bold">
         </div>
         <div>
           <label class="block font-bold text-slate-700 mb-1">لینکی فەیسبووک</label>
-          <input type="url" id="setFb" placeholder="https://facebook.com/..." class="w-full p-3 border rounded-xl bg-slate-50 font-bold">
+          <input type="url" id="setFb" class="w-full p-3 border rounded-xl bg-slate-50 font-bold">
         </div>
         <div class="md:col-span-2">
           <label class="block font-bold text-slate-700 mb-1">گۆڕینی وشەی نهێنی</label>
@@ -215,7 +248,7 @@
         </select>
         <input type="number" id="pArea" placeholder="ڕووبەر (م²)" class="p-3 border rounded-xl bg-slate-50 font-bold" required>
         <input type="number" id="pBedrooms" placeholder="ژمارەی ژوور" class="p-3 border rounded-xl bg-slate-50 font-bold">
-        <input type="text" id="pMapLink" placeholder="لینکی لۆکەیشنی ئەم موڵکە لە Google Maps (ئارەزوومەندانە)" class="p-3 border rounded-xl bg-slate-50 md:col-span-2 font-bold">
+        <input type="text" id="pMapLink" placeholder="لینکی لۆکەیشنی ئەم موڵکە لە Google Maps" class="p-3 border rounded-xl bg-slate-50 md:col-span-2 font-bold">
         
         <div class="md:col-span-2 border-2 border-dashed border-slate-200 rounded-2xl p-4 bg-slate-50 text-center">
           <label class="block font-bold text-slate-700 mb-1.5">📷 هەڵبژاردنی وێنە لە مۆبایل یان کۆمپیوتەر:</label>
@@ -257,18 +290,33 @@
       subtitle: "Dashti Dustapa Real Estate",
       phone: "07512193920",
       waPhone: "9647512193920",
-      mainOfficeMap: "https://maps.google.com/?q=36.167306,43.989000",
+      mainOfficeMap: "https://maps.google.com/?q=36.1673056,43.989",
       logoUrl: "",
       heroTitle: "خانوو، زەوی و ڤێلای خەونەکانت بدۆزەرەوە",
       heroDesc: "کڕین، فرۆشتن، و بەکرێدانی هەموو جۆرە موڵکێک بە گرەنتی و باشترین نرخ",
       insta: "",
       tiktok: "",
       fb: "",
-      ownerPass: "rahand2011"
+      ownerPass: "rahand2011",
+      customTabs: []
     };
 
     let properties = [];
     let isOwnerLoggedIn = false;
+
+    function toggleSettingsMenu() {
+      const dd = document.getElementById('settingsDropdown');
+      dd.classList.toggle('hidden');
+    }
+
+    // داخستنی مینیۆ لە کاتی کلیک کردن لە شوێنێکی تر
+    window.addEventListener('click', function(e) {
+      const dd = document.getElementById('settingsDropdown');
+      const btn = e.target.closest('button');
+      if (!btn && !dd.classList.contains('hidden')) {
+        dd.classList.add('hidden');
+      }
+    });
 
     function applySiteSettings() {
       document.getElementById('headerCompanyName').innerText = siteConfig.companyName;
@@ -307,6 +355,57 @@
       document.getElementById('setInsta').value = siteConfig.insta || '';
       document.getElementById('setTiktok').value = siteConfig.tiktok || '';
       document.getElementById('setFb').value = siteConfig.fb || '';
+
+      renderCustomTabs();
+    }
+
+    function renderCustomTabs() {
+      const container = document.getElementById('customTabsContainer');
+      const adminList = document.getElementById('adminCustomTabsList');
+      const tabs = siteConfig.customTabs || [];
+
+      container.innerHTML = tabs.map(t => `
+        <a href="${t.url}" target="${t.url.startsWith('http') ? '_blank' : '_self'}" class="w-full text-right p-2.5 rounded-xl hover:bg-slate-800 text-slate-200 flex items-center justify-between transition">
+          <span>${t.icon} ${t.name}</span>
+          <span class="text-slate-500 text-[10px]">🔗</span>
+        </a>
+      `).join('');
+
+      adminList.innerHTML = tabs.map((t, idx) => `
+        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border text-xs">
+          <div class="flex items-center gap-2">
+            <span>${t.icon}</span>
+            <b class="text-slate-800">${t.name}</b>
+            <span class="text-slate-400 text-[11px]">(${t.url})</span>
+          </div>
+          <button onclick="deleteCustomTab(${idx})" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white rounded-lg text-xs font-bold transition">
+            سڕینەوە
+          </button>
+        </div>
+      `).join('');
+    }
+
+    function handleAddCustomTab(e) {
+      e.preventDefault();
+      const name = document.getElementById('tabName').value;
+      const icon = document.getElementById('tabIcon').value;
+      const url = document.getElementById('tabUrl').value;
+
+      if (!siteConfig.customTabs) siteConfig.customTabs = [];
+      siteConfig.customTabs.push({ name, icon, url });
+
+      localStorage.setItem('siteConfig', JSON.stringify(siteConfig));
+      document.getElementById('tabName').value = '';
+      document.getElementById('tabIcon').value = '';
+      document.getElementById('tabUrl').value = '';
+      renderCustomTabs();
+      alert('تابی نوێ زیادکرا بۆ ناو ئایکۆنی ڕێکخستنەکان!');
+    }
+
+    function deleteCustomTab(idx) {
+      siteConfig.customTabs.splice(idx, 1);
+      localStorage.setItem('siteConfig', JSON.stringify(siteConfig));
+      renderCustomTabs();
     }
 
     function convertLogoToBase64() {
@@ -327,7 +426,7 @@
       siteConfig.subtitle = document.getElementById('setSubtitle').value;
       siteConfig.phone = document.getElementById('setPhone').value;
       siteConfig.waPhone = document.getElementById('setWaPhone').value;
-      siteConfig.mainOfficeMap = document.getElementById('setMainOfficeMap').value || "https://maps.google.com/?q=36.167306,43.989000";
+      siteConfig.mainOfficeMap = document.getElementById('setMainOfficeMap').value || "https://maps.google.com/?q=36.1673056,43.989";
       
       const uploadedLogo = document.getElementById('logoDataHolder').value;
       const logoUrlInput = document.getElementById('setLogoUrl').value;
@@ -349,7 +448,7 @@
       localStorage.setItem('siteConfig', JSON.stringify(siteConfig));
       applySiteSettings();
       renderProperties();
-      alert('سەرۆک ڕەهەند، هەموو گۆڕانکارییەکان و لۆگۆ پاشەکەوت کران!');
+      alert('سەرۆک ڕەهەند، هەموو گۆڕانکارییەکان پاشەکەوت کران!');
     }
 
     function convertImageToBase64() {
@@ -460,18 +559,15 @@
       const pub = document.getElementById('publicView');
       const login = document.getElementById('loginView');
       const admin = document.getElementById('adminView');
-      const btn = document.getElementById('navBtn');
 
       if (!pub.classList.contains('hidden')) {
         pub.classList.add('hidden');
-        btn.innerText = 'گەڕانەوە بۆ ماڵپەڕ';
         if (isOwnerLoggedIn) admin.classList.remove('hidden');
         else login.classList.remove('hidden');
       } else {
         pub.classList.remove('hidden');
         login.classList.add('hidden');
         admin.classList.add('hidden');
-        btn.innerText = '👑 تابی خاوەن موڵک';
       }
     }
 
