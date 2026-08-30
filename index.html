@@ -11,6 +11,7 @@
   <link rel="canonical" href="https://dashti-app.vercel.app">
 
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <style>body { font-family: 'Vazirmatn', sans-serif; }</style>
 </head>
@@ -105,46 +106,57 @@
     <div class="bg-white max-w-md w-full rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200 relative">
       <button onclick="closeAuthModal()" class="absolute top-4 left-4 text-slate-400 hover:text-slate-800 font-black text-lg">✕</button>
       
-      <div class="flex border-b border-slate-200 mb-6">
-        <button id="tabLoginBtn" onclick="switchAuthTab('login')" class="flex-1 py-3 text-xs font-black border-b-2 border-amber-500 text-amber-600 transition">چوونەژوورەوە (Login)</button>
-        <button id="tabSignupBtn" onclick="switchAuthTab('signup')" class="flex-1 py-3 text-xs font-black border-b-2 border-transparent text-slate-400 hover:text-slate-700 transition">دروستکردنی هەژمار (Sign Up)</button>
+      <div id="authTabHeaders" class="flex border-b border-slate-200 mb-6">
+        <button id="tabLoginBtn" onclick="switchAuthTab('login')" class="flex-1 py-3 text-xs font-black border-b-2 border-amber-500 text-amber-600 transition">چوونەژوورەوە بە OTP</button>
+        <button id="tabSignupBtn" onclick="switchAuthTab('signup')" class="flex-1 py-3 text-xs font-black border-b-2 border-transparent text-slate-400 hover:text-slate-700 transition">دروستکردنی هەژمار</button>
       </div>
 
-      <form id="customerLoginForm" onsubmit="handleCustomerLogin(event)" class="space-y-4">
+      <form id="customerLoginForm" onsubmit="handleSendOtp(event, 'login')" class="space-y-4">
         <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">ئیمەیڵ یان مۆبایل</label>
-          <input type="text" id="loginIdentifier" placeholder="ئیمەیڵ یان ژمارەی مۆبایل..." class="w-full p-3 bg-slate-50 border rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none" required>
+          <label class="block text-xs font-bold text-slate-700 mb-1">ئیمەیڵ</label>
+          <input type="email" id="loginEmail" placeholder="ئیمەیڵەکەت بنووسە..." class="w-full p-3.5 bg-slate-50 border rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none" required>
         </div>
-        <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">وشەی نهێنی</label>
-          <input type="password" id="loginPass" placeholder="••••••••" class="w-full p-3 bg-slate-50 border rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none" required>
-        </div>
-        <button type="submit" class="w-full bg-slate-950 hover:bg-slate-900 text-amber-400 font-black py-3.5 rounded-xl text-xs transition shadow">
-          چوونەژوورەوە
+        <button type="submit" id="sendLoginOtpBtn" class="w-full bg-slate-950 hover:bg-slate-900 text-amber-400 font-black py-3.5 rounded-xl text-xs transition shadow">
+          ناردنی کۆدی پشتڕاستکردنەوە (OTP) ✉️
         </button>
       </form>
 
-      <form id="customerSignupForm" onsubmit="handleCustomerSignup(event)" class="space-y-3 hidden">
+      <form id="customerSignupForm" onsubmit="handleSendOtp(event, 'signup')" class="space-y-3 hidden">
         <div>
           <label class="block text-xs font-bold text-slate-700 mb-1">ناوی تەواو</label>
           <input type="text" id="signupName" placeholder="ناوی بەڕێزت..." class="w-full p-3 bg-slate-50 border rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none" required>
         </div>
         <div>
           <label class="block text-xs font-bold text-slate-700 mb-1">ئیمەیڵ</label>
-          <input type="email" id="signupEmail" placeholder="نموونە: user@example.com" class="w-full p-3 bg-slate-50 border rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none" required>
+          <input type="email" id="signupEmail" placeholder="user@example.com" class="w-full p-3 bg-slate-50 border rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none" required>
         </div>
         <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">ژمارەی مۆبایل</label>
-          <input type="tel" id="signupPhone" placeholder="0750XXXXXXX" class="w-full p-3 bg-slate-50 border rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none" required>
+          <label class="block text-xs font-bold text-slate-700 mb-1">ژمارەی مۆبایل <span class="text-slate-400 font-normal">(ئارەزوومەندانە / Optional)</span></label>
+          <input type="tel" id="signupPhone" placeholder="0750XXXXXXX" class="w-full p-3 bg-slate-50 border rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none">
         </div>
-        <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">وشەی نهێنی</label>
-          <input type="password" id="signupPass" placeholder="وشەی نهێنی دابنێ..." class="w-full p-3 bg-slate-50 border rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none" required>
-        </div>
-        <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-3.5 rounded-xl text-xs transition shadow">
-          دروستکردنی هەژمار
+        <button type="submit" id="sendSignupOtpBtn" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-3.5 rounded-xl text-xs transition shadow">
+          ناردنی کۆدی پشتڕاستکردنەوە (OTP) ✉️
         </button>
       </form>
+
+      <div id="otpVerifyScreen" class="hidden space-y-4 text-center">
+        <div class="w-12 h-12 bg-amber-500/10 text-amber-500 rounded-2xl flex items-center justify-center mx-auto text-2xl font-black">
+          📩
+        </div>
+        <h4 class="text-sm font-black text-slate-900">کۆدی پشتڕاستکردنەوە داخڵ بکە</h4>
+        <p class="text-xs text-slate-500">کۆدێکی ٦ ژمارەیی بۆ ئیمەیڵی <span id="targetEmailText" class="font-bold text-slate-800"></span> نێردرا.</p>
+        
+        <form onsubmit="handleVerifyOtp(event)" class="space-y-4">
+          <input type="text" id="otpCodeInput" maxlength="6" placeholder="123456" class="w-full p-3.5 bg-slate-50 border-2 border-amber-400 rounded-2xl text-center font-black text-lg tracking-[0.4em] focus:outline-none" required>
+          <button type="submit" id="verifyOtpBtn" class="w-full bg-slate-950 hover:bg-slate-900 text-amber-400 font-black py-3.5 rounded-xl text-xs transition shadow">
+            پشتڕاستکردنەوە و چوونەژوورەوە ✅
+          </button>
+          <button type="button" onclick="cancelOtpVerification()" class="text-xs text-slate-400 hover:text-slate-700 font-bold block mx-auto">
+            گۆڕینی ئیمەیڵ / گەڕانەوە
+          </button>
+        </form>
+      </div>
+
     </div>
   </div>
 
@@ -203,7 +215,7 @@
 
     <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm">
       <h3 class="text-base font-black text-slate-900 mb-4 flex items-center gap-2">
-        <span>📑</span> دروستکردن و بەڕێوەبردنی تابە تایبەتەکان لە ناو ئایکۆنی ڕێکخستن
+        <span>📑</span> دروستکردن و بەڕێوەبردنی تابە تایبەتەکان
       </h3>
       <form onsubmit="handleAddCustomTab(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs mb-6">
         <input type="text" id="tabName" placeholder="ناوی تاب (بۆ نموونە: دەربارەی ئێمە)" class="p-3 border rounded-xl bg-slate-50 font-bold" required>
@@ -325,6 +337,7 @@
   <script>
     const SUPABASE_URL = 'https://vvvldvbgywfynlroudio.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ2dmxkdmJneXdmeW5scm91ZGlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgwNDExNDMsImV4cCI6MjEwMzYxNzE0M30.QuThGUEutLdCoPyq-O8AsocMqkQS8C0W31RN2nnfEPY';
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
     let siteConfig = JSON.parse(localStorage.getItem('siteConfig')) || {
       companyName: "خانووبەرەی دەشتی دوستەپە",
@@ -341,7 +354,8 @@
 
     let properties = [];
     let isOwnerLoggedIn = false;
-    let registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+    let pendingAuthEmail = '';
+    let pendingAuthName = '';
     let currentCustomer = JSON.parse(localStorage.getItem('currentCustomer')) || null;
 
     function applySiteSettings() {
@@ -379,9 +393,10 @@
       checkCustomerAuth();
     }
 
-    // سیستەمی Authentication بۆ کڕیاران
+    // سیستەمی ناردن و پشکنینی OTP بە ئیمەیڵ
     function showAuthModal(tab = 'login') {
       document.getElementById('authModal').classList.remove('hidden');
+      cancelOtpVerification();
       switchAuthTab(tab);
     }
 
@@ -408,45 +423,88 @@
       }
     }
 
-    function handleCustomerSignup(e) {
+    async function handleSendOtp(e, mode) {
       e.preventDefault();
-      const name = document.getElementById('signupName').value.trim();
-      const email = document.getElementById('signupEmail').value.trim().toLowerCase();
-      const phone = document.getElementById('signupPhone').value.trim();
-      const pass = document.getElementById('signupPass').value;
+      let email = '';
+      let name = '';
 
-      const exists = registeredUsers.some(u => u.email === email || u.phone === phone);
-      if (exists) {
-        alert('ئەم ئیمەیڵە یان ژمارە مۆبایلە پێشتر تۆمارکراوە!');
-        return;
+      if (mode === 'signup') {
+        email = document.getElementById('signupEmail').value.trim();
+        name = document.getElementById('signupName').value.trim();
+      } else {
+        email = document.getElementById('loginEmail').value.trim();
+        name = email.split('@')[0];
       }
 
-      const newUser = { name, email, phone, pass };
-      registeredUsers.push(newUser);
-      localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
-      currentCustomer = newUser;
-      localStorage.setItem('currentCustomer', JSON.stringify(currentCustomer));
+      pendingAuthEmail = email;
+      pendingAuthName = name;
 
-      closeAuthModal();
-      checkCustomerAuth();
-      alert(`بەخێربێیت بەڕێز ${name}! هەژمارەکەت بە سەرکەوتوویی دروستکرا.`);
+      const btn = mode === 'signup' ? document.getElementById('sendSignupOtpBtn') : document.getElementById('sendLoginOtpBtn');
+      const originalText = btn.innerText;
+      btn.innerText = 'کۆدەکە دەنێردرێت... ⏳';
+      btn.disabled = true;
+
+      try {
+        const { error } = await supabaseClient.auth.signInWithOtp({
+          email: email,
+          options: { shouldCreateUser: true }
+        });
+
+        if (error) throw error;
+
+        // پیشاندانی شاشەی داخڵکردنی کۆدی OTP
+        document.getElementById('authTabHeaders').classList.add('hidden');
+        document.getElementById('customerLoginForm').classList.add('hidden');
+        document.getElementById('customerSignupForm').classList.add('hidden');
+        document.getElementById('targetEmailText').innerText = email;
+        document.getElementById('otpVerifyScreen').classList.remove('hidden');
+        document.getElementById('otpCodeInput').value = '';
+        document.getElementById('otpCodeInput').focus();
+      } catch (err) {
+        alert('هەڵە لە ناردنی کۆد: ' + (err.message || 'تکایە دڵنیابە لە ئیمەیڵەکەت'));
+      } finally {
+        btn.innerText = originalText;
+        btn.disabled = false;
+      }
     }
 
-    function handleCustomerLogin(e) {
+    async function handleVerifyOtp(e) {
       e.preventDefault();
-      const id = document.getElementById('loginIdentifier').value.trim().toLowerCase();
-      const pass = document.getElementById('loginPass').value;
+      const token = document.getElementById('otpCodeInput').value.trim();
+      const btn = document.getElementById('verifyOtpBtn');
+      btn.innerText = 'پشکنین... ⏳';
+      btn.disabled = true;
 
-      const user = registeredUsers.find(u => (u.email === id || u.phone === id) && u.pass === pass);
-      if (user) {
-        currentCustomer = user;
+      try {
+        const { data, error } = await supabaseClient.auth.verifyOtp({
+          email: pendingAuthEmail,
+          token: token,
+          type: 'email'
+        });
+
+        if (error) throw error;
+
+        currentCustomer = {
+          name: pendingAuthName || pendingAuthEmail.split('@')[0],
+          email: pendingAuthEmail
+        };
         localStorage.setItem('currentCustomer', JSON.stringify(currentCustomer));
+
         closeAuthModal();
         checkCustomerAuth();
-        alert(`بەخێربێیتەوە بەڕێز ${user.name}!`);
-      } else {
-        alert('ئیمەیڵ/مۆبایل یان وشەی نهێنی هەڵەیە!');
+        alert(`بەخێربێیت بەڕێز ${currentCustomer.name}! چوونەژوورەوەت بە سەرکەوتوویی تەواو بوو.`);
+      } catch (err) {
+        alert('کۆدی OTP هەڵەیە یان بەسەرچووە: ' + err.message);
+      } finally {
+        btn.innerText = 'پشتڕاستکردنەوە و چوونەژوورەوە ✅';
+        btn.disabled = false;
       }
+    }
+
+    function cancelOtpVerification() {
+      document.getElementById('otpVerifyScreen').classList.add('hidden');
+      document.getElementById('authTabHeaders').classList.remove('hidden');
+      switchAuthTab('login');
     }
 
     function checkCustomerAuth() {
@@ -466,7 +524,8 @@
       }
     }
 
-    function logoutCustomer() {
+    async function logoutCustomer() {
+      await supabaseClient.auth.signOut();
       currentCustomer = null;
       localStorage.removeItem('currentCustomer');
       checkCustomerAuth();
