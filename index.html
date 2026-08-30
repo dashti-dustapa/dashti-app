@@ -29,6 +29,7 @@
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col justify-between transition-colors duration-300">
 
+  <!-- Header -->
   <header class="bg-white dark:bg-slate-950 text-slate-900 dark:text-white sticky top-0 z-50 shadow-md border-b border-slate-200 dark:border-slate-800 transition-colors">
     <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center relative">
       <div class="flex items-center gap-3">
@@ -50,11 +51,13 @@
           <span>📞</span> <span id="headerPhoneText">0751 219 3920</span>
         </a>
 
+        <!-- ئایکۆنی ڕێکخستنەکان -->
         <div class="relative">
           <button onclick="toggleSettingsMenu()" class="bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 theme-text border border-slate-200 dark:border-slate-700 p-2.5 rounded-xl transition flex items-center justify-center shadow">
             <span class="text-base">⚙️</span>
           </button>
 
+          <!-- مینیۆی ناو ڕێکخستن -->
           <div id="settingsDropdown" class="hidden absolute left-0 mt-2 w-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl p-2.5 z-50 text-xs font-bold space-y-1.5">
             <div class="p-2 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-between">
               <span class="text-slate-600 dark:text-slate-300">🌐 زمان / Language</span>
@@ -73,6 +76,7 @@
               <span class="text-[10px] bg-slate-200 dark:bg-slate-700 px-2 py-0.5 rounded text-slate-600 dark:text-slate-300">گۆڕین</span>
             </button>
 
+            <!-- تابی خاوەن موڵک -->
             <button id="navOwnerBtn" onclick="toggleOwnerView(); toggleSettingsMenu();" class="w-full text-right p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 theme-text flex items-center justify-between transition">
               <span>👑 تابی خاوەن موڵک</span>
               <span class="text-[10px] bg-amber-500/20 px-2 py-0.5 rounded theme-text">Admin</span>
@@ -92,6 +96,7 @@
     </div>
   </header>
 
+  <!-- لاپەڕەی سەرەکی بۆ کڕیاران -->
   <main id="publicView" class="flex-1">
     <section class="bg-gradient-to-b from-slate-900 to-slate-950 text-white py-14 px-4 border-b border-slate-800 text-center relative overflow-hidden">
       <div class="max-w-4xl mx-auto relative z-10">
@@ -145,11 +150,13 @@
       </div>
     </section>
 
+    <!-- پێشانگای موڵکەکان -->
     <section class="max-w-7xl mx-auto px-4 py-12">
       <div id="propertyGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </section>
   </main>
 
+  <!-- شاشەی وشەی نهێنی تابی خاوەن -->
   <main id="loginView" class="hidden max-w-md mx-auto px-4 py-20">
     <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl text-center">
       <div class="w-16 h-16 bg-amber-500/10 theme-text rounded-2xl flex items-center justify-center mx-auto text-3xl mb-4 font-black">
@@ -167,6 +174,7 @@
     </div>
   </main>
 
+  <!-- داشبۆردی سەرۆک ڕەهەند -->
   <main id="adminView" class="hidden max-w-6xl mx-auto px-4 py-8 space-y-8 w-full">
     <div class="bg-slate-900 dark:bg-slate-950 text-white p-6 sm:p-8 rounded-3xl shadow-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border border-slate-800">
       <div>
@@ -184,6 +192,7 @@
       </div>
     </div>
 
+    <!-- ستۆدیۆی ڕەنگەکان -->
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
       <div>
         <h3 class="text-base font-black text-slate-900 dark:text-white mb-1 flex items-center gap-2">
@@ -214,6 +223,7 @@
       </div>
     </div>
 
+    <!-- بەشی گۆڕینی ئایکۆنەکان و بەستەرەکان -->
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       <h3 class="text-base font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
         <span>🌐</span> بەڕێوەبردنی سۆشیال میدیا و زانیارییەکانی ماڵپەڕ
@@ -230,21 +240,6 @@
         <div>
           <label class="block font-bold text-blue-600 dark:text-blue-400 mb-1">📘 لینکی فەیسبووک</label>
           <input type="url" id="setFb" placeholder="https://facebook.com/..." class="w-full p-3 border border-blue-200 dark:border-blue-900 rounded-xl bg-blue-50/40 dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
-        </div>
-
-        <div class="md:col-span-3 border-t border-slate-200 dark:border-slate-800 pt-4">
-          <p class="font-bold text-slate-700 dark:text-slate-300 mb-2">✨ گۆڕینی ئایکۆنی سۆشیال میدیا (Custom Icon Text / Emoji):</p>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-            <div>
-              <input type="text" id="setIconInsta" placeholder="بۆ نموونە: 📸 یان IG (بەتاڵی بهێڵە بۆ فەرمی)" class="w-full p-2.5 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
-            </div>
-            <div>
-              <input type="text" id="setIconTiktok" placeholder="بۆ نموونە: 🎵 یان TT (بەتاڵی بهێڵە بۆ فەرمی)" class="w-full p-2.5 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
-            </div>
-            <div>
-              <input type="text" id="setIconFb" placeholder="بۆ نموونە: 📘 یان FB (بەتاڵی بهێڵە بۆ فەرمی)" class="w-full p-2.5 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
-            </div>
-          </div>
         </div>
 
         <div>
@@ -297,6 +292,7 @@
       </form>
     </div>
 
+    <!-- بەشی دروستکردنی تاب -->
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       <h3 class="text-base font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
         <span>📑</span> دروستکردن و بەڕێوەبردنی تابە تایبەتەکان
@@ -312,6 +308,7 @@
       <div id="adminCustomTabsList" class="space-y-2"></div>
     </div>
 
+    <!-- زیادکردن و دەستکاریکردنی موڵکی نوێ -->
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       <h3 id="formTitle" class="text-base font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
         <span>➕</span> زیادکردنی موڵکی نوێ
@@ -339,7 +336,7 @@
             <input type="url" id="pImageUrlDirect" placeholder="یان لینکی وێنە لێرە دابنێ" class="p-2 border border-slate-200 dark:border-slate-700 rounded-xl text-xs w-full sm:w-1/2 bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
           </div>
           <input type="hidden" id="pImage">
-          <p id="uploadStatus" class="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold mt-1.5 hidden">وێنەکە بە سەرکەوتوویی بچووککرایەوە و ئامادەیە ✅</p>
+          <p id="uploadStatus" class="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold mt-1.5 hidden">وێنەکە ئامادەیە ✅</p>
         </div>
 
         <textarea id="pDesc" placeholder="تەواوی وردەکارییەکان..." class="p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white md:col-span-2 h-20 font-bold" required></textarea>
@@ -355,12 +352,14 @@
       </form>
     </div>
 
+    <!-- بەڕێوەبردنی موڵکەکان -->
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       <h3 class="font-black text-sm text-slate-900 dark:text-white mb-4 flex items-center gap-2"><span>📂</span> بەڕێوەبردن و دەستکاریکردنی موڵکەکان</h3>
       <div id="adminPropertyList" class="space-y-3"></div>
     </div>
   </main>
 
+  <!-- Footer -->
   <footer class="bg-white dark:bg-slate-950 text-slate-600 dark:text-slate-400 py-8 px-4 mt-16 border-t border-slate-200 dark:border-slate-800 text-center text-xs transition-colors">
     <p id="footerCompanyName" class="font-bold text-slate-900 dark:text-white mb-1">کۆمپانیای خانووبەرەی دەشتی دوستەپە</p>
     <p id="footerPhoneDisplay" class="theme-text font-bold mb-2">📞 0751 219 3920</p>
@@ -435,9 +434,6 @@
       insta: "",
       tiktok: "",
       fb: "",
-      iconInsta: "",
-      iconTiktok: "",
-      iconFb: "",
       heroTitle: "خانوو، زەوی و ڤێلای خەونەکانت بدۆزەرەوە",
       heroDesc: "کڕین، فرۆشتن، و بەکرێدانی هەموو جۆرە موڵکێک بە گرەنتی و باشترین نرخ",
       themeColor: "#f59e0b",
@@ -466,6 +462,7 @@
       siteConfig.themeHover = hover;
       localStorage.setItem('siteConfig', JSON.stringify(siteConfig));
       applyThemeColor();
+      saveSettingsToCloud();
     }
 
     function handleLiveCustomColor(val) {
@@ -564,10 +561,6 @@
       document.getElementById('footerTiktokBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.tiktok, 'TikTok'); };
       document.getElementById('footerFbBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.fb, 'Facebook'); };
 
-      document.getElementById('instaIconHolder').innerHTML = siteConfig.iconInsta ? `<span class="font-black text-xs">${siteConfig.iconInsta}</span>` : defaultInstaSvg;
-      document.getElementById('tiktokIconHolder').innerHTML = siteConfig.iconTiktok ? `<span class="font-black text-xs">${siteConfig.iconTiktok}</span>` : defaultTiktokSvg;
-      document.getElementById('fbIconHolder').innerHTML = siteConfig.iconFb ? `<span class="font-black text-xs">${siteConfig.iconFb}</span>` : defaultFbSvg;
-
       const logoImg = document.getElementById('headerLogoImg');
       const logoText = document.getElementById('headerLogoText');
       if (siteConfig.logoUrl) {
@@ -588,9 +581,6 @@
       document.getElementById('setInsta').value = siteConfig.insta || '';
       document.getElementById('setTiktok').value = siteConfig.tiktok || '';
       document.getElementById('setFb').value = siteConfig.fb || '';
-      document.getElementById('setIconInsta').value = siteConfig.iconInsta || '';
-      document.getElementById('setIconTiktok').value = siteConfig.iconTiktok || '';
-      document.getElementById('setIconFb').value = siteConfig.iconFb || '';
       document.getElementById('setHeroTitle').value = siteConfig.heroTitle;
       document.getElementById('setHeroDesc').value = siteConfig.heroDesc;
 
@@ -650,6 +640,7 @@
       document.getElementById('tabIcon').value = '';
       document.getElementById('tabUrl').value = '';
       renderCustomTabs();
+      saveSettingsToCloud();
       alert('تابی نوێ زیادکرا!');
     }
 
@@ -657,18 +648,49 @@
       siteConfig.customTabs.splice(idx, 1);
       localStorage.setItem('siteConfig', JSON.stringify(siteConfig));
       renderCustomTabs();
+      saveSettingsToCloud();
     }
 
     function convertLogoToBase64() {
       const file = document.getElementById('logoFileInput').files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onloadend = function() {
-          document.getElementById('logoDataHolder').value = reader.result;
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          const maxDim = 200;
+          let width = img.width;
+          let height = img.height;
+          if (width > height && width > maxDim) {
+            height = Math.round((height * maxDim) / width);
+            width = maxDim;
+          } else if (height > maxDim) {
+            width = Math.round((width * maxDim) / height);
+            height = maxDim;
+          }
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+
+          document.getElementById('logoDataHolder').value = canvas.toDataURL('image/png');
           document.getElementById('setLogoUrl').value = '';
         };
-        reader.readAsDataURL(file);
-      }
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    async function saveSettingsToCloud() {
+      try {
+        await fetch(`${SUPABASE_URL}/rest/v1/site_settings?id=eq.global`, {
+          method: 'PATCH',
+          headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'resolution=merge-duplicates' },
+          body: JSON.stringify({ id: 'global', config_data: siteConfig })
+        });
+      } catch(e){}
     }
 
     function saveSiteSettings(e) {
@@ -681,9 +703,6 @@
       siteConfig.insta = document.getElementById('setInsta').value;
       siteConfig.tiktok = document.getElementById('setTiktok').value;
       siteConfig.fb = document.getElementById('setFb').value;
-      siteConfig.iconInsta = document.getElementById('setIconInsta').value;
-      siteConfig.iconTiktok = document.getElementById('setIconTiktok').value;
-      siteConfig.iconFb = document.getElementById('setIconFb').value;
       
       const uploadedLogo = document.getElementById('logoDataHolder').value;
       const logoUrlInput = document.getElementById('setLogoUrl').value;
@@ -701,11 +720,11 @@
 
       localStorage.setItem('siteConfig', JSON.stringify(siteConfig));
       applySiteSettings();
-      renderProperties();
-      alert('سەرۆک ڕەهەند، هەموو گۆڕانکارییەکان پاشەکەوت کران!');
+      saveSettingsToCloud();
+      alert('سەرۆک ڕەهەند، هەموو گۆڕانکارییەکان بۆ هەموو ئامێرەکان (مۆبایل و لاپتۆپ) پاشەکەوت کران!');
     }
 
-    // پەستاندن و کەمکردنەوەی قەبارەی وێنە بۆ خێرایی سەرسوڕهێنەر
+    // کەمکردنەوەی قەبارەی وێنەی مۆبایل بۆ ٨٠٠ پێکسڵ تا بە هیچ جۆرێک لە مۆبایل نەوەستێت
     function convertImageToBase64() {
       const file = document.getElementById('fileInput').files[0];
       if (!file) return;
@@ -717,7 +736,7 @@
           const canvas = document.createElement('canvas');
           let width = img.width;
           let height = img.height;
-          const maxDim = 900;
+          const maxDim = 800;
 
           if (width > height && width > maxDim) {
             height = Math.round((height * maxDim) / width);
@@ -732,7 +751,7 @@
           const ctx = canvas.getContext('2d');
           ctx.drawImage(img, 0, 0, width, height);
 
-          const compressedBase64 = canvas.toDataURL('image/jpeg', 0.75);
+          const compressedBase64 = canvas.toDataURL('image/jpeg', 0.70);
           document.getElementById('pImage').value = compressedBase64;
           document.getElementById('uploadStatus').classList.remove('hidden');
         };
@@ -741,25 +760,33 @@
       reader.readAsDataURL(file);
     }
 
-    async function syncSupabase() {
+    async function syncCloudData() {
       try {
+        // ١. سینککردنی ڕێکخستنەکان (سۆشیال میدیا و ڕەنگ) لە هەورەوە
+        const setRes = await fetch(`${SUPABASE_URL}/rest/v1/site_settings?id=eq.global&select=*`, {
+          headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
+        });
+        const setJson = await setRes.json();
+        if (setJson && setJson[0] && setJson[0].config_data) {
+          siteConfig = setJson[0].config_data;
+          localStorage.setItem('siteConfig', JSON.stringify(siteConfig));
+          applySiteSettings();
+        }
+
+        // ٢. سینککردنی موڵکەکان بۆ لاپتۆپ و مۆبایل
         const res = await fetch(`${SUPABASE_URL}/rest/v1/properties?select=*&order=created_at.desc`, {
           headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
         });
         const cloudData = await res.json();
-        if (cloudData && Array.isArray(cloudData) && cloudData.length > 0) {
-          // تەنانەت ئەگەر هەوریش نوێ ببێتەوە، موڵکە لۆکاڵییەکان پارێزراو دەبن
-          const merged = [...cloudData];
-          properties.forEach(p => {
-            if (!merged.some(c => c.id === p.id)) merged.push(p);
-          });
-          properties = merged;
+        if (cloudData && Array.isArray(cloudData)) {
+          properties = cloudData;
           localStorage.setItem('site_properties_list', JSON.stringify(properties));
           renderProperties();
           renderAdminList();
         }
       } catch (e) {
-        console.log('Running seamlessly on local database');
+        renderProperties();
+        renderAdminList();
       }
     }
 
@@ -949,42 +976,42 @@
         map_url: document.getElementById('pMapLink').value || ''
       };
 
-      try {
-        if (editId) {
-          const idx = properties.findIndex(p => p.id === editId);
-          if (idx > -1) {
-            properties[idx] = { ...properties[idx], ...propData };
-            localStorage.setItem('site_properties_list', JSON.stringify(properties));
-            renderProperties();
-            renderAdminList();
-            alert('موڵکەکە بە سەرکەوتوویی نوێکرایەوە!');
-            resetForm();
-
-            fetch(`${SUPABASE_URL}/rest/v1/properties?id=eq.${editId}`, {
-              method: 'PATCH',
-              headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
-              body: JSON.stringify(propData)
-            }).catch(() => {});
-          }
-        } else {
-          propData.id = 'prop_' + Date.now();
-          propData.status = 'available';
-          
-          properties.unshift(propData);
+      if (editId) {
+        const idx = properties.findIndex(p => p.id === editId);
+        if (idx > -1) {
+          properties[idx] = { ...properties[idx], ...propData };
           localStorage.setItem('site_properties_list', JSON.stringify(properties));
           renderProperties();
           renderAdminList();
-          alert('سەرۆک ڕەهەند، موڵکی نوێ بە سەرکەوتوویی لە ماڵپەڕ دانرا!');
+          alert('موڵکەکە بە سەرکەوتوویی لە هەموو ئامێرەکان نوێکرایەوە!');
           resetForm();
 
-          fetch(`${SUPABASE_URL}/rest/v1/properties`, {
+          try {
+            await fetch(`${SUPABASE_URL}/rest/v1/properties?id=eq.${editId}`, {
+              method: 'PATCH',
+              headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
+              body: JSON.stringify(propData)
+            });
+          } catch (err) {}
+        }
+      } else {
+        propData.id = 'prop_' + Date.now();
+        propData.status = 'available';
+        
+        properties.unshift(propData);
+        localStorage.setItem('site_properties_list', JSON.stringify(properties));
+        renderProperties();
+        renderAdminList();
+        alert('سەرۆک ڕەهەند، موڵکی نوێ بە سەرکەوتوویی لە مۆبایل و لاپتۆپ بڵاوکرایەوە!');
+        resetForm();
+
+        try {
+          await fetch(`${SUPABASE_URL}/rest/v1/properties`, {
             method: 'POST',
             headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
             body: JSON.stringify(propData)
-          }).catch(() => {});
-        }
-      } catch (err) {
-        alert('کێشەیەک ڕوویدا: ' + err.message);
+          });
+        } catch (err) {}
       }
     }
 
@@ -997,11 +1024,13 @@
         renderProperties();
         renderAdminList();
       }
-      fetch(`${SUPABASE_URL}/rest/v1/properties?id=eq.${id}`, {
-        method: 'PATCH',
-        headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status: nextStatus })
-      }).catch(() => {});
+      try {
+        await fetch(`${SUPABASE_URL}/rest/v1/properties?id=eq.${id}`, {
+          method: 'PATCH',
+          headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status: nextStatus })
+        });
+      } catch (e) {}
     }
 
     async function deleteProp(id) {
@@ -1010,19 +1039,19 @@
         localStorage.setItem('site_properties_list', JSON.stringify(properties));
         renderProperties();
         renderAdminList();
-        fetch(`${SUPABASE_URL}/rest/v1/properties?id=eq.${id}`, {
-          method: 'DELETE',
-          headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
-        }).catch(() => {});
+        try {
+          await fetch(`${SUPABASE_URL}/rest/v1/properties?id=eq.${id}`, {
+            method: 'DELETE',
+            headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
+          });
+        } catch (e) {}
       }
     }
 
     initTheme();
     changeLanguage(currentLang);
     applySiteSettings();
-    renderProperties();
-    renderAdminList();
-    syncSupabase();
+    syncCloudData();
   </script>
 </body>
 </html>
