@@ -214,7 +214,7 @@
       
       <form onsubmit="handleAuth(event)" class="space-y-4">
         <input type="password" id="ownerPassInput" placeholder="وشەی نهێنی..." class="w-full p-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-2xl text-center font-bold text-sm tracking-widest focus:outline-none focus:ring-2 focus:ring-amber-500" required>
-        <button type="submit" class="w-full theme-bg theme-hover text-slate-950 font-black py-3.5 rounded-2xl text-xs transition shadow">
+        <button type="submit" class="w-full theme-bg theme-hover text-slate-950 font-black py-3.5 rounded-xl text-xs transition shadow">
           چوونەژوورەوەی سەرۆک ڕەهەند
         </button>
       </form>
@@ -226,7 +226,7 @@
       <div>
         <span class="theme-bg text-slate-950 text-[10px] font-black px-2.5 py-1 rounded-md uppercase">Supreme Controller</span>
         <h2 class="text-2xl sm:text-3xl font-black theme-text mt-2">بەخێربێیت سەرۆک ڕەهەند</h2>
-        <p class="text-xs text-slate-400 mt-1">کۆنترۆڵی ڕەنگی ماڵپەڕ، لۆگۆ، تابەکان، تەلەفۆن و موڵکەکان</p>
+        <p class="text-xs text-slate-400 mt-1">ستۆدیۆی ڕەنگەکان، تابەکان، لۆگۆ، تەلەفۆن و بەڕێوەبردنی موڵکەکان</p>
       </div>
       <div class="flex gap-2">
         <button onclick="showPublicView()" class="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition">
@@ -238,19 +238,44 @@
       </div>
     </div>
 
-    <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
-      <h3 class="text-base font-black text-slate-900 dark:text-white mb-2 flex items-center gap-2">
-        <span>🎨</span> گۆڕینی ڕەنگی سەرەکیی ماڵپەڕ (Theme Color Picker)
-      </h3>
-      <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">ڕەنگێکی شاھانە هەڵبژێرە تا هەموو دوگمە، لۆگۆ و بەشەکانی ماڵپەڕ ڕاستەوخۆ بەو ڕەنگە دەربکەون:</p>
-      
-      <div class="flex flex-wrap gap-3 items-center">
-        <button type="button" onclick="setThemeColor('#f59e0b', '#d97706')" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-500 text-slate-950 font-black text-xs shadow hover:scale-105 transition">✨ ئاڵتوونی (Gold)</button>
-        <button type="button" onclick="setThemeColor('#0284c7', '#0369a1')" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-sky-600 text-white font-black text-xs shadow hover:scale-105 transition">🌊 شینی شاھانە (Sky Blue)</button>
-        <button type="button" onclick="setThemeColor('#10b981', '#059669')" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 text-white font-black text-xs shadow hover:scale-105 transition">🌿 زمڕوتی (Emerald)</button>
-        <button type="button" onclick="setThemeColor('#8b5cf6', '#7c3aed')" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-violet-600 text-white font-black text-xs shadow hover:scale-105 transition">🔮 مۆری شاهانە (Royal Purple)</button>
-        <button type="button" onclick="setThemeColor('#e11d48', '#be123c')" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-rose-600 text-white font-black text-xs shadow hover:scale-105 transition">🌹 سووری یاقووتی (Ruby Red)</button>
-        <button type="button" onclick="setThemeColor('#0f172a', '#020617')" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 text-white font-black text-xs border border-slate-700 shadow hover:scale-105 transition">🖤 ڕەشی مۆدێرن (Modern Black)</button>
+    <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+      <div>
+        <h3 class="text-base font-black text-slate-900 dark:text-white mb-1 flex items-center gap-2">
+          <span>🎨</span> ستۆدیۆی ڕەنگەکان (Super Color Studio)
+        </h3>
+        <p class="text-xs text-slate-500 dark:text-slate-400">هەر ڕەنگێک کە دەتەوێت هەڵیبژێرە تا ڕاستەوخۆ دیزاینی هەموو ماڵپەڕەکە بەو ڕەنگە دەربکەوێت:</p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5">
+        <button type="button" onclick="setThemeColor('#f59e0b', '#d97706')" class="p-2.5 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs flex items-center justify-center gap-1 shadow hover:scale-105 transition">✨ ئاڵتوونی</button>
+        <button type="button" onclick="setThemeColor('#0284c7', '#0369a1')" class="p-2.5 rounded-xl bg-sky-600 text-white font-bold text-xs flex items-center justify-center gap-1 shadow hover:scale-105 transition">🌊 شین</button>
+        <button type="button" onclick="setThemeColor('#10b981', '#059669')" class="p-2.5 rounded-xl bg-emerald-600 text-white font-bold text-xs flex items-center justify-center gap-1 shadow hover:scale-105 transition">🌿 زمڕوتی</button>
+        <button type="button" onclick="setThemeColor('#8b5cf6', '#7c3aed')" class="p-2.5 rounded-xl bg-violet-600 text-white font-bold text-xs flex items-center justify-center gap-1 shadow hover:scale-105 transition">🔮 مۆر</button>
+        <button type="button" onclick="setThemeColor('#e11d48', '#be123c')" class="p-2.5 rounded-xl bg-rose-600 text-white font-bold text-xs flex items-center justify-center gap-1 shadow hover:scale-105 transition">🌹 سوور</button>
+        <button type="button" onclick="setThemeColor('#ec4899', '#db2777')" class="p-2.5 rounded-xl bg-pink-500 text-white font-bold text-xs flex items-center justify-center gap-1 shadow hover:scale-105 transition">🌸 پەمەیی</button>
+        
+        <button type="button" onclick="setThemeColor('#14b8a6', '#0d9488')" class="p-2.5 rounded-xl bg-teal-500 text-white font-bold text-xs flex items-center justify-center gap-1 shadow hover:scale-105 transition">🐬 تیڵ (Teal)</button>
+        <button type="button" onclick="setThemeColor('#06b6d4', '#0891b2')" class="p-2.5 rounded-xl bg-cyan-500 text-slate-950 font-bold text-xs flex items-center justify-center gap-1 shadow hover:scale-105 transition">💎 فیرۆزەیی</button>
+        <button type="button" onclick="setThemeColor('#f97316', '#ea580c')" class="p-2.5 rounded-xl bg-orange-500 text-slate-950 font-bold text-xs flex items-center justify-center gap-1 shadow hover:scale-105 transition">🔥 پرتەقاڵی</button>
+        <button type="button" onclick="setThemeColor('#6366f1', '#4f46e5')" class="p-2.5 rounded-xl bg-indigo-500 text-white font-bold text-xs flex items-center justify-center gap-1 shadow hover:scale-105 transition">🌌 ئیندیگۆ</button>
+        <button type="button" onclick="setThemeColor('#64748b', '#475569')" class="p-2.5 rounded-xl bg-slate-500 text-white font-bold text-xs flex items-center justify-center gap-1 shadow hover:scale-105 transition">🪙 زیوی / سلیڤەر</button>
+        <button type="button" onclick="setThemeColor('#0f172a', '#020617')" class="p-2.5 rounded-xl bg-slate-900 text-white font-bold text-xs border border-slate-700 flex items-center justify-center gap-1 shadow hover:scale-105 transition">🖤 ڕەش</button>
+      </div>
+
+      <div class="p-4 bg-slate-50 dark:bg-slate-800/70 rounded-2xl border border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <input type="color" id="customColorPicker" oninput="handleLiveCustomColor(this.value)" class="w-12 h-12 rounded-xl cursor-pointer bg-transparent border-0">
+          <div>
+            <p class="font-bold text-xs text-slate-900 dark:text-white">هەڵبژاردنی ڕەنگی تایبەت (Custom Color Wheel)</p>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400">کلیک لەسەر بازنەی ڕەنگ بکە بۆ دەستنیشانکردنی ملیۆنان ڕەنگی تر</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 w-full sm:w-auto">
+          <input type="text" id="customHexCode" placeholder="#HEX..." oninput="handleHexInput(this.value)" class="p-2.5 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-xl text-xs font-mono font-bold w-28 text-center uppercase">
+          <button type="button" onclick="applyAndSaveCustomColor()" class="theme-bg theme-hover text-slate-950 font-black text-xs px-4 py-2.5 rounded-xl shadow transition">
+            پاشەکەوتکردن 💾
+          </button>
+        </div>
       </div>
     </div>
 
@@ -448,6 +473,11 @@
       const hover = siteConfig.themeHover || '#d97706';
       document.documentElement.style.setProperty('--primary-color', color);
       document.documentElement.style.setProperty('--primary-hover', hover);
+
+      const colorPicker = document.getElementById('customColorPicker');
+      const hexInput = document.getElementById('customHexCode');
+      if (colorPicker) colorPicker.value = color;
+      if (hexInput) hexInput.value = color;
     }
 
     function setThemeColor(color, hover) {
@@ -455,7 +485,26 @@
       siteConfig.themeHover = hover;
       localStorage.setItem('siteConfig', JSON.stringify(siteConfig));
       applyThemeColor();
-      alert('ڕەنگی ماڵپەڕ گۆڕدرا!');
+    }
+
+    function handleLiveCustomColor(val) {
+      document.getElementById('customHexCode').value = val;
+      document.documentElement.style.setProperty('--primary-color', val);
+      document.documentElement.style.setProperty('--primary-hover', val);
+    }
+
+    function handleHexInput(val) {
+      if (val.startsWith('#') && (val.length === 4 || val.length === 7)) {
+        document.getElementById('customColorPicker').value = val;
+        document.documentElement.style.setProperty('--primary-color', val);
+        document.documentElement.style.setProperty('--primary-hover', val);
+      }
+    }
+
+    function applyAndSaveCustomColor() {
+      const val = document.getElementById('customColorPicker').value;
+      setThemeColor(val, val);
+      alert('ڕەنگە تایبەتەکەت پاشەکەوت کرا!');
     }
 
     function initTheme() {
