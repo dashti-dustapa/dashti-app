@@ -21,6 +21,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Vazirmatn', sans-serif; }
+    :root {
+      --primary-color: #f59e0b;
+      --primary-hover: #d97706;
+    }
+    .theme-bg { background-color: var(--primary-color) !important; }
+    .theme-text { color: var(--primary-color) !important; }
+    .theme-border { border-color: var(--primary-color) !important; }
+    .theme-hover:hover { background-color: var(--primary-hover) !important; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col justify-between transition-colors duration-300">
@@ -29,55 +37,56 @@
   <header class="bg-white dark:bg-slate-950 text-slate-900 dark:text-white sticky top-0 z-50 shadow-md border-b border-slate-200 dark:border-slate-800 transition-colors">
     <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center relative">
       <div class="flex items-center gap-3">
-        <!-- لۆگۆ -->
         <div id="brandBadgeContainer" class="w-11 h-11 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center overflow-hidden shadow cursor-pointer" onclick="showPublicView()">
           <img id="headerLogoImg" src="" alt="Logo" class="w-full h-full object-cover hidden">
-          <span id="headerLogoText" class="font-black text-amber-500 text-lg">🏢</span>
+          <span id="headerLogoText" class="font-black theme-text text-lg">🏢</span>
         </div>
         <div>
-          <h1 id="headerCompanyName" class="text-lg font-black text-amber-600 dark:text-amber-400 leading-none cursor-pointer" onclick="showPublicView()">خانووبەرەی دەشتی دوستەپە</h1>
+          <h1 id="headerCompanyName" class="text-lg font-black theme-text leading-none cursor-pointer" onclick="showPublicView()">خانووبەرەی دەشتی دوستەپە</h1>
           <p id="headerSubtitle" class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Dashti Dustapa Real Estate</p>
         </div>
       </div>
 
       <div class="flex items-center gap-2">
-        <!-- بەشی هەڵبژاردنی ٣ زمان (Kurdish, English, Arabic) -->
-        <select id="langSelector" onchange="changeLanguage(this.value)" class="bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs font-bold rounded-xl px-2.5 py-2 outline-none cursor-pointer">
-          <option value="ckb">کوردی</option>
-          <option value="en">English</option>
-          <option value="ar">العربية</option>
-        </select>
-
         <a id="headerMapBtn" href="https://maps.google.com/?q=36.167306,43.989000" target="_blank" class="hidden sm:flex bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-sky-600 dark:text-sky-400 px-3 py-2 rounded-xl text-xs font-bold border border-slate-200 dark:border-slate-700 transition items-center gap-1">
           <span>📍</span> <span id="headerMapText">شوێن</span>
         </a>
-        <a id="headerCallBtn" href="tel:07512193920" class="hidden sm:flex bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-amber-600 dark:text-amber-400 px-3 py-2 rounded-xl text-xs font-bold border border-slate-200 dark:border-slate-700 transition items-center gap-1.5">
+        <a id="headerCallBtn" href="tel:07512193920" class="hidden sm:flex bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 theme-text px-3 py-2 rounded-xl text-xs font-bold border border-slate-200 dark:border-slate-700 transition items-center gap-1.5">
           <span>📞</span> <span id="headerPhoneText">0751 219 3920</span>
         </a>
-        <a id="headerEmailBtn" href="mailto:info@dashtidustapa.com" class="hidden md:flex bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-emerald-600 dark:text-emerald-400 px-3 py-2 rounded-xl text-xs font-bold border border-slate-200 dark:border-slate-700 transition items-center gap-1.5">
-          <span>✉️</span> <span id="headerEmailText">ئیمەیڵ</span>
-        </a>
 
-        <!-- چوونەژوورەوەی کڕیار -->
-        <div id="userAuthSection" class="flex items-center gap-1.5">
-          <button id="userLoginBtn" onclick="showAuthModal('login')" class="bg-amber-500 hover:bg-amber-400 text-slate-950 px-3 py-2 rounded-xl text-xs font-black transition shadow">
-            چوونەژوورەوە 👤
+        <!-- بەشی چوونەژوورەوەی سادە -->
+        <div id="userAuthSection" class="flex items-center">
+          <button id="userLoginBtn" onclick="showAuthModal('login')" class="theme-bg theme-hover text-slate-950 px-3.5 py-2 rounded-xl text-xs font-black transition shadow">
+            Login / Sign Up
           </button>
-          <div id="userProfileBadge" class="hidden items-center gap-2 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-3 py-1.5 rounded-xl">
-            <span id="loggedInUserName" class="text-xs font-bold text-amber-600 dark:text-amber-400">بەکارهێنەر</span>
-            <button onclick="logoutCustomer()" title="دەرچوون" class="text-xs bg-rose-600/20 hover:bg-rose-600 text-rose-600 dark:text-rose-300 hover:text-white px-2 py-0.5 rounded-lg transition">دەرچوون</button>
+          <div id="userProfileBadge" class="hidden items-center gap-1.5 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-3 py-1.5 rounded-xl">
+            <span class="text-xs">👤</span>
+            <span id="loggedInUserName" class="text-xs font-bold theme-text">بەکارهێنەر</span>
           </div>
         </div>
 
         <!-- ئایکۆنی ڕێکخستنەکان -->
         <div class="relative">
-          <button onclick="toggleSettingsMenu()" class="bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-amber-600 dark:text-amber-400 border border-slate-200 dark:border-slate-700 p-2.5 rounded-xl transition flex items-center justify-center shadow">
+          <button onclick="toggleSettingsMenu()" class="bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 theme-text border border-slate-200 dark:border-slate-700 p-2.5 rounded-xl transition flex items-center justify-center shadow">
             <span class="text-base">⚙️</span>
           </button>
 
-          <!-- مینیۆی تابەکان -->
-          <div id="settingsDropdown" class="hidden absolute left-0 mt-2 w-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl p-2 z-50 text-xs font-bold space-y-1">
-            <button onclick="toggleDarkMode()" class="w-full text-right p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center justify-between transition">
+          <!-- مینیۆی ناو ڕێکخستن -->
+          <div id="settingsDropdown" class="hidden absolute left-0 mt-2 w-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl p-2.5 z-50 text-xs font-bold space-y-1.5">
+            
+            <!-- هەڵبژاردنی زمان لە ناو ڕێکخستن -->
+            <div class="p-2 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-between">
+              <span class="text-slate-600 dark:text-slate-300">🌐 زمان / Language</span>
+              <select id="langSelector" onchange="changeLanguage(this.value)" class="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg px-2 py-1 text-xs outline-none cursor-pointer">
+                <option value="ckb">کوردی</option>
+                <option value="en">English</option>
+                <option value="ar">العربية</option>
+              </select>
+            </div>
+
+            <!-- گۆڕینی دۆخی تاریک / ڕووناک -->
+            <button onclick="toggleDarkMode()" class="w-full text-right p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center justify-between transition">
               <span class="flex items-center gap-2">
                 <span id="themeIcon">🌙</span>
                 <span id="themeText">دۆخی تاریک (Dark Mode)</span>
@@ -85,11 +94,22 @@
               <span class="text-[10px] bg-slate-200 dark:bg-slate-700 px-2 py-0.5 rounded text-slate-600 dark:text-slate-300">گۆڕین</span>
             </button>
 
-            <button onclick="toggleOwnerView(); toggleSettingsMenu();" class="w-full text-right p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-amber-600 dark:text-amber-400 flex items-center justify-between transition">
+            <!-- تابی خاوەن موڵک -->
+            <button onclick="toggleOwnerView(); toggleSettingsMenu();" class="w-full text-right p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 theme-text flex items-center justify-between transition">
               <span>👑 تابی خاوەن موڵک</span>
-              <span class="text-[10px] bg-amber-500/20 px-2 py-0.5 rounded text-amber-600 dark:text-amber-300">Admin</span>
+              <span class="text-[10px] bg-amber-500/20 px-2 py-0.5 rounded theme-text">Admin</span>
             </button>
+
             <div id="customTabsContainer" class="space-y-1 border-t border-slate-200 dark:border-slate-800 pt-1"></div>
+
+            <!-- دوگمەی Logout ی ئۆتۆماتیکی لە کاتی چوونەژوورەوە -->
+            <div id="settingsLogoutSection" class="hidden border-t border-slate-200 dark:border-slate-800 pt-1">
+              <button onclick="logoutCustomer()" class="w-full text-right p-2 rounded-xl hover:bg-rose-50 dark:hover:bg-rose-950/30 text-rose-600 dark:text-rose-400 flex items-center justify-between transition">
+                <span>🚪 دەرچوون لە هەژمار (Logout)</span>
+                <span class="text-[10px] bg-rose-500/10 px-2 py-0.5 rounded">Log Out</span>
+              </button>
+            </div>
+
           </div>
         </div>
       </div>
@@ -100,7 +120,7 @@
   <main id="publicView" class="flex-1">
     <section class="bg-gradient-to-b from-slate-900 to-slate-950 text-white py-14 px-4 border-b border-slate-800 text-center relative overflow-hidden">
       <div class="max-w-4xl mx-auto relative z-10">
-        <span id="heroBadge" class="bg-amber-500/10 text-amber-400 border border-amber-500/20 px-3.5 py-1.5 rounded-full text-xs font-bold inline-block mb-3">
+        <span id="heroBadge" class="bg-amber-500/10 theme-text border border-amber-500/20 px-3.5 py-1.5 rounded-full text-xs font-bold inline-block mb-3">
           موڵکی نموونەیی لە دەشتی دوستەپە و دەوروبەری
         </span>
         <h2 id="heroTitle" class="text-3xl sm:text-5xl font-black mb-4 tracking-tight leading-tight">خانوو، زەوی و ڤێلای خەونەکانت بدۆزەرەوە</h2>
@@ -112,8 +132,8 @@
           <a id="heroMapBtn" href="https://maps.google.com/?q=36.167306,43.989000" target="_blank" class="bg-sky-600/20 hover:bg-sky-600 text-sky-300 hover:text-white border border-sky-500/40 px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
             <span>📍</span> نەخشەی نووسینگە
           </a>
-          <a id="heroEmailBtn" href="mailto:info@dashtidustapa.com" class="bg-emerald-600/20 hover:bg-emerald-600 text-emerald-300 hover:text-white border border-emerald-500/40 px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
-            <span>✉️</span> پەیوەندی بە ئیمەیڵ
+          <a id="heroCallBtnSecondary" href="tel:07512193920" class="theme-bg theme-hover text-slate-950 px-4 py-2 rounded-xl text-xs font-black transition flex items-center gap-1.5 shadow-sm">
+            <span>📞</span> پەیوەندی بە تەلەفۆن: <span id="heroPhoneDisplay">0751 219 3920</span>
           </a>
         </div>
 
@@ -145,8 +165,8 @@
       <button onclick="closeAuthModal()" class="absolute top-4 left-4 text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 font-black text-lg">✕</button>
       
       <div id="authTabHeaders" class="flex border-b border-slate-200 dark:border-slate-700 mb-6">
-        <button id="tabLoginBtn" onclick="switchAuthTab('login')" class="flex-1 py-3 text-xs font-black border-b-2 border-amber-500 text-amber-600 dark:text-amber-400 transition">چوونەژوورەوە بە OTP</button>
-        <button id="tabSignupBtn" onclick="switchAuthTab('signup')" class="flex-1 py-3 text-xs font-black border-b-2 border-transparent text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 transition">دروستکردنی هەژمار</button>
+        <button id="tabLoginBtn" onclick="switchAuthTab('login')" class="flex-1 py-3 text-xs font-black border-b-2 theme-border theme-text transition">Login</button>
+        <button id="tabSignupBtn" onclick="switchAuthTab('signup')" class="flex-1 py-3 text-xs font-black border-b-2 border-transparent text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 transition">Sign Up</button>
       </div>
 
       <form id="customerLoginForm" onsubmit="handleSendOtp(event, 'login')" class="space-y-4">
@@ -154,8 +174,8 @@
           <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">ئیمەیڵ</label>
           <input type="email" id="loginEmail" placeholder="ئیمەیڵەکەت بنووسە..." class="w-full p-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none" required>
         </div>
-        <button type="submit" id="sendLoginOtpBtn" class="w-full bg-slate-950 dark:bg-amber-500 hover:bg-slate-900 dark:hover:bg-amber-400 text-amber-400 dark:text-slate-950 font-black py-3.5 rounded-xl text-xs transition shadow">
-          ناردنی کۆدی پشتڕاستکردنەوە (OTP) ✉️
+        <button type="submit" id="sendLoginOtpBtn" class="w-full theme-bg theme-hover text-slate-950 font-black py-3.5 rounded-xl text-xs transition shadow">
+          Send OTP Code ✉️
         </button>
       </form>
 
@@ -169,25 +189,25 @@
           <input type="email" id="signupEmail" placeholder="user@example.com" class="w-full p-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none" required>
         </div>
         <div>
-          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">ژمارەی مۆبایل <span class="text-slate-400 font-normal">(ئارەزوومەندانە)</span></label>
+          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">ژمارەی مۆبایل <span class="text-slate-400 font-normal">(Optional)</span></label>
           <input type="tel" id="signupPhone" placeholder="0750XXXXXXX" class="w-full p-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none">
         </div>
-        <button type="submit" id="sendSignupOtpBtn" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-3.5 rounded-xl text-xs transition shadow">
-          ناردنی کۆدی پشتڕاستکردنەوە (OTP) ✉️
+        <button type="submit" id="sendSignupOtpBtn" class="w-full theme-bg theme-hover text-slate-950 font-black py-3.5 rounded-xl text-xs transition shadow">
+          Create Account & Send OTP ✉️
         </button>
       </form>
 
       <div id="otpVerifyScreen" class="hidden space-y-4 text-center">
-        <div class="w-12 h-12 bg-amber-500/10 text-amber-500 rounded-2xl flex items-center justify-center mx-auto text-2xl font-black">
+        <div class="w-12 h-12 bg-amber-500/10 theme-text rounded-2xl flex items-center justify-center mx-auto text-2xl font-black">
           📩
         </div>
-        <h4 class="text-sm font-black">کۆدی پشتڕاستکردنەوە داخڵ بکە</h4>
+        <h4 class="text-sm font-black">Enter 6-Digit Verification Code</h4>
         <p class="text-xs text-slate-500 dark:text-slate-400">کۆدێکی ٦ ژمارەیی بۆ ئیمەیڵی <span id="targetEmailText" class="font-bold text-slate-800 dark:text-slate-200"></span> نێردرا.</p>
         
         <form onsubmit="handleVerifyOtp(event)" class="space-y-4">
-          <input type="text" id="otpCodeInput" maxlength="6" placeholder="123456" class="w-full p-3.5 bg-slate-50 dark:bg-slate-800 border-2 border-amber-400 rounded-2xl text-center font-black text-lg tracking-[0.4em] focus:outline-none" required>
-          <button type="submit" id="verifyOtpBtn" class="w-full bg-slate-950 dark:bg-amber-500 hover:bg-slate-900 dark:hover:bg-amber-400 text-amber-400 dark:text-slate-950 font-black py-3.5 rounded-xl text-xs transition shadow">
-            پشتڕاستکردنەوە و چوونەژوورەوە ✅
+          <input type="text" id="otpCodeInput" maxlength="6" placeholder="123456" class="w-full p-3.5 bg-slate-50 dark:bg-slate-800 border-2 theme-border rounded-2xl text-center font-black text-lg tracking-[0.4em] focus:outline-none" required>
+          <button type="submit" id="verifyOtpBtn" class="w-full theme-bg theme-hover text-slate-950 font-black py-3.5 rounded-xl text-xs transition shadow">
+            Verify & Continue ✅
           </button>
           <button type="button" onclick="cancelOtpVerification()" class="text-xs text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-bold block mx-auto">
             گۆڕینی ئیمەیڵ / گەڕانەوە
@@ -200,7 +220,7 @@
   <!-- شاشەی وشەی نهێنی تابی خاوەن -->
   <main id="loginView" class="hidden max-w-md mx-auto px-4 py-20">
     <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl text-center">
-      <div class="w-16 h-16 bg-amber-500/10 text-amber-500 rounded-2xl flex items-center justify-center mx-auto text-3xl mb-4 font-black">
+      <div class="w-16 h-16 bg-amber-500/10 theme-text rounded-2xl flex items-center justify-center mx-auto text-3xl mb-4 font-black">
         🔐
       </div>
       <h3 class="text-xl font-black text-slate-900 dark:text-white mb-1">تابی خاوەن موڵک</h3>
@@ -208,7 +228,7 @@
       
       <form onsubmit="handleAuth(event)" class="space-y-4">
         <input type="password" id="ownerPassInput" placeholder="وشەی نهێنی..." class="w-full p-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-2xl text-center font-bold text-sm tracking-widest focus:outline-none focus:ring-2 focus:ring-amber-500" required>
-        <button type="submit" class="w-full bg-slate-950 dark:bg-amber-500 hover:bg-slate-900 dark:hover:bg-amber-400 text-amber-400 dark:text-slate-950 font-black py-3.5 rounded-2xl text-xs transition shadow">
+        <button type="submit" class="w-full theme-bg theme-hover text-slate-950 font-black py-3.5 rounded-2xl text-xs transition shadow">
           چوونەژوورەوەی سەرۆک ڕەهەند
         </button>
       </form>
@@ -219,9 +239,9 @@
   <main id="adminView" class="hidden max-w-6xl mx-auto px-4 py-8 space-y-8 w-full">
     <div class="bg-slate-900 dark:bg-slate-950 text-white p-6 sm:p-8 rounded-3xl shadow-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border border-slate-800">
       <div>
-        <span class="bg-amber-500 text-slate-950 text-[10px] font-black px-2.5 py-1 rounded-md uppercase">Supreme Controller</span>
-        <h2 class="text-2xl sm:text-3xl font-black text-amber-400 mt-2">بەخێربێیت سەرۆک ڕەهەند</h2>
-        <p class="text-xs text-slate-400 mt-1">کۆنترۆڵی تەواوی ماڵپەڕ، ئیمەیڵ، بەکارهێنەران و موڵکەکان</p>
+        <span class="theme-bg text-slate-950 text-[10px] font-black px-2.5 py-1 rounded-md uppercase">Supreme Controller</span>
+        <h2 class="text-2xl sm:text-3xl font-black theme-text mt-2">بەخێربێیت سەرۆک ڕەهەند</h2>
+        <p class="text-xs text-slate-400 mt-1">کۆنترۆڵی ڕەنگی ماڵپەڕ، لۆگۆ، تابەکان، تەلەفۆن و موڵکەکان</p>
       </div>
       <div class="flex gap-2">
         <button onclick="showPublicView()" class="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition">
@@ -233,46 +253,43 @@
       </div>
     </div>
 
-    <!-- ئاماری زیندوو -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-      <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm text-center">
-        <p class="text-xs text-slate-500 dark:text-slate-400 font-bold">کۆی موڵکەکان</p>
-        <h4 id="statTotal" class="text-2xl font-black text-slate-900 dark:text-white mt-1">0</h4>
-      </div>
-      <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm text-center">
-        <p class="text-xs text-emerald-600 font-bold">موڵکی بەردەست</p>
-        <h4 id="statAvailable" class="text-2xl font-black text-emerald-600 mt-1">0</h4>
-      </div>
-      <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm text-center">
-        <p class="text-xs text-rose-600 font-bold">موڵکی فرۆشراو</p>
-        <h4 id="statSold" class="text-2xl font-black text-rose-600 mt-1">0</h4>
-      </div>
-      <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm text-center">
-        <p class="text-xs text-amber-600 font-bold">کۆی بەها</p>
-        <h4 id="statValue" class="text-lg font-black text-amber-600 mt-1">$0</h4>
+    <!-- هەڵبژاردنی ڕەنگی ماڵپەڕ (Site Theme Color Customizer) -->
+    <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
+      <h3 class="text-base font-black text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+        <span>🎨</span> گۆڕینی ڕەنگی سەرەکیی ماڵپەڕ (Theme Color Picker)
+      </h3>
+      <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">ڕەنگێکی شاھانە هەڵبژێرە تا هەموو دوگمە، لۆگۆ و بەشەکانی ماڵپەڕ ڕاستەوخۆ بەو ڕەنگە دەربکەون:</p>
+      
+      <div class="flex flex-wrap gap-3 items-center">
+        <button type="button" onclick="setThemeColor('#f59e0b', '#d97706')" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-500 text-slate-950 font-black text-xs shadow hover:scale-105 transition">✨ ئاڵتوونی (Gold)</button>
+        <button type="button" onclick="setThemeColor('#0284c7', '#0369a1')" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-sky-600 text-white font-black text-xs shadow hover:scale-105 transition">🌊 شینی شاھانە (Sky Blue)</button>
+        <button type="button" onclick="setThemeColor('#10b981', '#059669')" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 text-white font-black text-xs shadow hover:scale-105 transition">🌿 زمڕوتی (Emerald)</button>
+        <button type="button" onclick="setThemeColor('#8b5cf6', '#7c3aed')" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-violet-600 text-white font-black text-xs shadow hover:scale-105 transition">🔮 مۆری شاهانە (Royal Purple)</button>
+        <button type="button" onclick="setThemeColor('#e11d48', '#be123c')" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-rose-600 text-white font-black text-xs shadow hover:scale-105 transition">🌹 سووری یاقووتی (Ruby Red)</button>
+        <button type="button" onclick="setThemeColor('#0f172a', '#020617')" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 text-white font-black text-xs border border-slate-700 shadow hover:scale-105 transition">🖤 ڕەشی مۆدێرن (Modern Black)</button>
       </div>
     </div>
 
-    <!-- بەشی زیادکردنی تاب -->
+    <!-- بەشی دروستکردنی تاب -->
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       <h3 class="text-base font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-        <span>📑</span> دروستکردن و بەڕێوەبردنی تابە تایبەتەکان
+        <span>📑</span> دروستکردن و بەڕێوەبردنی تابە تایبەتەکان لە ناو ئایکۆنی ڕێکخستن
       </h3>
       <form onsubmit="handleAddCustomTab(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs mb-6">
         <input type="text" id="tabName" placeholder="ناوی تاب" class="p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white font-bold" required>
         <input type="text" id="tabIcon" placeholder="ئایکۆن (📌)" class="p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white font-bold" required>
         <input type="url" id="tabUrl" placeholder="لینکی تاب" class="p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white font-bold" required>
-        <button type="submit" class="sm:col-span-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-3 rounded-xl transition shadow">
-          ➕ زیادکردنی تاب بۆ مینۆی ڕێکخستنەکان
+        <button type="submit" class="sm:col-span-3 theme-bg theme-hover text-slate-950 font-black py-3 rounded-xl transition shadow">
+          ➕ زیادکردنی تاب بۆ ناو ڕێکخستنەکان
         </button>
       </form>
       <div id="adminCustomTabsList" class="space-y-2"></div>
     </div>
 
-    <!-- کۆنترۆڵی زانیارییەکان و ئیمەیڵ -->
+    <!-- کۆنترۆڵی زانیارییەکان -->
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       <h3 class="text-base font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-        <span>⚙️</span> کۆنترۆڵی زانیارییەکانی ماڵپەڕ، ئیمەیڵ و لۆگۆ
+        <span>⚙️</span> کۆنترۆڵی زانیارییەکانی ماڵپەڕ، ژمارەی تەلەفۆن و لۆگۆ
       </h3>
       <form onsubmit="saveSiteSettings(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
         <div>
@@ -284,18 +301,14 @@
           <input type="text" id="setSubtitle" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white" required>
         </div>
         <div>
-          <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">ژمارەی تەلەفۆن</label>
+          <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">ژمارەی سەرەکی تەلەفۆن</label>
           <input type="text" id="setPhone" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white" required>
         </div>
         <div>
           <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">ژمارەی واتسئەپ</label>
           <input type="text" id="setWaPhone" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white" required>
         </div>
-        <div>
-          <label class="block font-bold text-emerald-600 dark:text-emerald-400 mb-1">✉️ ئیمەیڵی فەرمی بۆ پەیوەندی (Contact Email)</label>
-          <input type="email" id="setCompanyEmail" class="w-full p-3 border border-emerald-200 dark:border-emerald-800 rounded-xl bg-emerald-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white" required>
-        </div>
-        <div>
+        <div class="md:col-span-2">
           <label class="block font-bold text-sky-600 dark:text-sky-400 mb-1">📍 لینکی نووسینگە (Google Maps URL)</label>
           <input type="url" id="setMainOfficeMap" class="w-full p-3 border border-sky-200 dark:border-sky-800 rounded-xl bg-sky-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
         </div>
@@ -322,7 +335,7 @@
           <input type="text" id="setOwnerPass" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white" placeholder="وشەی نهێنی نوێ...">
         </div>
         <div class="md:col-span-2 flex items-end">
-          <button type="submit" class="w-full bg-slate-950 dark:bg-amber-500 hover:bg-slate-900 dark:hover:bg-amber-400 text-amber-400 dark:text-slate-950 font-black py-3.5 rounded-xl transition shadow">
+          <button type="submit" class="w-full theme-bg theme-hover text-slate-950 font-black py-3.5 rounded-xl transition shadow">
             💾 پاشەکەوتکردنی هەموو گۆڕانکارییەکان
           </button>
         </div>
@@ -360,7 +373,7 @@
         <textarea id="pDesc" placeholder="تەواوی وردەکارییەکان..." class="p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white md:col-span-2 h-20 font-bold" required></textarea>
         
         <div class="md:col-span-2 flex gap-2">
-          <button type="submit" id="submitPropBtn" class="flex-1 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-3.5 rounded-xl transition shadow text-xs">
+          <button type="submit" id="submitPropBtn" class="flex-1 theme-bg theme-hover text-slate-950 font-black py-3.5 rounded-xl transition shadow text-xs">
             بڵاوکردنەوە لە ماڵپەڕ
           </button>
           <button type="button" id="cancelEditBtn" onclick="resetForm()" class="hidden px-5 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-200 font-bold rounded-xl text-xs transition">
@@ -380,7 +393,7 @@
   <!-- Footer -->
   <footer class="bg-white dark:bg-slate-950 text-slate-600 dark:text-slate-400 py-8 px-4 mt-16 border-t border-slate-200 dark:border-slate-800 text-center text-xs transition-colors">
     <p id="footerCompanyName" class="font-bold text-slate-900 dark:text-white mb-1">کۆمپانیای خانووبەرەی دەشتی دوستەپە</p>
-    <p id="footerEmailDisplay" class="text-slate-500 mb-1">Email: info@dashtidustapa.com</p>
+    <p id="footerPhoneDisplay" class="theme-text font-bold mb-1">📞 0751 219 3920</p>
     <p>هەموو مافەکانی پارێزراوە بۆ سەرۆک ڕەهەند © 2026</p>
   </footer>
 
@@ -389,7 +402,6 @@
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ2dmxkdmJneXdmeW5scm91ZGlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgwNDExNDMsImV4cCI6MjEwMzYxNzE0M30.QuThGUEutLdCoPyq-O8AsocMqkQS8C0W31RN2nnfEPY';
     const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    // زانیاری ٣ زمان (Kurdish, English, Arabic)
     const translations = {
       ckb: {
         company: "خانووبەرەی دەشتی دوستەپە",
@@ -397,13 +409,10 @@
         heroTitle: "خانوو، زەوی و ڤێلای خەونەکانت بدۆزەرەوە",
         heroDesc: "کڕین، فرۆشتن، و بەکرێدانی هەموو جۆرە موڵکێک بە گرەنتی و باشترین نرخ",
         searchPlh: "گەڕان بەپێی شوێن یان ناو...",
-        allTypes: "هەموو جۆرەکان",
         mapBtn: "شوێن",
-        emailBtn: "ئیمەیڵ",
-        loginBtn: "چوونەژوورەوە 👤",
+        phoneBtn: "تەلەفۆن",
         darkTheme: "دۆخی تاریک (Dark Mode)",
         lightTheme: "دۆخی ڕووناک (Light Mode)",
-        change: "گۆڕین",
         dir: "rtl"
       },
       en: {
@@ -412,13 +421,10 @@
         heroTitle: "Find Your Dream House, Land & Villa",
         heroDesc: "Buying, selling, and renting all types of properties with guaranteed best prices.",
         searchPlh: "Search by location or name...",
-        allTypes: "All Types",
         mapBtn: "Location",
-        emailBtn: "Email",
-        loginBtn: "Login 👤",
+        phoneBtn: "Call",
         darkTheme: "Dark Mode",
         lightTheme: "Light Mode",
-        change: "Switch",
         dir: "ltr"
       },
       ar: {
@@ -427,13 +433,10 @@
         heroTitle: "اعثر على منزل، أرض وفيلا أحلامك",
         heroDesc: "شراء وبيع وتأجير جميع أنواع العقارات بضمان وأفضل الأسعار.",
         searchPlh: "البحث حسب الموقع أو الاسم...",
-        allTypes: "جميع الأنواع",
         mapBtn: "الموقع",
-        emailBtn: "البريد",
-        loginBtn: "تسجيل الدخول 👤",
+        phoneBtn: "اتصال",
         darkTheme: "الوضع الداكن",
         lightTheme: "الوضع الفاتح",
-        change: "تغيير",
         dir: "rtl"
       }
     };
@@ -445,11 +448,12 @@
       subtitle: "Dashti Dustapa Real Estate",
       phone: "07512193920",
       waPhone: "9647512193920",
-      email: "info@dashtidustapa.com",
       mainOfficeMap: "https://maps.google.com/?q=36.167306,43.989000",
       logoUrl: "",
       heroTitle: "خانوو، زەوی و ڤێلای خەونەکانت بدۆزەرەوە",
       heroDesc: "کڕین، فرۆشتن، و بەکرێدانی هەموو جۆرە موڵکێک بە گرەنتی و باشترین نرخ",
+      themeColor: "#f59e0b",
+      themeHover: "#d97706",
       ownerPass: "rahand2011",
       customTabs: []
     };
@@ -460,7 +464,21 @@
     let pendingAuthName = '';
     let currentCustomer = JSON.parse(localStorage.getItem('currentCustomer')) || null;
 
-    // دۆخی ڕووناک (Light Mode) وەک بنەڕەتی (Default)
+    function applyThemeColor() {
+      const color = siteConfig.themeColor || '#f59e0b';
+      const hover = siteConfig.themeHover || '#d97706';
+      document.documentElement.style.setProperty('--primary-color', color);
+      document.documentElement.style.setProperty('--primary-hover', hover);
+    }
+
+    function setThemeColor(color, hover) {
+      siteConfig.themeColor = color;
+      siteConfig.themeHover = hover;
+      localStorage.setItem('siteConfig', JSON.stringify(siteConfig));
+      applyThemeColor();
+      alert('ڕەنگی ماڵپەڕ گۆڕدرا!');
+    }
+
     function initTheme() {
       const savedTheme = localStorage.getItem('theme') || 'light';
       if (savedTheme === 'dark') {
@@ -503,25 +521,24 @@
       document.getElementById('heroDesc').innerText = siteConfig.heroDesc || t.heroDesc;
       document.getElementById('searchInput').placeholder = t.searchPlh;
       document.getElementById('headerMapText').innerText = t.mapBtn;
-      document.getElementById('headerEmailText').innerText = t.emailBtn;
-      document.getElementById('userLoginBtn').innerText = t.loginBtn;
 
       initTheme();
     }
 
     function applySiteSettings() {
+      applyThemeColor();
       document.getElementById('headerCompanyName').innerText = siteConfig.companyName;
       document.getElementById('headerSubtitle').innerText = siteConfig.subtitle;
       document.getElementById('headerCallBtn').href = `tel:${siteConfig.phone}`;
       document.getElementById('headerPhoneText').innerText = siteConfig.phone;
-      document.getElementById('headerEmailBtn').href = `mailto:${siteConfig.email || 'info@dashtidustapa.com'}`;
-      document.getElementById('heroEmailBtn').href = `mailto:${siteConfig.email || 'info@dashtidustapa.com'}`;
+      document.getElementById('heroCallBtnSecondary').href = `tel:${siteConfig.phone}`;
+      document.getElementById('heroPhoneDisplay').innerText = siteConfig.phone;
       document.getElementById('headerMapBtn').href = siteConfig.mainOfficeMap;
       document.getElementById('heroMapBtn').href = siteConfig.mainOfficeMap;
       document.getElementById('heroTitle').innerText = siteConfig.heroTitle;
       document.getElementById('heroDesc').innerText = siteConfig.heroDesc;
       document.getElementById('footerCompanyName').innerText = siteConfig.companyName;
-      document.getElementById('footerEmailDisplay').innerText = `Email: ${siteConfig.email || 'info@dashtidustapa.com'}`;
+      document.getElementById('footerPhoneDisplay').innerText = `📞 ${siteConfig.phone}`;
 
       const logoImg = document.getElementById('headerLogoImg');
       const logoText = document.getElementById('headerLogoText');
@@ -538,7 +555,6 @@
       document.getElementById('setSubtitle').value = siteConfig.subtitle;
       document.getElementById('setPhone').value = siteConfig.phone;
       document.getElementById('setWaPhone').value = siteConfig.waPhone;
-      document.getElementById('setCompanyEmail').value = siteConfig.email || 'info@dashtidustapa.com';
       document.getElementById('setMainOfficeMap').value = siteConfig.mainOfficeMap;
       document.getElementById('setLogoUrl').value = siteConfig.logoUrl || '';
       document.getElementById('setHeroTitle').value = siteConfig.heroTitle;
@@ -567,12 +583,12 @@
       if (tab === 'login') {
         loginForm.classList.remove('hidden');
         signupForm.classList.add('hidden');
-        tabLoginBtn.className = "flex-1 py-3 text-xs font-black border-b-2 border-amber-500 text-amber-600 dark:text-amber-400 transition";
+        tabLoginBtn.className = "flex-1 py-3 text-xs font-black border-b-2 theme-border theme-text transition";
         tabSignupBtn.className = "flex-1 py-3 text-xs font-black border-b-2 border-transparent text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 transition";
       } else {
         loginForm.classList.add('hidden');
         signupForm.classList.remove('hidden');
-        tabSignupBtn.className = "flex-1 py-3 text-xs font-black border-b-2 border-amber-500 text-amber-600 dark:text-amber-400 transition";
+        tabSignupBtn.className = "flex-1 py-3 text-xs font-black border-b-2 theme-border theme-text transition";
         tabLoginBtn.className = "flex-1 py-3 text-xs font-black border-b-2 border-transparent text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 transition";
       }
     }
@@ -595,7 +611,7 @@
 
       const btn = mode === 'signup' ? document.getElementById('sendSignupOtpBtn') : document.getElementById('sendLoginOtpBtn');
       const originalText = btn.innerText;
-      btn.innerText = 'کۆدەکە دەنێردرێت... ⏳';
+      btn.innerText = 'Sending Code... ⏳';
       btn.disabled = true;
 
       try {
@@ -625,7 +641,7 @@
       e.preventDefault();
       const token = document.getElementById('otpCodeInput').value.trim();
       const btn = document.getElementById('verifyOtpBtn');
-      btn.innerText = 'پشکنین... ⏳';
+      btn.innerText = 'Verifying... ⏳';
       btn.disabled = true;
 
       try {
@@ -645,11 +661,11 @@
 
         closeAuthModal();
         checkCustomerAuth();
-        alert(`بەخێربێیت بەڕێز ${currentCustomer.name}! چوونەژوورەوەت بە سەرکەوتوویی تەواو بوو.`);
+        alert(`بەخێربێیت بەڕێز ${currentCustomer.name}!`);
       } catch (err) {
-        alert('کۆدی OTP هەڵەیە یان بەسەرچووە: ' + err.message);
+        alert('کۆدی OTP هەڵەیە: ' + err.message);
       } finally {
-        btn.innerText = 'پشتڕاستکردنەوە و چوونەژوورەوە ✅';
+        btn.innerText = 'Verify & Continue ✅';
         btn.disabled = false;
       }
     }
@@ -664,16 +680,19 @@
       const loginBtn = document.getElementById('userLoginBtn');
       const profileBadge = document.getElementById('userProfileBadge');
       const userName = document.getElementById('loggedInUserName');
+      const settingsLogout = document.getElementById('settingsLogoutSection');
 
       if (currentCustomer) {
         loginBtn.classList.add('hidden');
         profileBadge.classList.remove('hidden');
         profileBadge.classList.add('flex');
+        settingsLogout.classList.remove('hidden');
         userName.innerText = currentCustomer.name;
       } else {
         loginBtn.classList.remove('hidden');
         profileBadge.classList.add('hidden');
         profileBadge.classList.remove('flex');
+        settingsLogout.classList.add('hidden');
       }
     }
 
@@ -682,6 +701,9 @@
       currentCustomer = null;
       localStorage.removeItem('currentCustomer');
       checkCustomerAuth();
+      const dd = document.getElementById('settingsDropdown');
+      if (dd) dd.classList.add('hidden');
+      alert('بە سەرکەوتوویی دەرچوویت.');
     }
 
     function toggleSettingsMenu() {
@@ -703,7 +725,7 @@
       const tabs = siteConfig.customTabs || [];
 
       container.innerHTML = tabs.map(t => `
-        <a href="${t.url}" target="${t.url.startsWith('http') ? '_blank' : '_self'}" class="w-full text-right p-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center justify-between transition">
+        <a href="${t.url}" target="${t.url.startsWith('http') ? '_blank' : '_self'}" class="w-full text-right p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center justify-between transition">
           <span>${t.icon} ${t.name}</span>
           <span class="text-slate-400 dark:text-slate-500 text-[10px]">🔗</span>
         </a>
@@ -764,7 +786,6 @@
       siteConfig.subtitle = document.getElementById('setSubtitle').value;
       siteConfig.phone = document.getElementById('setPhone').value;
       siteConfig.waPhone = document.getElementById('setWaPhone').value;
-      siteConfig.email = document.getElementById('setCompanyEmail').value || "info@dashtidustapa.com";
       siteConfig.mainOfficeMap = document.getElementById('setMainOfficeMap').value || "https://maps.google.com/?q=36.167306,43.989000";
       
       const uploadedLogo = document.getElementById('logoDataHolder').value;
@@ -807,16 +828,7 @@
         properties = await res.json();
         renderProperties();
         renderAdminList();
-        updateStats();
       } catch (e) { console.error(e); }
-    }
-
-    function updateStats() {
-      document.getElementById('statTotal').innerText = properties.length;
-      document.getElementById('statAvailable').innerText = properties.filter(p => p.status === 'available').length;
-      document.getElementById('statSold').innerText = properties.filter(p => p.status === 'sold').length;
-      const totalVal = properties.reduce((acc, p) => acc + (Number(p.price) || 0), 0);
-      document.getElementById('statValue').innerText = '$' + totalVal.toLocaleString();
     }
 
     function renderProperties() {
@@ -844,7 +856,7 @@
             <span class="absolute top-3 right-3 px-3 py-1 text-xs font-black rounded-xl text-white shadow ${p.status === 'available' ? 'bg-emerald-600' : 'bg-rose-600'}">
               ${p.status === 'available' ? 'بەردەستە' : 'فرۆشراوە'}
             </span>
-            <div class="absolute bottom-3 left-3 bg-slate-950/85 backdrop-blur-md text-amber-400 px-3.5 py-1.5 rounded-xl font-black text-sm border border-slate-700/50">
+            <div class="absolute bottom-3 left-3 bg-slate-950/85 backdrop-blur-md theme-text px-3.5 py-1.5 rounded-xl font-black text-sm border border-slate-700/50">
               $${Number(p.price).toLocaleString()}
             </div>
           </div>
