@@ -14,17 +14,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <style>body { font-family: 'Vazirmatn', sans-serif; }</style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen">
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
 
   <header class="bg-slate-950 text-white sticky top-0 z-50 shadow-md border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center relative">
       <div class="flex items-center gap-3">
-        <div id="brandBadgeContainer" class="w-11 h-11 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center overflow-hidden shadow">
+        <div id="brandBadgeContainer" class="w-11 h-11 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center overflow-hidden shadow cursor-pointer" onclick="showPublicView()">
           <img id="headerLogoImg" src="" alt="Logo" class="w-full h-full object-cover hidden">
           <span id="headerLogoText" class="font-black text-amber-400 text-lg">🏢</span>
         </div>
         <div>
-          <h1 id="headerCompanyName" class="text-lg font-black text-amber-400 leading-none">خانووبەرەی دەشتی دوستەپە</h1>
+          <h1 id="headerCompanyName" class="text-lg font-black text-amber-400 leading-none cursor-pointer" onclick="showPublicView()">خانووبەرەی دەشتی دوستەپە</h1>
           <p id="headerSubtitle" class="text-[11px] text-slate-400 mt-0.5">Dashti Dustapa Real Estate</p>
         </div>
       </div>
@@ -37,13 +37,23 @@
           <span>📞</span> <span id="headerPhoneText">0751 219 3920</span>
         </a>
 
+        <div id="userAuthSection" class="flex items-center gap-1.5">
+          <button id="userLoginBtn" onclick="showAuthModal('login')" class="bg-amber-500 hover:bg-amber-400 text-slate-950 px-3.5 py-2 rounded-xl text-xs font-black transition shadow">
+            چوونەژوورەوە 👤
+          </button>
+          <div id="userProfileBadge" class="hidden items-center gap-2 bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-xl">
+            <span id="loggedInUserName" class="text-xs font-bold text-amber-400">بەکارهێنەر</span>
+            <button onclick="logoutCustomer()" title="دەرچوون" class="text-xs bg-rose-600/30 hover:bg-rose-600 text-rose-300 hover:text-white px-2 py-0.5 rounded-lg transition">دەرچوون</button>
+          </div>
+        </div>
+
         <div class="relative">
           <button onclick="toggleSettingsMenu()" class="bg-slate-900 hover:bg-slate-800 text-amber-400 border border-slate-700 p-2.5 rounded-xl transition flex items-center justify-center shadow">
             <span class="text-base">⚙️</span>
           </button>
 
           <div id="settingsDropdown" class="hidden absolute left-0 mt-2 w-56 bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-2 z-50 text-xs font-bold space-y-1">
-            <button onclick="toggleView(); toggleSettingsMenu();" class="w-full text-right p-2.5 rounded-xl hover:bg-slate-800 text-amber-400 flex items-center justify-between transition">
+            <button onclick="toggleOwnerView(); toggleSettingsMenu();" class="w-full text-right p-2.5 rounded-xl hover:bg-slate-800 text-amber-400 flex items-center justify-between transition">
               <span>👑 تابی خاوەن موڵک</span>
               <span class="text-[10px] bg-amber-500/20 px-2 py-0.5 rounded text-amber-300">Admin</span>
             </button>
@@ -54,7 +64,7 @@
     </div>
   </header>
 
-  <main id="publicView">
+  <main id="publicView" class="flex-1">
     <section class="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white py-14 px-4 border-b border-slate-800 text-center">
       <div class="max-w-4xl mx-auto">
         <span id="heroBadge" class="bg-amber-500/10 text-amber-400 border border-amber-500/20 px-3.5 py-1.5 rounded-full text-xs font-bold inline-block mb-3">
@@ -91,13 +101,60 @@
     </section>
   </main>
 
+  <div id="authModal" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white max-w-md w-full rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200 relative">
+      <button onclick="closeAuthModal()" class="absolute top-4 left-4 text-slate-400 hover:text-slate-800 font-black text-lg">✕</button>
+      
+      <div class="flex border-b border-slate-200 mb-6">
+        <button id="tabLoginBtn" onclick="switchAuthTab('login')" class="flex-1 py-3 text-xs font-black border-b-2 border-amber-500 text-amber-600 transition">چوونەژوورەوە (Login)</button>
+        <button id="tabSignupBtn" onclick="switchAuthTab('signup')" class="flex-1 py-3 text-xs font-black border-b-2 border-transparent text-slate-400 hover:text-slate-700 transition">دروستکردنی هەژمار (Sign Up)</button>
+      </div>
+
+      <form id="customerLoginForm" onsubmit="handleCustomerLogin(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">ئیمەیڵ یان مۆبایل</label>
+          <input type="text" id="loginIdentifier" placeholder="ئیمەیڵ یان ژمارەی مۆبایل..." class="w-full p-3 bg-slate-50 border rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none" required>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">وشەی نهێنی</label>
+          <input type="password" id="loginPass" placeholder="••••••••" class="w-full p-3 bg-slate-50 border rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none" required>
+        </div>
+        <button type="submit" class="w-full bg-slate-950 hover:bg-slate-900 text-amber-400 font-black py-3.5 rounded-xl text-xs transition shadow">
+          چوونەژوورەوە
+        </button>
+      </form>
+
+      <form id="customerSignupForm" onsubmit="handleCustomerSignup(event)" class="space-y-3 hidden">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">ناوی تەواو</label>
+          <input type="text" id="signupName" placeholder="ناوی بەڕێزت..." class="w-full p-3 bg-slate-50 border rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none" required>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">ئیمەیڵ</label>
+          <input type="email" id="signupEmail" placeholder="نموونە: user@example.com" class="w-full p-3 bg-slate-50 border rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none" required>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">ژمارەی مۆبایل</label>
+          <input type="tel" id="signupPhone" placeholder="0750XXXXXXX" class="w-full p-3 bg-slate-50 border rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none" required>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">وشەی نهێنی</label>
+          <input type="password" id="signupPass" placeholder="وشەی نهێنی دابنێ..." class="w-full p-3 bg-slate-50 border rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-500 outline-none" required>
+        </div>
+        <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-3.5 rounded-xl text-xs transition shadow">
+          دروستکردنی هەژمار
+        </button>
+      </form>
+    </div>
+  </div>
+
   <main id="loginView" class="hidden max-w-md mx-auto px-4 py-20">
     <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-2xl text-center">
       <div class="w-16 h-16 bg-amber-500/10 text-amber-500 rounded-2xl flex items-center justify-center mx-auto text-3xl mb-4 font-black">
         🔐
       </div>
       <h3 class="text-xl font-black text-slate-900 mb-1">تابی خاوەن موڵک</h3>
-      <p class="text-xs text-slate-500 mb-6">تکایە وشەی نهێنی بنووسە</p>
+      <p class="text-xs text-slate-500 mb-6">تکایە وشەی نهێنی خاوەن بنووسە</p>
       
       <form onsubmit="handleAuth(event)" class="space-y-4">
         <input type="password" id="ownerPassInput" placeholder="وشەی نهێنی..." class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-center font-bold text-sm tracking-widest focus:outline-none focus:ring-2 focus:ring-amber-500" required>
@@ -113,10 +170,10 @@
       <div>
         <span class="bg-amber-500 text-slate-950 text-[10px] font-black px-2.5 py-1 rounded-md uppercase">Supreme Controller</span>
         <h2 class="text-2xl sm:text-3xl font-black text-amber-400 mt-2">بەخێربێیت سەرۆک ڕەهەند</h2>
-        <p class="text-xs text-slate-400 mt-1">کۆنترۆڵی تەواوی ڕێکخستنەکان، تابەکان، لۆگۆ و موڵکەکان</p>
+        <p class="text-xs text-slate-400 mt-1">کۆنترۆڵی تەواوی ماڵپەڕ، بەکارهێنەران و موڵکەکان</p>
       </div>
       <div class="flex gap-2">
-        <button onclick="toggleView()" class="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition">
+        <button onclick="showPublicView()" class="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition">
           گەڕانەوە بۆ ماڵپەڕ 🏠
         </button>
         <button onclick="logoutOwner()" class="bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white border border-rose-500/30 px-4 py-2.5 rounded-xl text-xs font-bold transition">
@@ -284,19 +341,8 @@
 
     let properties = [];
     let isOwnerLoggedIn = false;
-
-    function toggleSettingsMenu() {
-      const dd = document.getElementById('settingsDropdown');
-      dd.classList.toggle('hidden');
-    }
-
-    window.addEventListener('click', function(e) {
-      const dd = document.getElementById('settingsDropdown');
-      const btn = e.target.closest('button');
-      if (!btn && !dd.classList.contains('hidden')) {
-        dd.classList.add('hidden');
-      }
-    });
+    let registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+    let currentCustomer = JSON.parse(localStorage.getItem('currentCustomer')) || null;
 
     function applySiteSettings() {
       document.getElementById('headerCompanyName').innerText = siteConfig.companyName;
@@ -330,7 +376,114 @@
       document.getElementById('setHeroDesc').value = siteConfig.heroDesc;
 
       renderCustomTabs();
+      checkCustomerAuth();
     }
+
+    // سیستەمی Authentication بۆ کڕیاران
+    function showAuthModal(tab = 'login') {
+      document.getElementById('authModal').classList.remove('hidden');
+      switchAuthTab(tab);
+    }
+
+    function closeAuthModal() {
+      document.getElementById('authModal').classList.add('hidden');
+    }
+
+    function switchAuthTab(tab) {
+      const loginForm = document.getElementById('customerLoginForm');
+      const signupForm = document.getElementById('customerSignupForm');
+      const tabLoginBtn = document.getElementById('tabLoginBtn');
+      const tabSignupBtn = document.getElementById('tabSignupBtn');
+
+      if (tab === 'login') {
+        loginForm.classList.remove('hidden');
+        signupForm.classList.add('hidden');
+        tabLoginBtn.className = "flex-1 py-3 text-xs font-black border-b-2 border-amber-500 text-amber-600 transition";
+        tabSignupBtn.className = "flex-1 py-3 text-xs font-black border-b-2 border-transparent text-slate-400 hover:text-slate-700 transition";
+      } else {
+        loginForm.classList.add('hidden');
+        signupForm.classList.remove('hidden');
+        tabSignupBtn.className = "flex-1 py-3 text-xs font-black border-b-2 border-amber-500 text-amber-600 transition";
+        tabLoginBtn.className = "flex-1 py-3 text-xs font-black border-b-2 border-transparent text-slate-400 hover:text-slate-700 transition";
+      }
+    }
+
+    function handleCustomerSignup(e) {
+      e.preventDefault();
+      const name = document.getElementById('signupName').value.trim();
+      const email = document.getElementById('signupEmail').value.trim().toLowerCase();
+      const phone = document.getElementById('signupPhone').value.trim();
+      const pass = document.getElementById('signupPass').value;
+
+      const exists = registeredUsers.some(u => u.email === email || u.phone === phone);
+      if (exists) {
+        alert('ئەم ئیمەیڵە یان ژمارە مۆبایلە پێشتر تۆمارکراوە!');
+        return;
+      }
+
+      const newUser = { name, email, phone, pass };
+      registeredUsers.push(newUser);
+      localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+      currentCustomer = newUser;
+      localStorage.setItem('currentCustomer', JSON.stringify(currentCustomer));
+
+      closeAuthModal();
+      checkCustomerAuth();
+      alert(`بەخێربێیت بەڕێز ${name}! هەژمارەکەت بە سەرکەوتوویی دروستکرا.`);
+    }
+
+    function handleCustomerLogin(e) {
+      e.preventDefault();
+      const id = document.getElementById('loginIdentifier').value.trim().toLowerCase();
+      const pass = document.getElementById('loginPass').value;
+
+      const user = registeredUsers.find(u => (u.email === id || u.phone === id) && u.pass === pass);
+      if (user) {
+        currentCustomer = user;
+        localStorage.setItem('currentCustomer', JSON.stringify(currentCustomer));
+        closeAuthModal();
+        checkCustomerAuth();
+        alert(`بەخێربێیتەوە بەڕێز ${user.name}!`);
+      } else {
+        alert('ئیمەیڵ/مۆبایل یان وشەی نهێنی هەڵەیە!');
+      }
+    }
+
+    function checkCustomerAuth() {
+      const loginBtn = document.getElementById('userLoginBtn');
+      const profileBadge = document.getElementById('userProfileBadge');
+      const userName = document.getElementById('loggedInUserName');
+
+      if (currentCustomer) {
+        loginBtn.classList.add('hidden');
+        profileBadge.classList.remove('hidden');
+        profileBadge.classList.add('flex');
+        userName.innerText = currentCustomer.name;
+      } else {
+        loginBtn.classList.remove('hidden');
+        profileBadge.classList.add('hidden');
+        profileBadge.classList.remove('flex');
+      }
+    }
+
+    function logoutCustomer() {
+      currentCustomer = null;
+      localStorage.removeItem('currentCustomer');
+      checkCustomerAuth();
+    }
+
+    function toggleSettingsMenu() {
+      const dd = document.getElementById('settingsDropdown');
+      dd.classList.toggle('hidden');
+    }
+
+    window.addEventListener('click', function(e) {
+      const dd = document.getElementById('settingsDropdown');
+      const btn = e.target.closest('button');
+      if (!btn && !dd.classList.contains('hidden')) {
+        dd.classList.add('hidden');
+      }
+    });
 
     function renderCustomTabs() {
       const container = document.getElementById('customTabsContainer');
@@ -525,7 +678,13 @@
       `).join('');
     }
 
-    function toggleView() {
+    function showPublicView() {
+      document.getElementById('publicView').classList.remove('hidden');
+      document.getElementById('loginView').classList.add('hidden');
+      document.getElementById('adminView').classList.add('hidden');
+    }
+
+    function toggleOwnerView() {
       const pub = document.getElementById('publicView');
       const login = document.getElementById('loginView');
       const admin = document.getElementById('adminView');
@@ -535,9 +694,7 @@
         if (isOwnerLoggedIn) admin.classList.remove('hidden');
         else login.classList.remove('hidden');
       } else {
-        pub.classList.remove('hidden');
-        login.classList.add('hidden');
-        admin.classList.add('hidden');
+        showPublicView();
       }
     }
 
@@ -556,7 +713,7 @@
 
     function logoutOwner() {
       isOwnerLoggedIn = false;
-      toggleView();
+      showPublicView();
     }
 
     async function handlePropertySubmit(e) {
