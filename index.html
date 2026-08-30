@@ -972,9 +972,7 @@
           if (error) throw error;
           alert('موڵکەکە بە سەرکەوتوویی نوێکرایەوە!');
         } else {
-          propData.id = 'prop_' + Date.now();
-          propData.status = 'available';
-          const { error } = await supabaseClient.from('properties').insert([propData]);
+          const { error } = await supabaseClient.from('properties').insert([{ ...propData, status: 'available' }]);
           if (error) throw error;
           alert('سەرۆک ڕەهەند، موڵکی نوێ بە سەرکەوتوویی زیادکرا و لە هەموو ئامێرەکان دەردەکەوێت!');
         }
