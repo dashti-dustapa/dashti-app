@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="ckb" dir="rtl">
-<head><link rel="manifest" href="/manifest.json">
-<link rel="apple-touch-icon" href="/icon.png">
-<link rel="icon" type="image/png" href="/icon.png">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title id="docTitle">Dashti Dustapa Real Estate | خانووبەرەی دەشتی دوستەپە</title>
@@ -11,6 +9,10 @@
   <meta name="description" content="خانووبەرەی دەشتی دوستەپە - باشترین موڵک، خانوو، زەوی و ڤێلا لە دەشتی دوستەپە و دەوروبەری بە بەڕێوەبەرایەتی سەرۆک ڕەهەند">
   <meta name="keywords" content="Dashti Dustapa, dashti dustapa, dashti-dustapa, دەشتی دوستەپە, خانووبەرەی دەشتی دوستەپە, خانوو, زەوی, هەولێر">
   <link rel="canonical" href="https://dashti-app.vercel.app">
+
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icon.png">
+  <link rel="icon" type="image/png" href="/icon.png">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config = { darkMode: 'class' };</script>
@@ -54,12 +56,12 @@
 
         <!-- ئایکۆنی ڕێکخستنەکان -->
         <div class="relative">
-          <button onclick="toggleSettingsMenu()" class="bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 theme-text border border-slate-200 dark:border-slate-700 p-2.5 rounded-xl transition flex items-center justify-center shadow">
+          <button id="settingsToggleBtn" onclick="toggleSettingsMenu(event)" class="bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 theme-text border border-slate-200 dark:border-slate-700 p-2.5 rounded-xl transition flex items-center justify-center shadow">
             <span class="text-base">⚙️</span>
           </button>
 
           <div id="settingsDropdown" class="hidden absolute left-0 mt-2 w-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl p-2.5 z-50 text-xs font-bold space-y-1.5">
-            <div class="p-2 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-between">
+            <div class="p-2 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-between" onclick="event.stopPropagation()">
               <span class="text-slate-600 dark:text-slate-300">🌐 زمان / Language</span>
               <select id="langSelector" onchange="changeLanguage(this.value)" class="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg px-2 py-1 text-xs outline-none cursor-pointer">
                 <option value="ckb">کوردی</option>
@@ -110,10 +112,10 @@
 
         <div class="flex flex-wrap justify-center items-center gap-3 mb-8">
           <a id="heroMapBtn" href="https://maps.google.com/?q=36.167306,43.989000" target="_blank" class="bg-sky-600/20 hover:bg-sky-600 text-sky-300 hover:text-white border border-sky-500/40 px-4 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
-            <span>📍</span> نەخشەی نووسینگە
+            <span>📍</span> <span id="heroMapBtnText">نەخشەی نووسینگە</span>
           </a>
           <a id="heroCallBtnSecondary" href="tel:07512193920" class="theme-bg theme-hover text-slate-950 px-4 py-2.5 rounded-xl text-xs font-black transition flex items-center gap-1.5 shadow-sm">
-            <span>📞</span> پەیوەندی: <span id="heroPhoneDisplay">0751 219 3920</span>
+            <span>📞</span> <span id="heroPhoneLabel">پەیوەندی:</span> <span id="heroPhoneDisplay">0751 219 3920</span>
           </a>
 
           <div class="flex items-center gap-2 bg-slate-900/80 p-1.5 rounded-2xl border border-slate-800">
@@ -392,7 +394,8 @@
         heroDesc: "کڕین، فرۆشتن، و بەکرێدانی هەموو جۆرە موڵکێک بە گرەنتی و باشترین نرخ",
         searchPlh: "گەڕان بەپێی شوێن یان ناو...",
         mapBtn: "شوێن",
-        phoneBtn: "تەلەفۆن",
+        heroMapBtn: "نەخشەی نووسینگە",
+        callPrefix: "پەیوەندی:",
         darkTheme: "دۆخی تاریک (Dark Mode)",
         lightTheme: "دۆخی ڕووناک (Light Mode)",
         dir: "rtl"
@@ -404,7 +407,8 @@
         heroDesc: "Buying, selling, and renting all types of properties with guaranteed best prices.",
         searchPlh: "Search by location or name...",
         mapBtn: "Location",
-        phoneBtn: "Call",
+        heroMapBtn: "Office Map",
+        callPrefix: "Call:",
         darkTheme: "Dark Mode",
         lightTheme: "Light Mode",
         dir: "ltr"
@@ -416,14 +420,15 @@
         heroDesc: "شراء وبيع وتأجير جميع أنواع العقارات بضمان وأفضل الأسعار.",
         searchPlh: "البحث حسب الموقع أو الاسم...",
         mapBtn: "الموقع",
-        phoneBtn: "اتصال",
+        heroMapBtn: "خريطة المكتب",
+        callPrefix: "اتصال:",
         darkTheme: "الوضع الداكن",
         lightTheme: "الوضع الفاتح",
         dir: "rtl"
       }
     };
 
-    let currentLang = 'ckb';
+    let currentLang = localStorage.getItem('siteLang') || 'ckb';
     let siteConfig = {
       companyName: "خانووبەرەی دەشتی دوستەپە",
       subtitle: "Dashti Dustapa Real Estate",
@@ -514,17 +519,27 @@
 
     function changeLanguage(lang) {
       currentLang = lang;
+      localStorage.setItem('siteLang', lang);
       document.getElementById('langSelector').value = lang;
       document.documentElement.setAttribute('dir', translations[lang].dir);
       document.documentElement.setAttribute('lang', lang);
 
       const t = translations[lang];
-      document.getElementById('headerCompanyName').innerText = siteConfig.companyName || t.company;
+      if (lang === 'ckb') {
+        document.getElementById('headerCompanyName').innerText = siteConfig.companyName;
+        document.getElementById('heroTitle').innerText = siteConfig.heroTitle;
+        document.getElementById('heroDesc').innerText = siteConfig.heroDesc;
+      } else {
+        document.getElementById('headerCompanyName').innerText = t.company;
+        document.getElementById('heroTitle').innerText = t.heroTitle;
+        document.getElementById('heroDesc').innerText = t.heroDesc;
+      }
+
       document.getElementById('heroBadge').innerText = t.heroBadge;
-      document.getElementById('heroTitle').innerText = siteConfig.heroTitle || t.heroTitle;
-      document.getElementById('heroDesc').innerText = siteConfig.heroDesc || t.heroDesc;
       document.getElementById('searchInput').placeholder = t.searchPlh;
       document.getElementById('headerMapText').innerText = t.mapBtn;
+      document.getElementById('heroMapBtnText').innerText = t.heroMapBtn;
+      document.getElementById('heroPhoneLabel').innerText = t.callPrefix;
 
       initTheme();
     }
@@ -539,7 +554,11 @@
 
     function applySiteSettings() {
       applyThemeColor();
-      document.getElementById('headerCompanyName').innerText = siteConfig.companyName;
+      if (currentLang === 'ckb') {
+        document.getElementById('headerCompanyName').innerText = siteConfig.companyName;
+        document.getElementById('heroTitle').innerText = siteConfig.heroTitle;
+        document.getElementById('heroDesc').innerText = siteConfig.heroDesc;
+      }
       document.getElementById('headerSubtitle').innerText = siteConfig.subtitle;
       document.getElementById('headerCallBtn').href = `tel:${siteConfig.phone}`;
       document.getElementById('headerPhoneText').innerText = siteConfig.phone;
@@ -547,8 +566,6 @@
       document.getElementById('heroPhoneDisplay').innerText = siteConfig.phone;
       document.getElementById('headerMapBtn').href = siteConfig.mainOfficeMap;
       document.getElementById('heroMapBtn').href = siteConfig.mainOfficeMap;
-      document.getElementById('heroTitle').innerText = siteConfig.heroTitle;
-      document.getElementById('heroDesc').innerText = siteConfig.heroDesc;
       document.getElementById('footerCompanyName').innerText = siteConfig.companyName;
       document.getElementById('footerPhoneDisplay').innerText = `📞 ${siteConfig.phone}`;
 
@@ -589,15 +606,16 @@
       renderCustomTabs();
     }
 
-    function toggleSettingsMenu() {
+    function toggleSettingsMenu(e) {
+      if (e) e.stopPropagation();
       const dd = document.getElementById('settingsDropdown');
       dd.classList.toggle('hidden');
     }
 
     window.addEventListener('click', function(e) {
       const dd = document.getElementById('settingsDropdown');
-      const btn = e.target.closest('button');
-      if (!btn && !dd.classList.contains('hidden')) {
+      const btn = document.getElementById('settingsToggleBtn');
+      if (dd && !dd.contains(e.target) && (!btn || !btn.contains(e.target))) {
         dd.classList.add('hidden');
       }
     });
