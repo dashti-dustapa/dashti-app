@@ -687,7 +687,7 @@
       try {
         await fetch(`${SUPABASE_URL}/rest/v1/site_settings?id=eq.global`, {
           method: 'PATCH',
-          headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'resolution=merge-duplicates' },
+          headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
           body: JSON.stringify({ id: 'global', config_data: siteConfig })
         });
       } catch(e){}
@@ -721,10 +721,9 @@
       localStorage.setItem('siteConfig', JSON.stringify(siteConfig));
       applySiteSettings();
       saveSettingsToCloud();
-      alert('سەرۆک ڕەهەند، هەموو گۆڕانکارییەکان بۆ هەموو ئامێرەکان (مۆبایل و لاپتۆپ) پاشەکەوت کران!');
+      alert('سەرۆک ڕەهەند، هەموو گۆڕانکارییەکان پاشەکەوت کران!');
     }
 
-    // کەمکردنەوەی قەبارەی وێنەی مۆبایل بۆ ٨٠٠ پێکسڵ تا بە هیچ جۆرێک لە مۆبایل نەوەستێت
     function convertImageToBase64() {
       const file = document.getElementById('fileInput').files[0];
       if (!file) return;
@@ -762,7 +761,6 @@
 
     async function syncCloudData() {
       try {
-        // ١. سینککردنی ڕێکخستنەکان (سۆشیال میدیا و ڕەنگ) لە هەورەوە
         const setRes = await fetch(`${SUPABASE_URL}/rest/v1/site_settings?id=eq.global&select=*`, {
           headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
         });
@@ -773,13 +771,20 @@
           applySiteSettings();
         }
 
-        // ٢. سینککردنی موڵکەکان بۆ لاپتۆپ و مۆبایل
         const res = await fetch(`${SUPABASE_URL}/rest/v1/properties?select=*&order=created_at.desc`, {
           headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
         });
         const cloudData = await res.json();
-        if (cloudData && Array.isArray(cloudData)) {
-          properties = cloudData;
+        if (cloudData && Array.isArray(cloudData) && cloudData.length > 0) {
+          // یەکخستنی داتا بەبێ سڕینەوەی موڵکە نوێیەکان
+          const localStored = JSON.parse(localStorage.getItem('site_properties_list')) || [];
+          const merged = [...cloudData];
+          localStored.forEach(p => {
+            if (!merged.some(c => String(c.id) === String(p.id) || c.title === p.title)) {
+              merged.unshift(p);
+            }
+          });
+          properties = merged;
           localStorage.setItem('site_properties_list', JSON.stringify(properties));
           renderProperties();
           renderAdminList();
@@ -915,7 +920,7 @@
     }
 
     function editProp(id) {
-      const p = properties.find(x => x.id === id);
+      const p = properties.find(x => String(x.id) === String(id));
       if (!p) return;
       
       document.getElementById('editPropId').value = p.id;
@@ -977,13 +982,13 @@
       };
 
       if (editId) {
-        const idx = properties.findIndex(p => p.id === editId);
+        const idx = properties.findIndex(p => String(p.id) === String(editId));
         if (idx > -1) {
           properties[idx] = { ...properties[idx], ...propData };
           localStorage.setItem('site_properties_list', JSON.stringify(properties));
           renderProperties();
           renderAdminList();
-          alert('موڵکەکە بە سەرکەوتوویی لە هەموو ئامێرەکان نوێکرایەوە!');
+          alert('موڵکەکە بە سەرکەوتوویی نوێکرایەوە!');
           resetForm();
 
           try {
@@ -995,29 +1000,40 @@
           } catch (err) {}
         }
       } else {
-        propData.id = 'prop_' + Date.now();
-        propData.status = 'available';
+        const localId = 'prop_' + Date.now();
+        const fullItem = { ...propData, id: localId, status: 'available' };
         
-        properties.unshift(propData);
+        properties.unshift(fullItem);
         localStorage.setItem('site_properties_list', JSON.stringify(properties));
         renderProperties();
         renderAdminList();
-        alert('سەرۆک ڕەهەند، موڵکی نوێ بە سەرکەوتوویی لە مۆبایل و لاپتۆپ بڵاوکرایەوە!');
+        alert('سەرۆک ڕەهەند، موڵکی نوێ بە سەرکەوتوویی دانرا و ئیتر لە کاتی ڕیلۆد ناسڕێتەوە!');
         resetForm();
 
+        // ناردن بۆ Supabase بەبێ سەپاندنی ID بۆ ڕێگری لە شکست
         try {
-          await fetch(`${SUPABASE_URL}/rest/v1/properties`, {
+          const res = await fetch(`${SUPABASE_URL}/rest/v1/properties`, {
             method: 'POST',
-            headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
-            body: JSON.stringify(propData)
+            headers: { 
+              apikey: SUPABASE_KEY, 
+              Authorization: `Bearer ${SUPABASE_KEY}`, 
+              'Content-Type': 'application/json',
+              'Prefer': 'return=representation'
+            },
+            body: JSON.stringify({ ...propData, status: 'available' })
           });
+          const serverData = await res.json();
+          if (serverData && serverData[0] && serverData[0].id) {
+            fullItem.id = serverData[0].id;
+            localStorage.setItem('site_properties_list', JSON.stringify(properties));
+          }
         } catch (err) {}
       }
     }
 
     async function togglePropertyStatus(id, currentStatus) {
       const nextStatus = currentStatus === 'available' ? 'sold' : 'available';
-      const item = properties.find(p => p.id === id);
+      const item = properties.find(p => String(p.id) === String(id));
       if (item) {
         item.status = nextStatus;
         localStorage.setItem('site_properties_list', JSON.stringify(properties));
@@ -1035,7 +1051,7 @@
 
     async function deleteProp(id) {
       if (confirm('سەرۆک ڕەهەند، دڵنیایت لە سڕینەوە؟')) {
-        properties = properties.filter(p => p.id !== id);
+        properties = properties.filter(p => String(p.id) !== String(id));
         localStorage.setItem('site_properties_list', JSON.stringify(properties));
         renderProperties();
         renderAdminList();
@@ -1051,6 +1067,8 @@
     initTheme();
     changeLanguage(currentLang);
     applySiteSettings();
+    renderProperties();
+    renderAdminList();
     syncCloudData();
   </script>
 </body>
