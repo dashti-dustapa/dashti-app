@@ -12,9 +12,7 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
-      darkMode: 'class',
-    }
+    tailwind.config = { darkMode: 'class' }
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <style>
@@ -31,6 +29,7 @@
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col justify-between transition-colors duration-300">
 
+  <!-- Header -->
   <header class="bg-white dark:bg-slate-950 text-slate-900 dark:text-white sticky top-0 z-50 shadow-md border-b border-slate-200 dark:border-slate-800 transition-colors">
     <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center relative">
       <div class="flex items-center gap-3">
@@ -52,11 +51,13 @@
           <span>📞</span> <span id="headerPhoneText">0751 219 3920</span>
         </a>
 
+        <!-- ئایکۆنی ڕێکخستنەکان -->
         <div class="relative">
           <button onclick="toggleSettingsMenu()" class="bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 theme-text border border-slate-200 dark:border-slate-700 p-2.5 rounded-xl transition flex items-center justify-center shadow">
             <span class="text-base">⚙️</span>
           </button>
 
+          <!-- مینیۆی ناو ڕێکخستن -->
           <div id="settingsDropdown" class="hidden absolute left-0 mt-2 w-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl p-2.5 z-50 text-xs font-bold space-y-1.5">
             <div class="p-2 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-between">
               <span class="text-slate-600 dark:text-slate-300">🌐 زمان / Language</span>
@@ -75,18 +76,27 @@
               <span class="text-[10px] bg-slate-200 dark:bg-slate-700 px-2 py-0.5 rounded text-slate-600 dark:text-slate-300">گۆڕین</span>
             </button>
 
-            <button onclick="toggleOwnerView(); toggleSettingsMenu();" class="w-full text-right p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 theme-text flex items-center justify-between transition">
+            <!-- تابی خاوەن موڵک -->
+            <button id="navOwnerBtn" onclick="toggleOwnerView(); toggleSettingsMenu();" class="w-full text-right p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 theme-text flex items-center justify-between transition">
               <span>👑 تابی خاوەن موڵک</span>
               <span class="text-[10px] bg-amber-500/20 px-2 py-0.5 rounded theme-text">Admin</span>
             </button>
 
             <div id="customTabsContainer" class="space-y-1 border-t border-slate-200 dark:border-slate-800 pt-1"></div>
+            
+            <div id="settingsLogoutSection" class="hidden border-t border-slate-200 dark:border-slate-800 pt-1">
+              <button onclick="logoutOwner()" class="w-full text-right p-2 rounded-xl hover:bg-rose-50 dark:hover:bg-rose-950/30 text-rose-600 dark:text-rose-400 flex items-center justify-between transition">
+                <span>🚪 دەرچوون لە تابی خاوەن</span>
+                <span class="text-[10px] bg-rose-500/10 px-2 py-0.5 rounded">Log Out</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </header>
 
+  <!-- لاپەڕەی سەرەکی بۆ کڕیاران -->
   <main id="publicView" class="flex-1">
     <section class="bg-gradient-to-b from-slate-900 to-slate-950 text-white py-14 px-4 border-b border-slate-800 text-center relative overflow-hidden">
       <div class="max-w-4xl mx-auto relative z-10">
@@ -140,11 +150,13 @@
       </div>
     </section>
 
+    <!-- پێشانگای موڵکەکان -->
     <section class="max-w-7xl mx-auto px-4 py-12">
       <div id="propertyGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </section>
   </main>
 
+  <!-- شاشەی وشەی نهێنی تابی خاوەن -->
   <main id="loginView" class="hidden max-w-md mx-auto px-4 py-20">
     <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl text-center">
       <div class="w-16 h-16 bg-amber-500/10 theme-text rounded-2xl flex items-center justify-center mx-auto text-3xl mb-4 font-black">
@@ -162,12 +174,13 @@
     </div>
   </main>
 
+  <!-- داشبۆردی سەرۆک ڕەهەند بە کۆنترۆڵی تەواوەتی -->
   <main id="adminView" class="hidden max-w-6xl mx-auto px-4 py-8 space-y-8 w-full">
     <div class="bg-slate-900 dark:bg-slate-950 text-white p-6 sm:p-8 rounded-3xl shadow-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border border-slate-800">
       <div>
         <span class="theme-bg text-slate-950 text-[10px] font-black px-2.5 py-1 rounded-md uppercase">Supreme Controller</span>
         <h2 class="text-2xl sm:text-3xl font-black theme-text mt-2">بەخێربێیت سەرۆک ڕەهەند</h2>
-        <p class="text-xs text-slate-400 mt-1">کۆنترۆڵی تەواوی ڕەنگەکان، ئایکۆنەکانی سۆشیال میدیا، لۆگۆ و زیادکردنی موڵک</p>
+        <p class="text-xs text-slate-400 mt-1">کۆنترۆڵی ڕەنگ، پەیوەندییەکان، لۆگۆ، وە زیادکردن و دەستکاریکردنی موڵکەکان</p>
       </div>
       <div class="flex gap-2">
         <button onclick="showPublicView()" class="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition">
@@ -179,14 +192,13 @@
       </div>
     </div>
 
+    <!-- ستۆدیۆی ڕەنگەکان -->
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
       <div>
         <h3 class="text-base font-black text-slate-900 dark:text-white mb-1 flex items-center gap-2">
           <span>🎨</span> ستۆدیۆی ڕەنگەکان (Super Color Studio)
         </h3>
-        <p class="text-xs text-slate-500 dark:text-slate-400">هەر ڕەنگێک کە دەتەوێت هەڵیبژێرە تا ڕاستەوخۆ دیزاینی هەموو ماڵپەڕەکە بەو ڕەنگە دەربکەوێت:</p>
       </div>
-
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5">
         <button type="button" onclick="setThemeColor('#f59e0b', '#d97706')" class="p-2.5 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs flex items-center justify-center gap-1 shadow hover:scale-105 transition">✨ ئاڵتوونی</button>
         <button type="button" onclick="setThemeColor('#0284c7', '#0369a1')" class="p-2.5 rounded-xl bg-sky-600 text-white font-bold text-xs flex items-center justify-center gap-1 shadow hover:scale-105 transition">🌊 شین</button>
@@ -195,13 +207,11 @@
         <button type="button" onclick="setThemeColor('#e11d48', '#be123c')" class="p-2.5 rounded-xl bg-rose-600 text-white font-bold text-xs flex items-center justify-center gap-1 shadow hover:scale-105 transition">🌹 سوور</button>
         <button type="button" onclick="setThemeColor('#ec4899', '#db2777')" class="p-2.5 rounded-xl bg-pink-500 text-white font-bold text-xs flex items-center justify-center gap-1 shadow hover:scale-105 transition">🌸 پەمەیی</button>
       </div>
-
       <div class="p-4 bg-slate-50 dark:bg-slate-800/70 rounded-2xl border border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div class="flex items-center gap-3">
           <input type="color" id="customColorPicker" oninput="handleLiveCustomColor(this.value)" class="w-12 h-12 rounded-xl cursor-pointer bg-transparent border-0">
           <div>
             <p class="font-bold text-xs text-slate-900 dark:text-white">هەڵبژاردنی ڕەنگی تایبەت (Color Wheel)</p>
-            <p class="text-[11px] text-slate-500 dark:text-slate-400">دەستنیشانکردنی ڕەنگ بە پلەی دڵخواز</p>
           </div>
         </div>
         <div class="flex items-center gap-2 w-full sm:w-auto">
@@ -213,22 +223,38 @@
       </div>
     </div>
 
+    <!-- بەشی گۆڕینی ئایکۆنەکان و بەستەرەکان -->
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       <h3 class="text-base font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-        <span>🌐</span> بەڕێوەبردنی بەستەر و گۆڕینی ئایکۆنەکانی سۆشیال میدیا
+        <span>🌐</span> بەڕێوەبردنی سۆشیال میدیا و زانیارییەکانی ماڵپەڕ
       </h3>
       <form onsubmit="saveSiteSettings(event)" class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
         <div>
-          <label class="block font-bold text-pink-600 dark:text-pink-400 mb-1">📷 لینکی ئینستاگرام (Instagram URL)</label>
+          <label class="block font-bold text-pink-600 dark:text-pink-400 mb-1">📷 لینکی ئینستاگرام</label>
           <input type="url" id="setInsta" placeholder="https://instagram.com/..." class="w-full p-3 border border-pink-200 dark:border-pink-900 rounded-xl bg-pink-50/40 dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
         </div>
         <div>
-          <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">🎵 لینکی تیکتۆک (TikTok URL)</label>
+          <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">🎵 لینکی تیکتۆک</label>
           <input type="url" id="setTiktok" placeholder="https://tiktok.com/@..." class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
         </div>
         <div>
-          <label class="block font-bold text-blue-600 dark:text-blue-400 mb-1">📘 لینکی فەیسبووک (Facebook URL)</label>
+          <label class="block font-bold text-blue-600 dark:text-blue-400 mb-1">📘 لینکی فەیسبووک</label>
           <input type="url" id="setFb" placeholder="https://facebook.com/..." class="w-full p-3 border border-blue-200 dark:border-blue-900 rounded-xl bg-blue-50/40 dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
+        </div>
+
+        <div class="md:col-span-3 border-t border-slate-200 dark:border-slate-800 pt-4">
+          <p class="font-bold text-slate-700 dark:text-slate-300 mb-2">✨ گۆڕینی ئایکۆنی سۆشیال میدیا (Custom Icon Text / Emoji):</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div>
+              <input type="text" id="setIconInsta" placeholder="بۆ نموونە: 📸 یان IG (بەتاڵی بهێڵە بۆ فەرمی)" class="w-full p-2.5 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <input type="text" id="setIconTiktok" placeholder="بۆ نموونە: 🎵 یان TT (بەتاڵی بهێڵە بۆ فەرمی)" class="w-full p-2.5 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <input type="text" id="setIconFb" placeholder="بۆ نموونە: 📘 یان FB (بەتاڵی بهێڵە بۆ فەرمی)" class="w-full p-2.5 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white">
+            </div>
+          </div>
         </div>
 
         <div>
@@ -240,7 +266,7 @@
           <input type="text" id="setSubtitle" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white" required>
         </div>
         <div>
-          <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">ژمارەی سەرەکی تەلەفۆن</label>
+          <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">ژمارەی تەلەفۆن</label>
           <input type="text" id="setPhone" class="w-full p-3 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-white" required>
         </div>
         <div>
@@ -281,6 +307,7 @@
       </form>
     </div>
 
+    <!-- بەشی دروستکردنی تاب -->
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       <h3 class="text-base font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
         <span>📑</span> دروستکردن و بەڕێوەبردنی تابە تایبەتەکان
@@ -296,9 +323,10 @@
       <div id="adminCustomTabsList" class="space-y-2"></div>
     </div>
 
+    <!-- زیادکردن و دەستکاریکردنی موڵکی نوێ -->
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       <h3 id="formTitle" class="text-base font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-        <span>➕</span> زیادکردنی موڵکی نوێ (دەستبەجێ لە ماڵپەڕ دەردەکەوێت)
+        <span>➕</span> زیادکردنی موڵکی نوێ
       </h3>
       <form onsubmit="handlePropertySubmit(event)" class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
         <input type="hidden" id="editPropId" value="">
@@ -320,7 +348,7 @@
           <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1.5">📷 وێنەی موڵک (لە مۆبایل یان بەستەر):</label>
           <div class="flex flex-col sm:flex-row gap-2 items-center justify-center">
             <input type="file" id="fileInput" accept="image/*" onchange="convertImageToBase64()" class="text-xs text-slate-500 dark:text-slate-300">
-            <input type="url" id="pImageUrlDirect" placeholder="یان لینکی وێنە لێرە دابنێ" class="p-2 border rounded-xl text-xs w-full sm:w-1/2 bg-white dark:bg-slate-900">
+            <input type="url" id="pImageUrlDirect" placeholder="یان لینکی وێنە لێرە دابنێ" class="p-2 border border-slate-200 dark:border-slate-700 rounded-xl text-xs w-full sm:w-1/2 bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
           </div>
           <input type="hidden" id="pImage">
           <p id="uploadStatus" class="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold mt-1.5 hidden">وێنەکە ئامادەیە ✅</p>
@@ -339,12 +367,14 @@
       </form>
     </div>
 
+    <!-- بەڕێوەبردنی موڵکەکان بە دوگمەی دەستکاری -->
     <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
-      <h3 class="font-black text-sm text-slate-900 dark:text-white mb-4">بەڕێوەبردن و دەستکاریکردنی موڵکەکان</h3>
+      <h3 class="font-black text-sm text-slate-900 dark:text-white mb-4 flex items-center gap-2"><span>📂</span> بەڕێوەبردن و دەستکاریکردنی موڵکەکان</h3>
       <div id="adminPropertyList" class="space-y-3"></div>
     </div>
   </main>
 
+  <!-- Footer -->
   <footer class="bg-white dark:bg-slate-950 text-slate-600 dark:text-slate-400 py-8 px-4 mt-16 border-t border-slate-200 dark:border-slate-800 text-center text-xs transition-colors">
     <p id="footerCompanyName" class="font-bold text-slate-900 dark:text-white mb-1">کۆمپانیای خانووبەرەی دەشتی دوستەپە</p>
     <p id="footerPhoneDisplay" class="theme-text font-bold mb-2">📞 0751 219 3920</p>
@@ -361,6 +391,7 @@
   </footer>
 
   <script>
+    // Supabase config
     const SUPABASE_URL = 'https://vvvldvbgywfynlroudio.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ2dmxkdmJneXdmeW5scm91ZGlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgwNDExNDMsImV4cCI6MjEwMzYxNzE0M30.QuThGUEutLdCoPyq-O8AsocMqkQS8C0W31RN2nnfEPY';
 
@@ -419,6 +450,9 @@
       insta: "",
       tiktok: "",
       fb: "",
+      iconInsta: "",
+      iconTiktok: "",
+      iconFb: "",
       heroTitle: "خانوو، زەوی و ڤێلای خەونەکانت بدۆزەرەوە",
       heroDesc: "کڕین، فرۆشتن، و بەکرێدانی هەموو جۆرە موڵکێک بە گرەنتی و باشترین نرخ",
       themeColor: "#f59e0b",
@@ -427,22 +461,7 @@
       customTabs: []
     };
 
-    // لیستی موڵکەکان بە میمۆری لەگەڵ پاشەکەوتی ناوخۆیی
-    let properties = JSON.parse(localStorage.getItem('site_properties_list')) || [
-      {
-        id: "p1",
-        title: "خانووی مۆدێرن ٢٠٠م لە دەشتی دوستەپە",
-        price: 95000,
-        location: "دەشتی دوستەپە - نزیک شەقامی سەرەکی",
-        property_type: "خانوو",
-        area_sqm: 200,
-        bedrooms: 3,
-        image_url: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800",
-        description: "خانووی تایبەت و ڕازاوە، پێکهاتووە لە ٣ ژووری نوستن، هۆڵی گەورە و باخچە.",
-        status: "available"
-      }
-    ];
-
+    let properties = JSON.parse(localStorage.getItem('site_properties_list')) || [];
     let isOwnerLoggedIn = false;
 
     function applyThemeColor() {
@@ -556,10 +575,13 @@
       document.getElementById('heroInstaBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.insta, 'Instagram'); };
       document.getElementById('heroTiktokBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.tiktok, 'TikTok'); };
       document.getElementById('heroFbBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.fb, 'Facebook'); };
-
       document.getElementById('footerInstaBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.insta, 'Instagram'); };
       document.getElementById('footerTiktokBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.tiktok, 'TikTok'); };
       document.getElementById('footerFbBtn').onclick = (e) => { e.preventDefault(); handleSocialClick(siteConfig.fb, 'Facebook'); };
+
+      document.getElementById('instaIconHolder').innerHTML = siteConfig.iconInsta ? `<span class="font-black text-xs">${siteConfig.iconInsta}</span>` : defaultInstaSvg;
+      document.getElementById('tiktokIconHolder').innerHTML = siteConfig.iconTiktok ? `<span class="font-black text-xs">${siteConfig.iconTiktok}</span>` : defaultTiktokSvg;
+      document.getElementById('fbIconHolder').innerHTML = siteConfig.iconFb ? `<span class="font-black text-xs">${siteConfig.iconFb}</span>` : defaultFbSvg;
 
       const logoImg = document.getElementById('headerLogoImg');
       const logoText = document.getElementById('headerLogoText');
@@ -581,6 +603,9 @@
       document.getElementById('setInsta').value = siteConfig.insta || '';
       document.getElementById('setTiktok').value = siteConfig.tiktok || '';
       document.getElementById('setFb').value = siteConfig.fb || '';
+      document.getElementById('setIconInsta').value = siteConfig.iconInsta || '';
+      document.getElementById('setIconTiktok').value = siteConfig.iconTiktok || '';
+      document.getElementById('setIconFb').value = siteConfig.iconFb || '';
       document.getElementById('setHeroTitle').value = siteConfig.heroTitle;
       document.getElementById('setHeroDesc').value = siteConfig.heroDesc;
 
@@ -671,6 +696,9 @@
       siteConfig.insta = document.getElementById('setInsta').value;
       siteConfig.tiktok = document.getElementById('setTiktok').value;
       siteConfig.fb = document.getElementById('setFb').value;
+      siteConfig.iconInsta = document.getElementById('setIconInsta').value;
+      siteConfig.iconTiktok = document.getElementById('setIconTiktok').value;
+      siteConfig.iconFb = document.getElementById('setIconFb').value;
       
       const uploadedLogo = document.getElementById('logoDataHolder').value;
       const logoUrlInput = document.getElementById('setLogoUrl').value;
@@ -782,6 +810,10 @@
             </div>
           </div>
           <div class="flex items-center gap-2">
+            <!-- دوگمەی دەستکاریکردن -->
+            <button onclick="editProp('${p.id}')" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold rounded-xl transition">
+              دەستکاری ✏️
+            </button>
             <button onclick="togglePropertyStatus('${p.id}', '${p.status}')" class="px-3 py-1.5 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-xl transition">
               ${p.status === 'available' ? 'فرۆشرا' : 'بەردەست'}
             </button>
@@ -797,6 +829,8 @@
       document.getElementById('publicView').classList.remove('hidden');
       document.getElementById('loginView').classList.add('hidden');
       document.getElementById('adminView').classList.add('hidden');
+      document.getElementById('navOwnerBtn').classList.remove('hidden');
+      document.getElementById('settingsLogoutSection').classList.add('hidden');
     }
 
     function toggleOwnerView() {
@@ -806,8 +840,13 @@
 
       if (!pub.classList.contains('hidden')) {
         pub.classList.add('hidden');
-        if (isOwnerLoggedIn) admin.classList.remove('hidden');
-        else login.classList.remove('hidden');
+        if (isOwnerLoggedIn) {
+          admin.classList.remove('hidden');
+          document.getElementById('navOwnerBtn').classList.add('hidden');
+          document.getElementById('settingsLogoutSection').classList.remove('hidden');
+        } else {
+          login.classList.remove('hidden');
+        }
       } else {
         showPublicView();
       }
@@ -821,6 +860,8 @@
         document.getElementById('loginView').classList.add('hidden');
         document.getElementById('adminView').classList.remove('hidden');
         document.getElementById('ownerPassInput').value = '';
+        document.getElementById('navOwnerBtn').classList.add('hidden');
+        document.getElementById('settingsLogoutSection').classList.remove('hidden');
       } else {
         alert('وشەی نهێنی هەڵەیە!');
       }
@@ -829,51 +870,37 @@
     function logoutOwner() {
       isOwnerLoggedIn = false;
       showPublicView();
+      const dd = document.getElementById('settingsDropdown');
+      if (dd) dd.classList.add('hidden');
     }
 
-    async function handlePropertySubmit(e) {
-      e.preventDefault();
+    // هێنانی داتای موڵک بۆ ناو فۆڕم بۆ دەستکاریکردن
+    function editProp(id) {
+      const p = properties.find(x => x.id === id);
+      if (!p) return;
       
-      const fileImg = document.getElementById('pImage').value;
-      const directUrl = document.getElementById('pImageUrlDirect').value;
-      const finalImg = fileImg || directUrl || 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800';
+      document.getElementById('editPropId').value = p.id;
+      document.getElementById('pTitle').value = p.title || '';
+      document.getElementById('pPrice').value = p.price || '';
+      document.getElementById('pLocation').value = p.location || '';
+      document.getElementById('pType').value = p.property_type || 'خانوو';
+      document.getElementById('pArea').value = p.area_sqm || '';
+      document.getElementById('pBedrooms').value = p.bedrooms || '';
+      document.getElementById('pMapLink').value = p.map_url || '';
+      document.getElementById('pDesc').value = p.description || '';
+      document.getElementById('pImage').value = p.image_url || '';
+      document.getElementById('pImageUrlDirect').value = p.image_url || '';
 
-      const newProp = {
-        id: 'prop_' + Date.now(),
-        title: document.getElementById('pTitle').value,
-        price: Number(document.getElementById('pPrice').value),
-        location: document.getElementById('pLocation').value,
-        property_type: document.getElementById('pType').value,
-        area_sqm: Number(document.getElementById('pArea').value),
-        bedrooms: Number(document.getElementById('pBedrooms').value || 0),
-        image_url: finalImg,
-        description: document.getElementById('pDesc').value,
-        status: 'available',
-        map_url: document.getElementById('pMapLink').value || ''
-      };
+      document.getElementById('formTitle').innerHTML = '<span>✏️</span> دەستکاریکردن و نوێکردنەوەی موڵک';
+      document.getElementById('submitPropBtn').innerText = '💾 پاشەکەوتکردنی گۆڕانکارییەکان';
+      document.getElementById('cancelEditBtn').classList.remove('hidden');
 
-      // دەستبەجێ خستنە ناو لیست و لاپەڕە بەبێ چاوەڕوانی
-      properties.unshift(newProp);
-      localStorage.setItem('site_properties_list', JSON.stringify(properties));
-      
-      renderProperties();
-      renderAdminList();
-      alert('سەرۆک ڕەهەند، موڵکەکە بە سەرکەوتوویی لە ماڵپەڕ دانرا و دەستبەجێ دەردەکەوێت!');
-      resetForm();
-
-      // سەیڤکردنی هەورە داتابەیس بە شێوەی پاشبنەما (Background)
-      try {
-        await fetch(`${SUPABASE_URL}/rest/v1/properties`, {
-          method: 'POST',
-          headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify(newProp)
-        });
-      } catch (err) {
-        console.log('Saved locally successfully');
-      }
+      // ڕۆیشتن بۆ سەرەوەی فۆڕمەکە
+      document.getElementById('formTitle').scrollIntoView({ behavior: 'smooth' });
     }
 
     function resetForm() {
+      document.getElementById('editPropId').value = '';
       document.getElementById('pTitle').value = '';
       document.getElementById('pPrice').value = '';
       document.getElementById('pLocation').value = '';
@@ -885,6 +912,71 @@
       document.getElementById('pDesc').value = '';
       document.getElementById('fileInput').value = '';
       document.getElementById('uploadStatus').classList.add('hidden');
+
+      document.getElementById('formTitle').innerHTML = '<span>➕</span> زیادکردنی موڵکی نوێ';
+      document.getElementById('submitPropBtn').innerText = 'بڵاوکردنەوە لە ماڵپەڕ';
+      document.getElementById('cancelEditBtn').classList.add('hidden');
+    }
+
+    async function handlePropertySubmit(e) {
+      e.preventDefault();
+      
+      const fileImg = document.getElementById('pImage').value;
+      const directUrl = document.getElementById('pImageUrlDirect').value;
+      const finalImg = fileImg || directUrl || 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800';
+      const editId = document.getElementById('editPropId').value;
+
+      const propData = {
+        title: document.getElementById('pTitle').value,
+        price: Number(document.getElementById('pPrice').value),
+        location: document.getElementById('pLocation').value,
+        property_type: document.getElementById('pType').value,
+        area_sqm: Number(document.getElementById('pArea').value),
+        bedrooms: Number(document.getElementById('pBedrooms').value || 0),
+        image_url: finalImg,
+        description: document.getElementById('pDesc').value,
+        map_url: document.getElementById('pMapLink').value || ''
+      };
+
+      if (editId) {
+        // ئەگەر دەستکاری بوو (Edit)
+        const idx = properties.findIndex(p => p.id === editId);
+        if (idx > -1) {
+          properties[idx] = { ...properties[idx], ...propData };
+          localStorage.setItem('site_properties_list', JSON.stringify(properties));
+          renderProperties();
+          renderAdminList();
+          alert('موڵکەکە بە سەرکەوتوویی نوێکرایەوە!');
+          resetForm();
+
+          try {
+            await fetch(`${SUPABASE_URL}/rest/v1/properties?id=eq.${editId}`, {
+              method: 'PATCH',
+              headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
+              body: JSON.stringify(propData)
+            });
+          } catch (err) {}
+        }
+      } else {
+        // ئەگەر موڵکی نوێ بوو (New)
+        propData.id = 'prop_' + Date.now();
+        propData.status = 'available';
+        
+        properties.unshift(propData);
+        localStorage.setItem('site_properties_list', JSON.stringify(properties));
+        renderProperties();
+        renderAdminList();
+        alert('موڵکی نوێ بڵاوکرایەوە!');
+        resetForm();
+
+        try {
+          await fetch(`${SUPABASE_URL}/rest/v1/properties`, {
+            method: 'POST',
+            headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify(propData)
+          });
+        } catch (err) {}
+      }
     }
 
     async function togglePropertyStatus(id, currentStatus) {
